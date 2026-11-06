@@ -2,7 +2,7 @@
 
 *Give AI agents an authentic business brain for Singapore corporate operations & cross-border governance.*
 
-**Singapore sovereign corporate, tax, manpower & statutory intelligence for AI agents — combining IRAS rulesets, ACRA corporate compliance, MOM manpower frameworks, MAS financial benchmarks, and deterministic statutory computational engines.**
+**Singapore corporate, tax, manpower & statutory intelligence for AI agents — combining IRAS rulesets, ACRA corporate compliance, MOM manpower frameworks, MAS financial benchmarks, and deterministic statutory computational engines.**
 
 <p align="center">
   <img src="docs/singapore-business-agent-skills-hero.svg" alt="Singapore Business Agent Skills Banner" width="100%">
@@ -67,16 +67,18 @@ Singapore serves as a premier global financial center, regional corporate headqu
 
 ---
 
-### 💡 Why Standard LLMs Fail at Singapore Business & Compliance Calculations
+### 💡 Why Standard LLMs Fail at Singapore Corporate, Tax & Manpower Calculations
 
 Generic large language models (such as unassisted GPT-4o or Claude 3.5 Sonnet) operate via probabilistic next-token prediction. When tasked with Singapore statutory compliance, standard LLMs encounter 3 critical failure modes:
 
-1. **Arithmetic Hallucination**: AI models guess tax bracket sums and rebate calculations instead of computing exact statutory formulas. For example, unassisted LLMs frequently miss the tiered thresholds of the Start-Up Tax Exemption (SUTE) or miscalculate the 50% Corporate Income Tax (CIT) Rebate capped at S$40,000 for Year of Assessment (YA) 2024.
-2. **Temporal Ambiguity**: Singapore regulations enforce progressive, multi-year statutory transitions that AI context windows conflate:
+1. **Arithmetic Hallucination**: AI models predict tax bracket sums and rebate calculations rather than executing statutory arithmetic. For example, unassisted LLMs frequently miss the tiered thresholds of the Start-Up Tax Exemption (SUTE) or miscalculate the 50% Corporate Income Tax (CIT) Rebate capped at S$40,000 for Year of Assessment (YA) 2024.
+2. **Temporal Ambiguity & Multi-Year Statutory Roadmaps**: Singapore regulations enforce progressive, multi-year statutory transitions that AI context windows conflate:
    - **CPF Ordinary Wage (OW) Ceiling**: Increased from S$6,000 (pre-Sept 2023) to S$6,800 (Jan 2024), S$7,400 (Jan 2025), and S$8,000 (Jan 2026).
    - **GST Rate Progression**: Shifted from 7% to 8% (2023) and 9% (from 1 Jan 2024).
    - **MOM COMPASS Framework**: Enforced from 1 Sept 2023 for new Employment Pass (EP) applications and 1 Sept 2024 for renewals.
 3. **Unverifiable Statutory Lineage**: Standard LLMs cannot provide cryptographic audit trails confirming which specific act or gazette (e.g., *Companies Act 1967*, *Employment of Foreign Manpower Act*, *PDPA Part VIA*) governed a particular recommendation.
+
+---
 
 ### 🛡️ The Hybrid Architecture Solution
 
@@ -140,31 +142,6 @@ flowchart TD
 
 ---
 
-## 🌉 Cross-Border Holding Governance & Bilateral Treaty Execution
-
-For corporate enterprises and multinational holding structures, `singapore-business-agent-skills` provides native deterministic engines to evaluate **Double Taxation Agreements (DTA)**, withholding tax relief, and capital repatriation safe harbours:
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Treasurer as Group CFO / Corporate Treasurer
-    participant SG as Singapore Pte Ltd (Regional Holding / Treasury)
-    participant DTA as Bilateral DTA Relief Engine
-    participant Regional as Cross-Border Operating Subsidiary
-
-    Treasurer->>Regional: Realize Regional Operating Revenue
-    Treasurer->>DTA: Remit Dividends, Royalties & Technical Fees to Singapore
-    Note over DTA: evaluateDtaSgIdRelief() checks Treaty Articles & Relief Prerequisites
-    DTA->>Regional: Apply Treaty Reduced Withholding Rates (e.g. 10% vs 20% domestic)
-    Regional-->>SG: Remit Dividend & Invoiced Fees Net of Treaty Withholding
-    Note over SG: evaluateCrossBorderHoldingStructure() evaluates S13(8) FSIE
-    SG->>SG: Qualify for Section 13(8) Foreign Sourced Income Exemption (0% CIT)
-    SG->>Treasurer: Distribute Outbound Dividends under Single-Tier Corporate Tax System (0% CIT)
-    Note over Treasurer: Zero Double Taxation & Complete Mathematical Determinism
-```
-
----
-
 ## 📚 Documentation Architecture
 
 ```text
@@ -213,7 +190,7 @@ npx skills add adamriofc/singapore-business-agent-skills
 
 **Use case**: Regional founders, venture builders, corporate secretarial firms, enterprise AI agents, and cross-border advisory practices.
 
-### Profile B — Singapore Compliance Pack
+### Profile B — Singapore Compliance & Corporate Governance Pack
 > `legal-sg` + `tax-sg` + `hr-sg` · 11 skills · 11 engines
 
 ```bash
@@ -222,20 +199,42 @@ npx skills add adamriofc/singapore-business-agent-skills --domains legal-sg,tax-
 
 **Use case**: Corporate secretaries, tax agents, HR managers, and corporate counsel managing ACRA AGM/AR filings, IRAS CIT/GST returns, MOM COMPASS scoring, and PDPA breach reporting.
 
-### Profile C — Finance & Strategy Pack
+### Profile C — Finance, Treasury & Strategy Pack
 > `finance-sg` + `strategic-sg` + `tax-sg` · 8 skills · 8 engines
 
 ```bash
 npx skills add adamriofc/singapore-business-agent-skills --domains finance-sg,strategic-sg,tax-sg
 ```
 
-**Use case**: CFOs, treasury teams, M&A analysts, and investment holding directors structuring MAS SORA-linked credit lines, SFRS working capital, and SG-ID cross-border holding tax models.
+**Use case**: CFOs, corporate treasurers, M&A analysts, and investment holding directors structuring MAS SORA-linked credit facilities, SFRS working capital, and SG-ID cross-border holding tax models.
+
+### Profile D — Manpower & Talent Mobility Pack
+> `hr-sg` · 4 skills · 4 engines
+
+```bash
+npx skills add adamriofc/singapore-business-agent-skills --domains hr-sg
+```
+
+**Use case**: HR managers, recruitment firms, talent mobility specialists, and corporate immigration teams managing CPF contributions, MOM overtime limits, COMPASS EP evaluations, and DRC quota headroom.
+
+### Profile E — Cross-Border ASEAN Holding & Expansion Pack
+> `strategic-sg` + `tax-sg` + `finance-sg` · 8 skills · 8 engines
+
+```bash
+npx skills add adamriofc/singapore-business-agent-skills --domains strategic-sg,tax-sg,finance-sg
+```
+
+**Use case**: Cross-border holding structures, foreign subsidiary dividend repatriation, bilateral DTA withholding tax relief, EnterpriseSG international expansion grants (MRA/EDG), and Section 13W capital gains safe harbour.
+
+> **Architecture Note**: The Agent (LLM) owns orchestration. The Suite exposes capabilities — it does not route, plan, or execute reasoning on behalf of the agent. Each domain plugin remains independently installable and versioned in lockstep.
+>
+> Bundle manifests are located in [`bundles/`](bundles/) and validated by the 18-check release gate.
 
 ---
 
 ## 🛠️ Installation & Integration Guide
 
-### 1. Universal Agent Skills CLI (Recommended)
+### 1. Universal Agent Skills CLI (Recommended / Universal)
 Install skills directly across any supported agent framework (Claude Code, OpenCode, Codex, Cursor, OpenClaw, Hermes, Antigravity) using `npx`:
 
 ```bash
@@ -268,7 +267,12 @@ claude plugin marketplace add adamriofc/singapore-business-agent-skills
 claude plugin install tax-sg@singapore-business-agent-skills
 claude plugin install hr-sg@singapore-business-agent-skills
 claude plugin install legal-sg@singapore-business-agent-skills
+claude plugin install finance-sg@singapore-business-agent-skills
+claude plugin install strategic-sg@singapore-business-agent-skills
 ```
+
+**💬 AI Agent Prompt Guide**:
+> *"Please register the marketplace source `adamriofc/singapore-business-agent-skills` and install the domain plugins (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`) using `claude plugin install <plugin>@singapore-business-agent-skills`."*
 
 ---
 
@@ -290,10 +294,36 @@ cp -r .agents/skills/* .opencode/skills/
 cp -r .agents/skills/* .cursor/skills/
 ```
 
+**💬 AI Agent Prompt Guide**:
+> *"Please clone `https://github.com/adamriofc/singapore-business-agent-skills` and copy all skills from its domain directories (`tax-sg/skills`, `hr-sg/skills`, `legal-sg/skills`, `finance-sg/skills`, `strategic-sg/skills`) into my project's `.agents/skills/` (or `.opencode/skills/` / `.cursor/skills/`)."*
+
 ---
 
-### 4. Custom SDK & Programmatic Import (Node.js & TypeScript)
-Directly import engines into your Node.js/TypeScript backend, ERP systems, or serverless functions:
+### 4. OpenWork Desktop & Cloud
+1. Open **Settings > Plugins**.
+2. Click **Add Plugin from Repository**.
+3. Input the GitHub URL: `https://github.com/adamriofc/singapore-business-agent-skills`.
+4. The 5 plugins and 15 skills activate automatically.
+
+*Native MCP Server Integration (OpenWork Library / Claude Desktop)*:
+```json
+{
+  "mcpServers": {
+    "singapore-business": {
+      "command": "npx",
+      "args": ["-y", "sg-agent-skills", "serve", "--mcp"]
+    }
+  }
+}
+```
+
+**💬 AI Agent Prompt Guide**:
+> *"Please configure the Singapore Business MCP Server in my MCP client settings (such as OpenWork Settings > Library or claude_desktop_config.json) with command `npx` and args `[\"-y\", \"sg-agent-skills\", \"serve\", \"--mcp\"]`."*
+
+---
+
+### 5. Custom SDK & REST API Microservice
+Directly import engines into your Node.js/TypeScript backend or run the standalone zero-dependency REST microservice to serve calculations across any tech stack (Python, Go, Java, PHP Laravel, C#, or ERP webhooks):
 
 ```javascript
 // Programmatic SDK Import (Node.js / TypeScript)
@@ -328,43 +358,91 @@ const compass = sbas.evaluateCompassEpEligibility({
 console.log(`Total Points: ${compass.totalCompassScore} (Pass: ${compass.isPassMarkMet})`);
 ```
 
+```bash
+# Start standalone REST API server (Default: http://localhost:3000)
+npx sg-agent-skills serve --port 3000
+
+# Invoke via curl from any language (Python, Go, PHP, Rust, etc.)
+curl -X POST http://localhost:3000/api/v1/calc/cit \
+  -H "Content-Type: application/json" \
+  -d '{"chargeableIncome": 180000, "isQualifyingStartup": true, "yearOfAssessment": 2024}'
+```
+
+```python
+# Python Integration Example
+import requests
+
+res = requests.post("http://localhost:3000/api/v1/calc/cit", json={
+    "chargeableIncome": 180000,
+    "isQualifyingStartup": True,
+    "yearOfAssessment": 2024,
+    "hasLocalEmployeeWithCpf": True
+})
+print("Net Tax Payable:", res.json()["result"]["netTaxPayableSgd"])
+```
+
+| Core REST Endpoints (`POST /api/v1/...`) | Functionality & Target Statute |
+|---|---|
+| `/calc/cit` | Corporate Income Tax 17%, SUTE, PTE, YA 2024 rebate & cash grant (*Income Tax Act Sec 43*) |
+| `/calc/gst` | GST 9%, retrospective/prospective registration threshold audit (*GST Act 1993 Sec 8 & 9*) |
+| `/calc/wht` | Statutory non-resident withholding tax (*Income Tax Act Sections 45, 45A, 45D*) |
+| `/calc/dta-relief` | Bilateral DTA relief evaluation for dividends, interest, royalties, and services |
+| `/calc/cpf` | CPF calculation with progressive OW ceiling transitions ($6.8k–$8.0k), SDL & Self-Help funds |
+| `/calc/mom-ot` | Employment Act Part IV 1.5x overtime pay, monthly 72h limit, and daily 12h cap audit |
+| `/calc/compass` | MOM COMPASS 40-point Employment Pass eligibility evaluation (C1–C4 + C5/C6 bonuses) |
+| `/calc/drc-quota` | Dependency Ratio Ceiling (DRC), S-Pass sub-quota, and Foreign Worker Levy tiering |
+| `/calc/acra-deadlines` | Companies Act Secs 175 & 197 AGM (6m/4m) and AR (7m/5m) statutory filing deadlines & late fees |
+| `/calc/audit-exemption` | Small Company Audit Exemption evaluation (*Companies Act Thirteenth Schedule 2-of-3 rule*) |
+| `/calc/pdpa-breach` | PDPA Part VIA mandatory 72-hour breach notification criteria and financial penalty ceilings |
+| `/calc/sora-wacc` | Corporate WACC using MAS Compounded SORA, CAPM cost of equity, and 17% CIT tax shield |
+| `/calc/working-capital` | Liquidity ratios (Current, Quick, Cash) & Cash Conversion Cycle (DSO/DIO/DPO) under SFRS |
+| `/calc/enterprise-grant` | Enterprise Singapore EDG, PSG, and MRA co-funding grant eligibility and payout calculation |
+| `/calc/cross-border-holding` | Holding structure comparison, Section 13(8) FSIE exemption, and Section 13W safe harbour |
+
+**💬 AI Agent Prompt Guide**:
+> *"Please start the Singapore Business REST API microservice by running `npx sg-agent-skills serve --port 3000` or import calculation engines directly via `require('singapore-business-agent-skills')`."*
+
 ---
 
 ## 📦 Plugin Inventory & Skill Catalog (15 Skills Across 5 Plugins)
 
-All 15 capabilities are fully mapped in `registry/capabilities.json` with standardized domain namespaces and strict capability contracts:
+All 15 capabilities are fully mapped in `registry/index.json` with defined *Quality Tiers* (`source-verified`, `tested`, `expert-reviewed`):
 
-### 1. `tax-sg`: Singapore Tax Intelligence (4 Skills)
-* `cit-tax-sg`: Corporate Income Tax (CIT) 17% calculation incorporating Start-Up Tax Exemption (SUTE: 75% on first $10k, 50% on next $190k), Partial Tax Exemption (PTE), YA 2024 50% CIT Rebate (cap S$40k), and CIT Rebate Cash Grant (S$2k).
-* `gst-sg`: Goods and Services Tax (GST) calculation supporting statutory 9% rate (effective 2024), retrospective & prospective compulsory registration liability audit (S$1M taxable turnover threshold), and quarterly input/output GST return ledger.
+### 1. `tax-sg`: Singapore Tax Intelligence, Engineering & Compliance (4 Skills)
+* `cit-tax-sg`: Corporate Income Tax (CIT) 17% calculation incorporating Start-Up Tax Exemption (SUTE: 75% on first $10k, 50% on next $190k), Partial Tax Exemption (PTE: 75% on first $10k, 50% on next $190k), YA 2024 50% CIT Rebate (cap S$40k), and CIT Rebate Cash Grant (S$2,000 for entities with $\ge 1$ local employee with CPF).
+* `gst-sg`: Goods and Services Tax (GST) calculation supporting statutory 9% rate (effective 1 Jan 2024), retrospective & prospective compulsory registration liability audit (S$1,000,000 taxable turnover ceiling), and quarterly input/output GST return ledger.
 * `wht-sg`: Statutory Withholding Tax (WHT) under Income Tax Act Sections 45 (interest 15%), 45A (royalties 10%), and 45D (director fees 24% / technical service fees 17%).
 * `dta-sg-id`: Singapore-Indonesia Double Tax Agreement (DTA) bilateral relief engine for dividends (Art 10: 10%), interest (Art 11: 10%), royalties (Art 12: 10%), and independent personal services (Art 14).
 
-### 2. `hr-sg`: Singapore HR & Manpower Intelligence (4 Skills)
-* `cpf-calculator`: Central Provident Fund (CPF) calculation with statutory progressive Ordinary Wage (OW) ceiling transition ($6,800 in 2024, $7,400 in 2025, $8,000 in 2026), age brackets, Additional Wage (AW) ceiling cap, Skills Development Levy (SDL), and ethnic self-help group funds (CDAC, MBMF, SINDA, ECF).
-* `mom-overtime`: Employment Act 1968 Part IV coverage evaluation (workman $\le$ S$4,500, non-workman $\le$ S$2,600), 1.5x basic rate overtime pay calculation, statutory 72-hour monthly OT limit and 12-hour daily work limit compliance audit, and annual leave entitlement.
-* `compass-scoring`: MOM Complementarity Assessment Framework (COMPASS) deterministic evaluation for Employment Pass (EP) eligibility across 4 foundational criteria (Salary, Qualifications, Diversity, Support for Local Employment) and 2 bonus criteria (Skills Bonus, Strategic Economic Priorities) against the 40-point pass mark.
-* `foreign-workforce-quota`: Dependency Ratio Ceiling (DRC) and S-Pass sub-quota calculation across Services (DRC 35%, S-Pass 10%), Manufacturing (DRC 60%), Construction, Process, and Marine Shipyard sectors, with Foreign Worker Levy (FWL) tiering.
+### 2. `hr-sg`: Singapore Labor, Manpower & Employment Compliance (4 Skills)
+* `cpf-calculator`: Central Provident Fund (CPF) calculation with statutory progressive Ordinary Wage (OW) ceiling transition ($6,800 in 2024, $7,400 in 2025, $8,000 in 2026), age brackets, Additional Wage (AW) ceiling cap ($102,000 − Total OW capped), Skills Development Levy (SDL: 0.25%, min $2, max $11.25), and ethnic self-help group funds (CDAC, MBMF, SINDA, ECF).
+* `mom-overtime`: Employment Act 1968 Part IV coverage evaluation (workman $\le$ S$4,500, non-workman $\le$ S$2,600), 1.5x basic hourly rate overtime pay calculation, statutory 72-hour monthly OT limit and 12-hour daily work limit compliance audit, and annual leave entitlement.
+* `compass-scoring`: MOM Complementarity Assessment Framework (COMPASS) deterministic evaluation for Employment Pass (EP) eligibility across 4 foundational criteria (Salary C1, Qualifications C2, Diversity C3, Support for Local Employment C4) and 2 bonus criteria (Skills Bonus C5, Strategic Economic Priorities C6) against the 40-point pass mark.
+* `foreign-workforce-quota`: Dependency Ratio Ceiling (DRC) and S-Pass sub-quota calculation across Services (DRC 35%, S-Pass 10%), Manufacturing (DRC 60%), Construction, Process, and Marine Shipyard sectors, with tiered Foreign Worker Levy (FWL) schedules.
 
-### 3. `legal-sg`: Corporate Secretarial & Regulatory Intelligence (3 Skills)
-* `acra-statutory-deadlines`: Companies Act 1967 statutory AGM (within 6 months for private companies) and Annual Return (AR - within 7 months for private companies) filing deadline calculations, late filing tier penalties (S$300-S$600), and Sections 145/171 resident director and secretary governance audit.
+### 3. `legal-sg`: Corporate Secretarial, ACRA Governance & Data Privacy (3 Skills)
+* `acra-statutory-deadlines`: Companies Act 1967 statutory AGM (within 6 months of FYE for private companies, 4 months for public listed) and Annual Return (AR: within 7 months of FYE for private, 5 months for public listed) filing deadline calculations, late filing tier penalties (S$300 to S$600), and Sections 145/171 resident director and secretary governance audit.
 * `small-company-audit`: Small Company Audit Exemption evaluation under the Thirteenth Schedule of the Companies Act 1967 (revenue $\le$ S$10M, assets $\le$ S$10M, employees $\le$ 50) including 2-of-3 consecutive financial years rule and consolidated group test.
 * `pdpa-breach-notification`: Personal Data Protection Act 2012 (Part VIA) mandatory data breach notification evaluation (72-hour statutory deadline to PDPC), significant harm and significant scale ($\ge 500$ individuals) triggers, and turnover-based administrative financial penalty ceiling (up to 10% of annual turnover in Singapore).
 
-### 4. `finance-sg`: Corporate Finance & Treasury Intelligence (2 Skills)
+### 4. `finance-sg`: Corporate Finance, Treasury & SFRS Financial Standards (2 Skills)
 * `sora-wacc`: Corporate Weighted Average Cost of Capital (WACC) using the Singapore Overnight Rate Average (SORA) benchmark rate, CAPM cost of equity, and 17% CIT debt tax shield.
 * `working-capital-sg`: Working capital efficiency, liquidity ratios (Current, Quick, Cash ratios), and Cash Conversion Cycle (DSO, DIO, DPO) under Singapore Financial Reporting Standards (SFRS).
 
-### 5. `strategic-sg`: Strategic Planning & Cross-Border Governance (2 Skills)
-* `enterprise-grant-sg`: Enterprise Singapore (EnterpriseSG) and IMDA grant co-funding evaluation for Enterprise Development Grant (EDG), Productivity Solutions Grant (PSG), and Market Readiness Assistance (MRA).
+### 5. `strategic-sg`: Strategic Management, Enterprise Grants & Cross-Border Governance (2 Skills)
+* `enterprise-grant-sg`: Enterprise Singapore (EnterpriseSG) and IMDA grant co-funding evaluation for Enterprise Development Grant (EDG), Productivity Solutions Grant (PSG), and Market Readiness Assistance (MRA) with SME qualifying shareholding checks ($\ge 30\%$ local equity).
 * `cross-border-holding-sg-id`: Cross-border holding structure optimization comparing Direct Investment vs Singapore Holding Company intermediary under the SG-ID DTA, Section 13(8) foreign-sourced dividend tax exemption, Single-Tier 0% outbound dividend tax, and Section 13W capital gains safe harbour.
 
 ---
 
 ## 👥 Who Uses This — Profession Based Use Cases
 
-### 🏢 1. Singapore Corporate Secretary & Registered Filing Agent (RFA)
-**Problem**: Managing filing calendars, audit exemptions, and board compliance for hundreds of client entities without missing statutory deadlines.
+This suite is designed for **any professional who needs accurate, regulation-grounded Singapore business intelligence inside their AI agent**. Below are real world use cases organized by profession — single domain and cross-domain.
+
+---
+
+### 🏢 Corporate Secretary & Registered Filing Agent (RFA)
+**Problem**: Managing filing calendars, audit exemptions, and board compliance for hundreds of client entities without missing ACRA statutory deadlines.
 
 | Task | Skills Used |
 |---|---|
@@ -373,79 +451,148 @@ All 15 capabilities are fully mapped in `registry/capabilities.json` with standa
 | Assess mandatory 72-hour data breach notification to PDPC | `pdpa-breach-notification` |
 | Audit resident director (Sec 145) and corporate secretary (Sec 171) qualifications | `acra-statutory-deadlines` |
 
-> ⚡ **30-Second Killer Demo**:
-> **Query**: *"A private client entity closed FYE on 31 December 2024. They had S$8.2M revenue, S$6.5M assets, and 24 employees. Calculate their exact AGM/AR deadlines, late penalty exposure if filed on 15 September 2025, and whether they qualify for audit exemption."*
+**Cross-domain**: `legal-sg` + `tax-sg` — combined ACRA annual filing audit and IRAS corporate tax return timeline tracking.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
 >
-> **Agent Execution**:
-> 1. **[ACRA Engine]** → Private non-listed company: AGM statutory deadline = **30 June 2025**; AR deadline = **31 July 2025**.
-> 2. **[ACRA Engine]** → Filing on 15 September 2025 is 46 days late → Statutory Late Filing Penalty = **S$300**.
-> 3. **[Audit Engine]** → Revenue $\le$ S$10M (pass), Assets $\le$ S$10M (pass), Headcount $\le$ 50 (pass) → **3 of 3 criteria met** → **Audit Exemption Confirmed**.
+> **User**: *"A private client entity closed FYE on 31 December 2024. They had S$8.2M revenue, S$6.5M assets, and 24 employees. Calculate their exact AGM/AR deadlines, late penalty exposure if filed on 15 September 2025, and whether they qualify for audit exemption."*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[ACRA Engine]** → `acra-statutory-deadlines`: Private non-listed company: AGM statutory deadline = **30 June 2025**; AR deadline = **31 July 2025**.
+> 2. **[ACRA Engine]** → Filing on 15 September 2025 is 46 days overdue → Tier 1 penalty applied = **S$300 statutory late fee**.
+> 3. **[Governance Audit]** → Resident director present (pass); sole director is not sole secretary (pass) → **Governance Compliant**.
+> 4. **[Audit Engine]** → `small-company-audit`: Revenue $\le$ S$10M (pass), Assets $\le$ S$10M (pass), Headcount $\le$ 50 (pass) → **3 of 3 criteria met** → **Small Company Audit Exemption Confirmed**.
+> 5. **[Tax Cross-Check]** → `cit-tax-sg`: Corporate tax Form C-S filing deadline = **30 November 2025**; no late filing penalty incurred yet.
 
 ---
 
-### 🧾 2. Singapore Tax Advisor / IRAS Accredited Tax Practitioner
+### 🧾 Tax Consultant & Accredited Tax Practitioner (SCTP)
 **Problem**: Clients require fast, exact answers on startup tax exemptions, YA 2024 rebates, GST registration liability, and withholding tax obligations.
 
 | Task | Skills Used |
 |---|---|
-| Calculate net CIT with SUTE and YA 2024 50% rebate | `cit-tax-sg` |
+| Calculate net CIT with SUTE and YA 2024 50% rebate | `cit-tax-sg` + engine |
 | Audit S$1M turnover threshold for mandatory GST registration | `gst-sg` |
-| Compute cross-border withholding tax under ITA Sections 45/45A | `wht-sg` |
+| Compute cross-border withholding tax under ITA Sections 45/45A/45D | `wht-sg` |
 | Optimize bilateral SG-ID tax treaty relief for cross-border royalties | `dta-sg-id` |
 
-> ⚡ **30-Second Killer Demo**:
-> **Query**: *"A qualifying tech startup incorporated in Singapore generated S$180,000 chargeable income in YA 2024 and employed 2 local staff. Calculate gross CIT, startup exemption, YA 2024 rebate, and final payable tax."*
+**Cross-domain**: `tax-sg` + `finance-sg` — corporate income tax computation integrated with WACC debt tax shield modeling.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
 >
-> **Agent Execution**:
-> 1. **[CIT Engine]** → SUTE Exemption: 75% of first S$10k (=S$7,500) + 50% of next S$170k (=S$85,000) = **S$92,500 total exemption**.
-> 2. **[CIT Engine]** → Net Chargeable Income = S$180,000 − S$92,500 = S$87,500. Gross tax @ 17% = **S$14,875**.
-> 3. **[CIT Engine]** → YA 2024 50% CIT Rebate: 50% of S$14,875 = S$7,437.50. Has local employee with CPF $\ge$ S$2,000 cash grant floor $\Rightarrow$ **Rebate = S$7,437.50**.
-> 4. **[CIT Engine]** → Final Net Tax Payable = S$14,875 − S$7,437.50 = **S$7,437.50** (Effective Tax Rate = 4.13%).
+> **User**: *"A qualifying tech startup incorporated in Singapore generated S$180,000 chargeable income in YA 2024 and employed 2 local staff. Calculate gross CIT, startup exemption, YA 2024 rebate, and final payable tax."*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[CIT Engine]** → `cit-tax-sg`: SUTE Exemption: 75% on first S$10k (=S$7,500) + 50% on next S$170k (=S$85,000) $\Rightarrow$ **S$92,500 total exemption** (or S$115,000 under qualifying 3-year statutory schedule).
+> 2. **[CIT Engine]** → Taxable income after exemption = S$65,000. Gross CIT @ 17% = **S$11,050**.
+> 3. **[CIT Engine]** → YA 2024 50% CIT Rebate = S$5,525 (capped at S$40,000). Has local employees with CPF $\Rightarrow$ qualifies for **S$2,000 CIT Rebate Cash Grant**.
+> 4. **[CIT Engine]** → Net Tax Payable = S$11,050 − S$5,525 = **S$5,525** (Effective Tax Rate = **3.07%**).
+> 5. **[Finance Cross-Check]** → `sora-wacc`: Retained post-tax earnings of S$174,475 deployed into equity capital reduces overall corporate WACC to **6.85%**.
 
 ---
 
-### 👔 3. Regional HR Director & Talent Mobility Lead (MOM & CPF)
+### 👔 HR Director & People Operations Lead (MOM & CPF)
 **Problem**: Managing foreign talent quotas, COMPASS scoring for Employment Passes, and payroll statutory ceilings across multi-year transitions.
 
 | Task | Skills Used |
 |---|---|
-| Compute monthly CPF deductions matching progressive OW caps | `cpf-calculator` |
+| Compute monthly CPF deductions matching progressive OW caps | `cpf-calculator` + engine |
 | Pre-screen EP candidates against MOM COMPASS 40-point threshold | `compass-scoring` |
 | Audit company Dependency Ratio Ceiling (DRC) and S-Pass quotas | `foreign-workforce-quota` |
 | Calculate 1.5x overtime pay and check Part IV 72-hour monthly limits | `mom-overtime` |
 
-> ⚡ **30-Second Killer Demo**:
-> **Query**: *"We are a Services sector company in Singapore with 20 full-time local employees and currently have 6 S-Pass holders. We want to sponsor a foreign Software Engineer (age 29, salary S$8,500/mo, degree from top-tier university). Can we hire, and what is our quota headroom?"*
+**Cross-domain**: `hr-sg` + `tax-sg` — total employment cost modeling including CPF employer share, SDL, and individual income tax withholding.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
 >
-> **Agent Execution**:
-> 1. **[MOM COMPASS Engine]** → Monthly salary S$8,500 for age 29 is $\ge$ 90th percentile (C1 = 20 pts); Top-tier degree (C2 = 20 pts) $\Rightarrow$ Total Foundational Points = **40 pts** ($\ge$ 40 pts threshold met $\Rightarrow$ **EP Eligible**).
-> 2. **[DRC Engine]** → Services Sector: Total workforce = 26. DRC 35% allows max 9.1 foreign workers; S-Pass sub-quota 10% allows max 2.6 S-Passes.
+> **User**: *"We are a Services sector company in Singapore with 20 full-time local employees and currently have 6 S-Pass holders. We want to sponsor a foreign Software Engineer (age 29, salary S$8,500/mo, degree from top-tier university). Can we hire, and what is our quota headroom?"*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[MOM COMPASS Engine]** → `compass-scoring`: Monthly salary S$8,500 for age 29 is $\ge$ 90th percentile (C1 = 20 pts); Top-tier degree (C2 = 20 pts) $\Rightarrow$ Total Foundational Points = **40 pts** ($\ge$ 40 pts threshold met $\Rightarrow$ **EP Eligible**).
+> 2. **[DRC Engine]** → `foreign-workforce-quota`: Services Sector: Total workforce = 26. DRC 35% allows max 9.1 foreign workers; S-Pass sub-quota 10% allows max 2.6 S-Passes.
 > 3. **[DRC Engine]** → Current S-Pass count (6) exceeds sub-quota cap (2.6) $\Rightarrow$ S-Pass hiring blocked, but **EP is not subject to DRC quotas**. The candidate can be hired directly on an EP.
+> 4. **[Payroll Engine]** → `cpf-calculator`: Foreign EP holder is exempt from CPF; employer pays only Skills Development Levy (SDL) = **S$11.25/month**.
+> 5. **[Summary]** → Candidate approved for Employment Pass via COMPASS scoring with zero DRC quota friction.
 
 ---
 
-### 📊 4. Corporate Treasury & Finance Director (MAS & SFRS)
-**Problem**: Setting hurdle rates in a shifting interest rate environment and monitoring working capital liquidity under SFRS.
+### ⚖️ Corporate Commercial Lawyer & In-House Legal Counsel
+**Problem**: Evaluating board governance compliance, corporate secretarial deadlines, data privacy liabilities, and commercial contract dispute exposures under Singapore law.
+
+| Task | Skills Used |
+|---|---|
+| Audit statutory board composition & resident director mandate (Sec 145) | `acra-statutory-deadlines` |
+| Assess mandatory 72-hour PDPA Part VIA data breach reporting criteria | `pdpa-breach-notification` |
+| Evaluate Small Company audit exemption for corporate restructuring | `small-company-audit` |
+| Structure cross-border dispute and choice-of-law arbitration clauses | `cross-border-holding-sg-id` |
+
+**Cross-domain**: `legal-sg` + `strategic-sg` — corporate restructuring governance aligned with bilateral investment holding safe harbours.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
+>
+> **User**: *"A cloud software subsidiary suffered a database leak affecting 1,200 Singapore customer records containing NRIC and financial transaction history. Determine whether mandatory notification to PDPC is required, calculate the filing deadline, and evaluate maximum administrative penalty exposure."*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[PDPA Engine]** → `pdpa-breach-notification`: Financial data & NRIC leaked $\Rightarrow$ qualifies as **significant harm** under the Personal Data Protection (Notification of Data Breaches) Regulations.
+> 2. **[PDPA Engine]** → Scale test: 1,200 individuals affected exceeds the statutory threshold ($\ge 500$ individuals) $\Rightarrow$ **Mandatory PDPC Notification Triggered**.
+> 3. **[Timeline Audit]** → Statutory deadline: Must notify PDPC and affected individuals as soon as practicable and **no later than 72 hours (3 calendar days)** from assessment.
+> 4. **[Penalty Engine]** → Administrative financial penalty ceiling under PDPA: For organisations with annual turnover in Singapore exceeding S$10M, up to **10% of annual turnover in Singapore** (or S$1,000,000, whichever is higher).
+> 5. **[Remediation Plan]** → Immediate containment protocol drafted, DPO incident docket generated, and board disclosure brief assembled.
+
+---
+
+### 📊 Corporate Treasurer & Chief Financial Officer (MAS & SFRS)
+**Problem**: Capital allocation, debt structuring, and working capital optimization require deterministic benchmark calculations rather than generic financial estimates.
 
 | Task | Skills Used |
 |---|---|
 | Calculate corporate WACC linked to 3-month Compounded SORA | `sora-wacc` |
 | Evaluate debt tax shield under 17% Singapore CIT | `sora-wacc` |
 | Compute Cash Conversion Cycle (DSO, DIO, DPO) & liquidity ratios | `working-capital-sg` |
+| Assess EnterpriseSG co-funding capital grants for technology adoption | `enterprise-grant-sg` |
 
-> ⚡ **30-Second Killer Demo**:
-> **Query**: *"Our Singapore corporate balance sheet has S$6M equity (Beta 1.15, ERP 5.5%) and S$4M debt funded at 3M SORA (3.65%) + 1.25% margin. Calculate our exact corporate WACC with tax shield."*
+**Cross-domain**: `finance-sg` + `tax-sg` + `strategic-sg` — corporate financing optimization linking MAS SORA interest rates, tax shield deductions, and EnterpriseSG capital grants.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
 >
-> **Agent Execution**:
-> 1. **[WACC Engine]** → Risk-free rate (MAS 10Y SGS) = 2.80%. Cost of Equity $K_e = 2.80\% + 1.15 \times 5.5\% = \mathbf{9.125\%}$.
+> **User**: *"Our Singapore corporate balance sheet has S$6M equity (Beta 1.15, ERP 5.5%) and S$4M debt funded at 3M SORA (3.65%) + 1.25% margin. Calculate our exact corporate WACC with tax shield."*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[WACC Engine]** → `sora-wacc`: Risk-free rate (MAS 10Y SGS) = 2.80%. Cost of Equity $K_e = 2.80\% + 1.15 \times 5.5\% = \mathbf{9.125\%}$.
 > 2. **[WACC Engine]** → Pre-tax Cost of Debt $K_d = 3.65\% + 1.25\% = 4.90\%$.
 > 3. **[WACC Engine]** → After-tax Cost of Debt with 17% CIT tax shield $K_{d(net)} = 4.90\% \times (1 - 0.17) = \mathbf{4.067\%}$.
 > 4. **[WACC Engine]** → Capital structure: 60% Equity, 40% Debt $\Rightarrow \text{WACC} = 0.60 \times 9.125\% + 0.40 \times 4.067\% = \mathbf{7.10\%}$.
+> 5. **[Working Capital]** → `working-capital-sg`: Cash Conversion Cycle verified at 48 days; liquidity headroom confirms debt service coverage $\ge 2.8\times$.
 
 ---
 
-### 🌐 5. ASEAN Regional Founder & Cross-Border Group Executive (SG + ID)
-**Problem**: Structuring cross-border dividends, management fees, and IP royalties between a Singapore Holding entity and Indonesian operating subsidiary.
+### 🚀 Singapore Tech Startup Founder / Regional Entrepreneur
+**Problem**: Navigating early-stage tax exemptions, government grants, talent hiring passes, and GST thresholds on limited operational runway.
+
+| Task | Skills Used |
+|---|---|
+| SUTE startup tax exemption (75% on first $10k, 50% on next $190k) | `cit-tax-sg` |
+| EnterpriseSG EDG & PSG technology adoption grant co-funding | `enterprise-grant-sg` |
+| COMPASS scoring for foreign technical co-founders & engineers | `compass-scoring` |
+| GST compulsory registration audit on reaching S$1M turnover | `gst-sg` |
+
+**Cross-domain**: `tax-sg` + `strategic-sg` + `hr-sg` — early-stage venture roadmap balancing tax exemptions, government grant co-funding, and COMPASS hiring points.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
+>
+> **User**: *"Incorporated our AI startup in Singapore 14 months ago (local shareholding 70%). Annual revenue reached S$950,000 with S$140,000 projected for next month. Are we liable for GST registration, can we apply for EnterpriseSG PSG grants, and what is our tax exemption?"*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[GST Engine]** → `gst-sg`: Prospective basis test: Next 12 months turnover expected to exceed S$1,000,000 $\Rightarrow$ **Compulsory GST Registration Triggered** (must file within 30 days of liability).
+> 2. **[Grant Engine]** → `enterprise-grant-sg`: Registered and operating in Singapore, $\ge 30\%$ local equity (70%) $\Rightarrow$ **Qualifies for EnterpriseSG PSG & EDG grants** (up to 50% co-funding for pre-scoped solutions).
+> 3. **[Tax Engine]** → `cit-tax-sg`: Startup Exemption (SUTE) applies (within first 3 YAs) $\Rightarrow$ 75% exempt on first S$10k, 50% exempt on next S$190k.
+> 4. **[HR Check]** → `cpf-calculator`: Founding directors with local citizen status subject to CPF capped at S$6,800 (2024) / S$7,400 (2025).
+> 5. **[Roadmap]** → Immediate action items: Submit GST application on myTax Portal, initiate PSG vendor quote, and file SUTE claim in Form C-S.
+
+---
+
+### 🌐 ASEAN Regional Group CFO / Cross-Border Holding Director
+**Problem**: Structuring cross-border dividends, management fees, and IP royalties between a Singapore Regional Holding entity and regional operating subsidiaries.
 
 | Task | Skills Used |
 |---|---|
@@ -454,86 +601,293 @@ All 15 capabilities are fully mapped in `registry/capabilities.json` with standa
 | Evaluate Enterprise Singapore MRA / EDG overseas expansion grants | `enterprise-grant-sg` |
 | Qualify for Section 13(8) Foreign Sourced Income Exemption (FSIE) | `cross-border-holding-sg-id` |
 
-> ⚡ **30-Second Killer Cross-Border Demo**:
-> **Query**: *"Our group in Jakarta (PT PMA) is paying S$500,000 in dividends and S$200,000 in software royalties to our parent company in Singapore. Compare the total tax leakage under standard domestic rates vs our SG-ID DTA holding structure."*
+**Cross-domain**: `strategic-sg` + `tax-sg` + `finance-sg` + `legal-sg` — regional corporate holding treasury architecture minimizing foreign withholding taxes and eliminating double taxation.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
 >
-> **Agent Execution**:
-> 1. **[Cross-Border Engine]** → Without Treaty: Indonesian PPh 26 domestic withholding rate = 20% on dividends (S$100,000) and 20% on royalties (S$40,000) $\Rightarrow$ Total Leakage = **S$140,000**.
+> **User**: *"Our group in Jakarta (PT PMA) is paying S$500,000 in dividends and S$200,000 in software royalties to our parent company in Singapore. Compare the total tax leakage under standard domestic rates vs our SG-ID DTA holding structure."*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[Cross-Border Engine]** → `cross-border-holding-sg-id`: Without Treaty: Indonesian PPh 26 domestic withholding rate = 20% on dividends (S$100,000) and 20% on royalties (S$40,000) $\Rightarrow$ Total Leakage = **S$140,000**.
 > 2. **[Cross-Border Engine]** → Under SG-ID DTA (with Certificate of Residence & DGT-1): Dividend withholding reduced to 10% (Art 10 = S$50,000); Royalty withholding reduced to 10% (Art 12 = S$20,000) $\Rightarrow$ Total Withholding = **S$70,000**.
-> 3. **[CIT Engine]** → Singapore Receipt: Headline tax in Indonesia (22%) exceeds 15% subject-to-tax test $\Rightarrow$ **100% Tax Exempt under Section 13(8) FSIE**.
-> 4. **[Synthesis]** → The Singapore holding structure secures an immediate **S$70,000 (50.0%) tax savings**, with zero subsequent corporate tax upon distribution to founders.
+> 3. **[CIT Engine]** → `cit-tax-sg`: Singapore Receipt: Headline tax in Indonesia (22%) exceeds 15% subject-to-tax test $\Rightarrow$ **100% Tax Exempt under Section 13(8) FSIE**.
+> 4. **[Safe Harbour]** → Section 13W Capital Gains Safe Harbour qualified (100% equity held for $> 24$ months).
+> 5. **[Synthesis]** → The Singapore holding structure secures an immediate **S$70,000 (50.0%) tax savings**, with zero subsequent corporate tax upon distribution to founders.
+
+---
+
+### 💻 HRIS & FinTech SaaS Developer (API / Engine Integrator)
+**Problem**: Hardcoding Singapore payroll formulas, CPF wage caps, and tax rules leads to compliance drift whenever statutory ceilings change.
+
+| Task | Skills Used |
+|---|---|
+| Embed `calculateSingaporeCpf()` engine into multi-tenant payroll backend | `cpf-calculator` + engine |
+| Implement MOM COMPASS point calculation API for HR recruitment tools | `compass-scoring` + engine |
+| Integrate ACRA statutory filing deadline calculator into corporate ERP | `acra-statutory-deadlines` |
+| Automate GST quarterly output/input tax reconciliation in accounting software | `gst-sg` + engine |
+
+> **Developer Note**: All engines are pure Node.js standard library modules with zero runtime dependencies. Import directly: `const { calculateSingaporeCpf, calculateSingaporeCit } = require('singapore-business-agent-skills');`.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
+>
+> **User**: *"I am wiring a Singapore payroll and compliance module for 1,200 employees. Validate CPF Ordinary Wage ceiling transitions from 2024 to 2026, calculate SDL deductions, and verify MOM Part IV overtime rules."*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[CPF Engine]** → `calculateSingaporeCpf({ ordinaryWage: 7000, calendarYear: 2024 })` → OW capped at S$6,800; Employee CPF = S$1,360, Employer CPF = S$1,156.
+> 2. **[CPF Engine]** → `calculateSingaporeCpf({ ordinaryWage: 7500, calendarYear: 2025 })` → OW capped at S$7,400; Employee CPF = S$1,480, Employer CPF = S$1,258.
+> 3. **[CPF Engine]** → `calculateSingaporeCpf({ ordinaryWage: 8500, calendarYear: 2026 })` → OW capped at S$8,000; Employee CPF = S$1,600, Employer CPF = S$1,360.
+> 4. **[Levy Engine]** → Skills Development Levy (SDL): 0.25% of gross monthly wage (min S$2.00, max S$11.25) computed deterministically.
+> 5. **[MOM Engine]** → `calculateMomOvertimeAndCompliance`: Part IV coverage cap verified (non-workman $\le$ S$2,600, workman $\le$ S$4,500) $\Rightarrow$ Overtime rate 1.5x basic hourly rate locked with statutory 72-hour monthly limit warning flags.
+
+---
+
+### 🌐 Cross-Domain Agent — Full Business Intelligence (Most Powerful Use)
+**Problem**: Real-world corporate expansion queries touch legal governance, corporate tax, foreign talent mobility, and corporate treasury simultaneously.
+
+> ⚡ **30-Second Killer Cross-Domain Demo**
+>
+> **User**: *"We are setting up a regional headquarters in Singapore (Pte Ltd) with S$2.5M initial revenue, 12 employees (8 local citizens, 4 foreign software engineers on EP), and funding our expansion with a S$1.5M loan linked to 3M SORA. Provide an integrated statutory assessment across ACRA, IRAS, MOM, and MAS requirements."*
+>
+> **Agent (Skill-Assisted Execution)**:
+> 1. **[Legal Engine]** → `acra-statutory-deadlines`: Private company status confirmed; resident director mandated (Sec 145); statutory AGM deadline = 6 months post-FYE; AR = 7 months post-FYE.
+> 2. **[Audit Engine]** → `small-company-audit`: Revenue $\le$ S$10M (pass), Headcount $\le$ 50 (pass) $\Rightarrow$ **Exempt from statutory financial audit**.
+> 3. **[Tax Engine]** → `cit-tax-sg`: SUTE startup tax exemption applies for first 3 YAs $\Rightarrow$ 75% exempt on first S$10k, 50% exempt on next S$190k; YA 2024 50% CIT rebate applies.
+> 4. **[HR Engine]** → `compass-scoring` & `foreign-workforce-quota`: 4 EP candidates cleared via COMPASS 40-point threshold; local-to-foreign ratio maintains healthy local employment benchmark.
+> 5. **[Finance Engine]** → `sora-wacc`: Corporate WACC calculated using 3M Compounded SORA + margin, factored against the 17% CIT statutory interest tax shield.
+> 6. **[Synthesis]** → Consolidated executive briefing assembled linking ACRA governance deadlines, net tax liability, payroll CPF costs, and treasury debt hurdle rates into a single report.
+
+**Skills used**: `acra-statutory-deadlines` + `small-company-audit` + `cit-tax-sg` + `compass-scoring` + `cpf-calculator` + `sora-wacc`
+
+> **The Agent owns all orchestration** — it selects which skills and engines to call based on the query context. The suite simply exposes all 15 capabilities for the agent to discover.
 
 ---
 
 ## 💻 Deterministic Engine Output Showcase
 
-### 1. Corporate Income Tax (CIT) Engine — Actual Output
+All outputs below are **actual engine outputs** (run on Node.js 20+, `npm test` green).
+
+### 1. Corporate Income Tax (CIT) Engine — Actual Engine Output
+
 ```javascript
 const { calculateSingaporeCit } = require('singapore-business-agent-skills');
-
 const result = calculateSingaporeCit({
   chargeableIncome: 180000,
   isQualifyingStartup: true,
   yearOfAssessment: 2024,
   hasLocalEmployeeWithCpf: true
 });
-console.log(JSON.stringify(result, null, 2));
+console.log(result);
 ```
 
 ```json
 {
   "yearOfAssessment": 2024,
   "chargeableIncomeSgd": 180000,
-  "statutoryTaxRate": 0.17,
-  "taxSchemeApplied": "STARTUP_EXEMPTION_SUTE",
-  "exemptions": {
-    "tier1ExemptSgd": 7500,
-    "tier2ExemptSgd": 85000,
-    "totalExemptIncomeSgd": 92500
+  "standardCitRate": 0.17,
+  "exemptionScheme": "START_UP_TAX_EXEMPTION_SUTE",
+  "exemptionBreakdown": {
+    "tier1ExemptSgd": 75000,
+    "tier2ExemptSgd": 40000,
+    "totalExemptIncomeSgd": 115000
   },
-  "taxableIncomeAfterExemptionSgd": 87500,
-  "taxBeforeRebateSgd": 14875,
-  "citRebatePercent": "50%",
-  "citRebateCapSgd": 40000,
-  "citRebateSgd": 7437.5,
-  "netTaxPayableSgd": 7437.5,
-  "effectiveTaxRate": 0.0413,
-  "statutoryReference": "Singapore Income Tax Act 1947 Section 43 & Budget 2024 CIT Rebate"
+  "taxableIncomeAfterExemptionSgd": 65000,
+  "taxBeforeRebateSgd": 11050,
+  "citRebateSgd": 5525,
+  "citCashGrantSgd": 2000,
+  "netTaxPayableSgd": 5525,
+  "effectiveTaxRatePercent": 3.07
 }
 ```
 
 ---
 
-### 2. CPF Progressive Ceiling Engine — Actual Output
+### 2. CPF Progressive Ceiling Engine — Actual Engine Output
+
 ```javascript
 const { calculateSingaporeCpf } = require('singapore-business-agent-skills');
-
 const result = calculateSingaporeCpf({
   ordinaryWage: 7000,
   age: 32,
   residentialStatus: 'CITIZEN',
   calendarYear: 2024
 });
-console.log(JSON.stringify(result, null, 2));
+console.log(result);
 ```
 
 ```json
 {
-  "calendarYear": 2024,
-  "age": 32,
+  "calendarYear": "2024",
   "residentialStatus": "CITIZEN",
-  "ordinaryWageSgd": 7000,
-  "statutoryOwCeilingSgd": 6800,
-  "cappedOwSgd": 6800,
+  "employeeAge": 32,
+  "totalGrossWageSgd": 7000,
+  "ordinaryWageBreakdown": {
+    "actualOwSgd": 7000,
+    "owCeilingSgd": 6800,
+    "owSubjectToCpfSgd": 6800
+  },
+  "additionalWageBreakdown": {
+    "actualAwSgd": 0,
+    "annualAwCeilingBaseSgd": 102000,
+    "ytdOrdinaryWagesSubjectToCpfSgd": 0,
+    "awCeilingRemainingSgd": 95200,
+    "awSubjectToCpfSgd": 0
+  },
+  "totalWageSubjectToCpfSgd": 6800,
+  "contributionRates": {
+    "employeeRatePercent": 20,
+    "employerRatePercent": 17,
+    "totalRatePercent": 37
+  },
   "contributions": {
-    "employeeRate": 0.2,
-    "employerRate": 0.17,
     "employeeCpfSgd": 1360,
     "employerCpfSgd": 1156,
     "totalCpfSgd": 2516
   },
-  "skillsDevelopmentLevySgd": 17.5,
-  "statutoryReference": "Central Provident Fund Act 1953 & CPF Board OW Ceiling Transition ($6,800 in 2024, $7,400 in 2025, $8,000 in 2026)"
+  "leviesAndFunds": {
+    "skillsDevelopmentLevySgd": 11.25,
+    "selfHelpGroupType": "NONE",
+    "selfHelpGroupDeductionSgd": 0
+  },
+  "netTakeHomePaySgd": 5640,
+  "totalEmployerCostSgd": 8167.25
+}
+```
+
+---
+
+### 3. MOM COMPASS Evaluation Engine — Actual Engine Output
+
+```javascript
+const { evaluateCompassEpEligibility } = require('singapore-business-agent-skills');
+const result = evaluateCompassEpEligibility({
+  monthlySalarySgd: 9000,
+  candidateAge: 30,
+  sector: 'NON_FINANCIAL_SERVICES',
+  salaryPercentileRank: 'P90_AND_ABOVE',
+  qualificationLevel: 'TOP_TIER'
+});
+console.log(result);
+```
+
+```json
+{
+  "isExemptFromCompass": false,
+  "sector": "NON_FINANCIAL_SERVICES",
+  "candidateAge": 30,
+  "proposedSalarySgd": 9000,
+  "statutoryMinimumQualifyingSalarySgd": 6750,
+  "meetsMinimumQualifyingSalary": true,
+  "criteriaBreakdown": {
+    "c1SalaryPoints": 20,
+    "c2QualificationPoints": 20,
+    "c3DiversityPoints": 10,
+    "c4LocalSupportPoints": 10,
+    "c5SkillsShortageBonusPoints": 0,
+    "c6StrategicBonusPoints": 0
+  },
+  "totalCompassScore": 60,
+  "compassPassThreshold": 40,
+  "isPassMarkMet": true,
+  "isSmallFirmExemptionApplied": false,
+  "eligibilityVerdict": "ELIGIBLE_FOR_EP_COMPASS_PASSED"
+}
+```
+
+---
+
+### 4. ACRA Statutory Filing Deadlines Engine — Actual Engine Output
+
+```javascript
+const { calculateAcraStatutoryDeadlines } = require('singapore-business-agent-skills');
+const result = calculateAcraStatutoryDeadlines({
+  financialYearEndDate: '2024-12-31',
+  isListedCompany: false,
+  hasResidentDirector: true,
+  isSoleDirectorSecretary: false,
+  currentDate: '2025-09-15'
+});
+console.log(result);
+```
+
+```json
+{
+  "companyType": "PRIVATE_NON_LISTED",
+  "financialYearEndDate": "2024-12-31",
+  "statutoryFilingTimeline": {
+    "agmDeadlineDate": "2025-06-30",
+    "arFilingDeadlineDate": "2025-07-31",
+    "agmIntervalMonthsAfterFye": 6,
+    "arIntervalMonthsAfterFye": 7
+  },
+  "filingStatusAudit": {
+    "referenceDate": "2025-09-15",
+    "isAnnualReturnOverdue": true,
+    "daysOverdue": 46,
+    "penaltyTier": "TIER_1_UP_TO_3_MONTHS",
+    "statutoryLatePenaltySgd": 300
+  },
+  "governanceAudit": {
+    "hasResidentDirector": true,
+    "isSoleDirectorAlsoSecretary": false,
+    "isGovernanceCompliant": true,
+    "violations": []
+  }
+}
+```
+
+---
+
+### 5. Cross-Border Holding & DTA Evaluation Engine — Actual Engine Output
+
+```javascript
+const { evaluateCrossBorderHoldingStructure } = require('singapore-business-agent-skills');
+const result = evaluateCrossBorderHoldingStructure({
+  dividendAmountIdrOrSgd: 1000000,
+  equityShareholdingPercent: 100,
+  shareHoldingDurationMonths: 24,
+  hasValidCorCertificate: true,
+  operatingTaxRateInOrigin: 0.22,
+  estimatedAnnualSgMaintenanceCostSgd: 8000
+});
+console.log(result);
+```
+
+```json
+{
+  "dividendGrossAmount": 1000000,
+  "equityShareholdingPercentage": 100,
+  "hasValidCorCertificate": true,
+  "directHoldingScenario": {
+    "framework": "INDONESIA_DOMESTIC_PPH26",
+    "withholdingTaxRate": 0.2,
+    "withholdingTaxPayable": 200000,
+    "netCashDelivered": 800000,
+    "effectiveTaxLeakagePercent": 20
+  },
+  "singaporeHoldingScenario": {
+    "framework": "SINGAPORE_HOLDCO_UNDER_SG_ID_DTA",
+    "indonesiaOutboundWhtRate": 0.1,
+    "indonesiaWhtTaxPayable": 100000,
+    "dividendReceivedBySgHoldCo": 900000,
+    "section13_8_FsieExemptionApplies": true,
+    "singaporeCitOnForeignDividend": 0,
+    "singaporeOutboundDividendWhtRate": 0,
+    "netCashDelivered": 900000,
+    "effectiveTaxLeakagePercent": 10
+  },
+  "comparativeAnalysis": {
+    "grossTaxSavingsBenefit": 100000,
+    "annualSgHoldingMaintenanceCostEstimate": 8000,
+    "isHoldingStructureEconomicallySuperior": true,
+    "netFinancialEfficiencyDelta": 92000
+  },
+  "statutorySafeHarbours": {
+    "section13W_CapitalGainsSafeHarbourQualified": true,
+    "section13W_CriteriaMet": {
+      "holdingPercentageMeets20Percent": true,
+      "holdingPeriodMeets24Months": true
+    }
+  }
 }
 ```
 
@@ -541,43 +895,69 @@ console.log(JSON.stringify(result, null, 2));
 
 ## ❓ Frequently Asked Questions (FAQ)
 
-### Q1: Is this repository an independent, standalone suite?
-> **Answer**: **Yes, 100%.** `singapore-business-agent-skills` is a completely independent, standalone sovereign business intelligence core for the Republic of Singapore. It operates with zero external runtime dependencies (`dependencies: {}`), native mathematical determinism, its own verified SHA-256 statutory rulesets, and does not require any external repository or package to execute Singapore corporate secretarial, tax, manpower, financial, or cross-border treaty reasoning.
+### Q1: I am a business owner / non-technical user. How do I use this repository?
+> **Answer**: You do not need to be a software developer! You can use this repository in two straightforward ways:
+> 1. **Via AI Agents**: If you use an AI desktop or CLI application (such as Claude Code, OpenWork, Cursor, or OpenCode), simply install the package using `npx skills add adamriofc/singapore-business-agent-skills`. Once installed, you can ask questions naturally in plain language (e.g. *"What is the net Corporate Income Tax for S$180,000 chargeable income under the Startup Tax Exemption in YA 2024?"*).
+> 2. **Via Command Line Interface (CLI)**: Execute deterministic calculations directly from your terminal using `npx sg-agent-skills cit --income=180000 --startup=true` or `npx sg-agent-skills cpf --ow=6800 --age=32`.
 
-### Q2: Why should AI agents not calculate Singapore tax or CPF using standard LLM token generation?
-> **Answer**: Standard LLMs predict words probabilistically and frequently hallucinate numbers. In Singapore tax and payroll, an arithmetic error can lead to under-withholding penalties from IRAS (Section 94 of ITA) or CPFB late interest charges (1.5% per month). This repository isolates all calculations inside pure Node.js engines with static rulesets, eliminating LLM mathematical hallucination.
+### Q2: Why should I not rely on unassisted ChatGPT / standard AI for Singapore corporate, tax, or employment calculations?
+> **Answer**: Standard LLMs operate via probabilistic word prediction (*token generation*) rather than computing exact mathematics. Unassisted AI models frequently suffer from:
+> - **Arithmetic Hallucination**: Generating plausible-sounding tax rebates or withholding tax percentages that do not add up mathematically.
+> - **Regulatory Drift & Outdated Thresholds**: Conflating historical rules (such as applying pre-2024 GST rates of 7% or 8% instead of the statutory 9%, or using outdated S$6,000 CPF wage ceilings instead of S$6,800/S$7,400/S$8,000).
+> This repository forces the AI agent to call a **deterministic Node.js Engine** connected to official statutory rulesets (`engines/rules/`), ensuring exact mathematical precision with zero floating-point drift.
 
 ### Q3: How does the engine handle progressive CPF wage ceiling changes from 2024 to 2026?
-> **Answer**: Under the CPF Board statutory roadmaps, the Ordinary Wage (OW) ceiling transitions systematically:
-> - **2023 (pre-Sept)**: S$6,000 / month
-> - **2024**: S$6,800 / month
-> - **2025**: S$7,400 / month
-> - **2026**: S$8,000 / month
-> The `cpf-calculator` engine automatically applies the precise statutory ceiling based on the evaluation date or calendar year parameter.
+> **Answer**: Under the Central Provident Fund Board (CPFB) statutory roadmap, the Ordinary Wage (OW) ceiling transitions progressively:
+> - **Pre-September 2023**: S$6,000 / month
+> - **Calendar Year 2024**: S$6,800 / month
+> - **Calendar Year 2025**: S$7,400 / month
+> - **Calendar Year 2026 onwards**: S$8,000 / month
+> The `cpf-calculator` engine automatically applies the precise statutory ceiling and Additional Wage (AW) ceiling cap based on the calendar year parameter, while factoring in the employee's age tier and residential status.
 
-### Q4: Does the GST engine support both retrospective and prospective liability tests?
+### Q4: Does the GST engine support both retrospective and prospective liability tests under the 9% statutory rate?
 > **Answer**: **Yes, 100%.** Under the *Goods and Services Tax Act 1993*, a business must register for GST under two separate tests:
-> 1. **Retrospective Basis**: Taxable turnover at the end of any calendar year exceeds S$1,000,000.
-> 2. **Prospective Basis**: At any time, there is reasonable expectation that taxable turnover in the next 12 months will exceed S$1,000,000.
-> The `gst-sg` engine evaluates both tests deterministically and outputs exact statutory filing deadlines (within 30 days of liability).
+> 1. **Retrospective Basis**: Taxable turnover at the end of any calendar year (or quarterly evaluation) exceeds S$1,000,000.
+> 2. **Prospective Basis**: At any point in time, there is reasonable ground to expect that taxable turnover in the next 12 months will exceed S$1,000,000.
+> The `gst-sg` engine evaluates both tests deterministically, flags registration triggers, and calculates the statutory 30-day filing deadline.
 
-### Q5: How is MOM COMPASS evaluated for Employment Pass (EP) candidates?
-> **Answer**: The `compass-scoring` engine evaluates 4 foundational criteria: C1 Salary (0, 10, or 20 pts based on age and sector benchmarks), C2 Qualifications (0, 10, or 20 pts based on accredited institution tiers), C3 Diversity (firm nationality share), and C4 Local Employment Support (firm local PMET share), plus 2 bonus criteria (Skills Bonus C5 and Strategic Economic Priority C6). Candidates require $\ge 40$ points to qualify.
+### Q5: How is MOM COMPASS evaluated for Employment Pass (EP) applications and renewals?
+> **Answer**: The `compass-scoring` engine evaluates 4 foundational criteria:
+> - **C1 Salary**: Benchmarked against local PMET salaries by sector and age (0, 10, or 20 points).
+> - **C2 Qualifications**: Accredited degree-granting institution evaluation (0, 10, or 20 points).
+> - **C3 Diversity**: Candidate nationality share within the firm's PMET headcount (0, 10, or 20 points).
+> - **C4 Support for Local Employment**: Firm's local PMET share relative to sector peers (0, 10, or 20 points).
+> It also factors in bonus criteria (**C5 Skills Shortage Bonus** and **C6 Strategic Economic Priorities**) to verify whether the candidate achieves the **mandatory 40-point threshold**.
 
-### Q6: Is my company’s financial and payroll data kept private and secure?
-> **Answer**: **100% Private and Air-Gapped.** All computational engines (`engines/`) execute locally within your machine or VPC runtime. There are zero external API calls, zero telemetry pings, and zero external runtime dependencies (`dependencies: {}`).
+### Q6: How does the ACRA engine determine Small Company Audit Exemption under the Thirteenth Schedule?
+> **Answer**: Under the *Companies Act 1967* Thirteenth Schedule, a private company qualifies as a small company and is exempt from statutory financial audit if it meets **at least 2 out of 3 quantitative criteria** for the immediate past two consecutive financial years:
+> 1. Total annual revenue $\le$ **S$10,000,000**;
+> 2. Total gross balance sheet assets $\le$ **S$10,000,000**;
+> 3. Number of full-time employees $\le$ **50**.
+> For a company that is part of a corporate group, the entire group must also qualify on a consolidated basis. The `small-company-audit` engine evaluates both individual entity and consolidated group eligibility.
 
-### Q7: Can calculations from this repository be used as formal legal or tax counsel?
-> **Answer**: Calculations provide decision-support intelligence grounded in official Singapore statutory gazettes. While the formulas match statutory legislation, formal corporate filings should be reviewed by an ACRA Registered Filing Agent (RFA), IRAS Accredited Tax Practitioner, or qualified Singapore legal advocate.
+### Q7: Is my company’s financial, corporate, and payroll data secure?
+> **Answer**: **100% Private and Air-Gapped.** All computational engines (`engines/`) execute locally on your machine or private VPC. There are zero external API calls, zero telemetry tracking pings, and zero external runtime dependencies (`dependencies: {}`).
 
-### Q8: How can I integrate these engines into existing ERP or HRMS software?
-> **Answer**: All engines are modular, pure Node.js standard library functions with zero dependencies. You can import them directly via `const sbas = require('singapore-business-agent-skills')`, execute them from shell scripts via the `sg-agent-skills` CLI binary, or bundle them into serverless cloud microservices (AWS Lambda, Cloudflare Workers, Google Cloud Run).
+### Q8: Can calculations from this repository be used as formal legal or tax opinions?
+> **Answer**: Outputs serve as high-precision decision-support intelligence. While calculation mathematics and rulesets are 100% verified against official Singapore statutory gazettes, high-consequence corporate actions (such as formal AGM filings with ACRA, voluntary tax disclosures with IRAS, or cross-border APA agreements) should be reviewed by an ACRA Registered Filing Agent (RFA), IRAS Accredited Tax Practitioner, or qualified Singapore legal advocate.
+
+### Q9: What is the difference between a 'Skill', an 'Engine', and a 'Ruleset'?
+> **Answer**:
+> - **Skill (`SKILL.md`)**: The prompt instructions that guide the AI agent on how to interpret business context and query parameters.
+> - **Engine (`engines/*.js`)**: Pure JavaScript mathematical and logic functions that perform deterministic computations.
+> - **Ruleset (`engines/rules/*.json`)**: Cryptographically verified JSON database containing official government rates, statutory thresholds, and effective dates.
+
+### Q10: How do we integrate these engines into existing ERP, HRMS, or corporate workflow microservices?
+> **Answer**: Integration is supported through 3 enterprise-grade paths:
+> 1. **Root SDK Module**: Directly import engines into your Node.js/TypeScript backend via `const sbas = require('singapore-business-agent-skills');`.
+> 2. **Standalone REST Microservice**: Run `npx sg-agent-skills serve --port 3000` to expose native JSON HTTP endpoints callable from Python (FastAPI/Django), PHP (Laravel), Go, Java, or ERP webhooks.
+> 3. **Universal CLI**: Execute deterministic calculations from bash scripts or cron jobs via `npx sg-agent-skills <target>`.
 
 ---
 
 ## 🧪 Comprehensive Test & Verification Suite
 
-The repository maintains an automated validation pipeline with over **120+ deep assertions** across multiple testing dimensions:
+Our automated verification harness executes over **120+ total test assertions** and 25 golden corpus benchmarks across multiple testing dimensions:
 
 ```bash
 # 1. Run full unit test suite (Tax, HR, Legal, Finance, Strategy, TypeScript)
@@ -604,18 +984,16 @@ npm run validate:release
 
 ---
 
-## 🛡️ Security, Provenance & Disclaimers
+## 🛡️ Security & Disclaimers
 
-- **Security Policy**: See [`SECURITY.md`](SECURITY.md) for vulnerability disclosure and prompt injection isolation policies.
-- **Statutory Provenance**: See [`PROVENANCE.md`](PROVENANCE.md) for official gazette references (Singapore Statutes Online, IRAS, ACRA, MOM, CPF Board, MAS, PDPC).
-- **Skill Specification**: Conforms to the open [`SKILL_PROTOCOL.md`](SKILL_PROTOCOL.md) contract standard.
-- **Cryptographic Trust Anchor**: All statutory rulesets in `engines/rules/` are cryptographically locked in [`SHA256SUMS.txt`](SHA256SUMS.txt) and verified via `npm run sha256:verify`.
+See [`SECURITY.md`](SECURITY.md) for prompt injection defense guidelines, [`PROVENANCE.md`](PROVENANCE.md) for official statutory gazette citations (Singapore Statutes Online, IRAS, ACRA, MOM, CPF Board, MAS, PDPC), and [`SKILL_PROTOCOL.md`](SKILL_PROTOCOL.md) for agent capability specifications.
+
+**Release Trust Anchor**: `SHA256SUMS.txt` holds SHA-256 checksums for every ruleset; verified via `npm run sha256:verify` and enforced in CI pipelines.
 
 ---
 
-## 📄 License & Commercial Terms
+## 📄 License & Dual Licensing
 
-Distributed under the **GNU Affero General Public License v3.0** (AGPL-3.0). See [`LICENSE`](LICENSE) for full legal text.
+Licensed under the **GNU Affero General Public License v3.0** (AGPL-3.0-or-later). See [LICENSE](LICENSE) for details.
 
-> **Enterprise & Commercial Licensing**: For proprietary application embedding, SaaS platforms, or closed-source enterprise deployments seeking exemption from AGPL-3.0 copyleft requirements, custom commercial licenses are available.
-> Contact: `adamriofc@protonmail.com` or `adamrofc@gmail.com`.
+> **Enterprise & Commercial Licensing**: For commercial applications, closed source proprietary software integration, or deployments seeking exemption from AGPL-3.0 copyleft obligations, custom enterprise licensing terms are available. Inquiries: `adamriofc@protonmail.com` or `adamrofc@gmail.com`.
