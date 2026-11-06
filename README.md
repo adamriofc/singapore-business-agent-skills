@@ -2,7 +2,7 @@
 
 *Give AI agents an authentic business brain for Singapore corporate operations & cross-border governance.*
 
-**Singapore corporate, tax, manpower & statutory intelligence for AI agents — combining IRAS rulesets, ACRA corporate compliance, MOM manpower frameworks, MAS financial benchmarks, and direct cross-border extension to Indonesia Business Agent Skills.**
+**Singapore sovereign corporate, tax, manpower & statutory intelligence for AI agents — combining IRAS rulesets, ACRA corporate compliance, MOM manpower frameworks, MAS financial benchmarks, and seamless bilateral cross-border interoperability with Indonesia Business Agent Skills.**
 
 <p align="center">
   <img src="docs/singapore-business-agent-skills-hero.svg" alt="Singapore Business Agent Skills Banner" width="100%">
@@ -15,7 +15,7 @@
   <a href="engines/"><img src="https://img.shields.io/badge/Hybrid%20Engine-LLM--Safe-orange.svg" alt="LLM-Safe Hybrid Engine"></a>
   <a href="tests/"><img src="https://img.shields.io/badge/Test%20Suite-120%2B%20Assertions-success.svg" alt="120+ Test Assertions"></a>
   <a href="bundles/full-business-suite.json"><img src="https://img.shields.io/badge/Suite-15%20Skills%20%C2%B7%205%20Domains-blueviolet.svg" alt="15 Skills · 5 Domains"></a>
-  <a href="https://github.com/adamriofc/indonesia-business-agent-skills"><img src="https://img.shields.io/badge/Ecosystem-Core%20ID%20Extension-indigo.svg" alt="Core ID Ecosystem Extension"></a>
+  <a href="https://github.com/adamriofc/indonesia-business-agent-skills"><img src="https://img.shields.io/badge/Ecosystem-ASEAN%20Twin--Core-indigo.svg" alt="ASEAN Twin-Core Ecosystem"></a>
 </p>
 
 ---
@@ -39,24 +39,24 @@
 
 ---
 
-### 🌐 Official Cross-Border Extension of Indonesia Business Agent Suite
+### 🌐 Standalone Sovereign Core & ASEAN Twin-Core Architecture
 
-**Singapore Business Agent Skills (`singapore-business-agent-skills`)** is the dedicated, production-grade Singapore regional and cross-border expansion of the core **[Indonesia Business Agent Skills (`indonesia-business-agent-skills`)](https://github.com/adamriofc/indonesia-business-agent-skills)** ecosystem.
+**Singapore Business Agent Skills (`singapore-business-agent-skills`)** is an independent, production-grade **Sovereign Business Intelligence Core** designed specifically for the Republic of Singapore's common-law corporate, tax, manpower, and monetary frameworks.
 
-Singapore serves as Southeast Asia's foremost regional corporate treasury, dispute resolution, and holding hub, while Indonesia represents the region's largest sovereign consumer and industrial market. Modern multinational enterprises, fast-growing tech ventures, and trading conglomerates consistently operate across both jurisdictions:
-- **Parent / Regional Treasury**: Singapore Private Limited (`Pte Ltd`) enjoying a single-tier territorial tax system, intellectual property holding safe harbours, Section 13(8) Foreign Sourced Income Exemption (FSIE), and MAS SORA-linked liquidity.
-- **Operating Operating Subsidiary**: Indonesian Foreign Investment Company (`PT PMA`) managing local industrial facilities, domestic supply chains, KBLI licensing, BPJS employment, and domestic PPh/PPN tax obligations.
+Together with **[Indonesia Business Agent Skills (`indonesia-business-agent-skills`)](https://github.com/adamriofc/indonesia-business-agent-skills)**, it forms the **ASEAN Twin-Core Architecture** — two equal, sovereign pillars that provide comprehensive computational intelligence across Southeast Asia's two most critical economic anchors:
+- **Singapore Sovereign Core (`Pte Ltd`)**: Regional corporate treasury, holding entity governance, territorial single-tier tax system, intellectual property holding safe harbours, Section 13(8) Foreign Sourced Income Exemption (FSIE), and MAS SORA-linked liquidity.
+- **Indonesia Sovereign Core (`PT PMA`)**: Southeast Asia's largest domestic industrial and consumer market, domestic supply chains, KBLI statutory licensing, BPJS workforce contributions, and domestic PPh/PPN tax obligations.
 
-By inheriting the strict engineering philosophy, zero-dependency doctrine, and cryptographic trust-anchor architecture of the core Indonesia suite, this repository enables AI agents to reason seamlessly across both jurisdictions without mathematical hallucination or regulatory mismatch.
+Rather than a subordinate extension, both suites operate as **Peer Sovereign Cores** built on the same zero-dependency architectural doctrine, 18-check release gate rigor, and cryptographic trust-anchor specification, interconnected natively via a bilateral Cross-Border Double Taxation Agreement (DTA) Gateway:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │             SOUTHEAST ASIA AGENT BUSINESS INTELLIGENCE SUITE           │
 ├───────────────────────────────────┬────────────────────────────────────┤
-│ CORE ECOSYSTEM                    │ REGIONAL EXTENSION                 │
-│ indonesia-business-agent-skills   │ singapore-business-agent-skills    │
-│ 94 Skills · 6 Plugins · 61 Engines│ 15 Skills · 5 Plugins · 15 Engines │
-│ Domestic ID Operations, PPh, BPJS │ Regional Holding, CIT, CPF, COMPASS│
+│ SINGAPORE SOVEREIGN CORE          │ INDONESIA SOVEREIGN CORE           │
+│ singapore-business-agent-skills   │ indonesia-business-agent-skills    │
+│ 15 Skills · 5 Plugins · 15 Engines│ 94 Skills · 6 Plugins · 61 Engines │
+│ Regional Treasury, CIT, CPF, MAS  │ Domestic Operations, PPh, BPJS, OSS│
 └───────────────────────────────────┴────────────────────────────────────┘
                   │                                   │
                   └───────────────┬───────────────────┘
@@ -543,7 +543,7 @@ console.log(JSON.stringify(result, null, 2));
 ## ❓ Frequently Asked Questions (FAQ)
 
 ### Q1: How does this repository connect to `indonesia-business-agent-skills`?
-> **Answer**: `singapore-business-agent-skills` is the official Singapore corporate & cross-border extension of `indonesia-business-agent-skills`. It shares the same zero-dependency architectural doctrine, 18-check release gate rigor, closed prompt-injection defense boundaries, and SHA-256 trust-anchor specification. When used together, AI agents can execute cross-border holding evaluations, managing both the Singapore parent entity (Pte Ltd) and the Indonesian operating subsidiary (PT PMA) with continuous mathematical determinism.
+> **Answer**: `singapore-business-agent-skills` is an independent, standalone sovereign business intelligence core for the Republic of Singapore. Together with `indonesia-business-agent-skills`, they form the **ASEAN Twin-Core Architecture** — two equal sovereign pillars providing deterministic intelligence across Southeast Asia. Both repositories share the same zero-dependency architectural doctrine, 18-check release gate rigor, closed prompt-injection defense boundaries, and SHA-256 trust-anchor specification. When interconnected, AI agents execute bilateral cross-border evaluations (such as the SG-ID Double Taxation Agreement and cross-border holding structures) with complete mathematical determinism.
 
 ### Q2: Why should AI agents not calculate Singapore tax or CPF using standard LLM token generation?
 > **Answer**: Standard LLMs predict words probabilistically and frequently hallucinate numbers. In Singapore tax and payroll, an arithmetic error can lead to under-withholding penalties from IRAS (Section 94 of ITA) or CPFB late interest charges (1.5% per month). This repository isolates all calculations inside pure Node.js engines with static rulesets, eliminating LLM mathematical hallucination.

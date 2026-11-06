@@ -19,10 +19,10 @@
       <stop offset="100%" stop-color="#F8FAFC"/>
     </linearGradient>
 
-    <!-- Heritage Badge Gradient -->
+    <!-- Sovereign Core Badge Gradient -->
     <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#312E81"/>
-      <stop offset="100%" stop-color="#1E1B4B"/>
+      <stop offset="0%" stop-color="#831843"/>
+      <stop offset="100%" stop-color="#4C0519"/>
     </linearGradient>
   </defs>
 
@@ -32,25 +32,25 @@
   <!-- Top Singapore National Accent Bar -->
   <rect x="0" y="0" width="1200" height="4" rx="2" fill="url(#flag-grad)"/>
 
-  <!-- Main Title, Subtitle, & Heritage Extension Tag -->
+  <!-- Main Title, Subtitle, & Sovereign Core Tag -->
   <g transform="translate(48, 44)">
     <g transform="translate(0, 0)">
       <text x="0" y="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="33" font-weight="800" fill="url(#title-grad)" letter-spacing="-0.8">
         singapore-business-agent-skills
       </text>
 
-      <!-- Extension of Core Indonesia Ecosystem Pill -->
+      <!-- Sovereign Core Pill -->
       <g transform="translate(560, 10)">
-        <rect x="0" y="0" width="280" height="24" rx="12" fill="url(#badge-grad)" stroke="#6366F1" stroke-width="1"/>
-        <circle cx="14" cy="12" r="4" fill="#818CF8"/>
-        <text x="26" y="16" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#E0E7FF">
-          Extension of Indonesia Business Agent Suite
+        <rect x="0" y="0" width="260" height="24" rx="12" fill="url(#badge-grad)" stroke="#F43F5E" stroke-width="1"/>
+        <circle cx="14" cy="12" r="4" fill="#FB7185"/>
+        <text x="26" y="16" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#FFE4E6">
+          Standalone Sovereign Business Core
         </text>
       </g>
     </g>
 
     <text x="0" y="64" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="400" fill="#94A3B8" letter-spacing="-0.1">
-      Statutory Corporate, Tax, Manpower &amp; Cross-Border Reasoning Infrastructure for AI Agents
+      Statutory Corporate, Tax, Manpower &amp; Financial Reasoning Infrastructure for AI Agents
     </text>
   </g>
 
@@ -83,7 +83,7 @@
   </g>
 
   <!-- Horizontal Separator Line -->
-  <line x1="48" y1="172" x2="1152" y2="172" stroke="#1E293B" stroke-width="1"/>
+  <line x1="48" y1="172" x2="1152" y2="172" stroke="#1E293B" stroke-width="1" />
 
   <!-- 4 Stat Columns -->
   <g transform="translate(0, 196)">
