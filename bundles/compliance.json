@@ -1,0 +1,48 @@
+{
+  "bundle_id": "compliance",
+  "name": "Singapore Compliance Pack",
+  "profile": "compliance",
+  "version": "1.0.0",
+  "description": "Singapore regulatory compliance covering ACRA statutory AGM/AR deadlines, IRAS CIT & GST filings, MOM Part IV overtime & DRC quota, CPF contributions, and PDPA 72-hour mandatory breach notification.",
+  "plugins": [
+    {
+      "id": "legal-sg",
+      "name": "Singapore Legal Intelligence",
+      "version": "1.0.0",
+      "domain": "legal",
+      "skills": 3
+    },
+    {
+      "id": "tax-sg",
+      "name": "Singapore Tax Intelligence",
+      "version": "1.0.0",
+      "domain": "tax",
+      "skills": 4
+    },
+    {
+      "id": "hr-sg",
+      "name": "Singapore HR Intelligence",
+      "version": "1.0.0",
+      "domain": "hr",
+      "skills": 4
+    }
+  ],
+  "shared": {
+    "engines": 15,
+    "capabilityCatalog": "registry/capabilities.json"
+  },
+  "totals": {
+    "plugins": 3,
+    "skills": 11,
+    "engines": 15
+  },
+  "use_cases": [
+    "ACRA AGM and Annual Return statutory deadline tracking",
+    "Small Company Audit Exemption qualification audit",
+    "PDPA mandatory 72-hour breach notification assessment",
+    "IRAS Corporate Income Tax (CIT) 17% and SUTE calculation",
+    "GST compulsory registration liability and return filing",
+    "CPF monthly employer/employee contribution calculation",
+    "MOM COMPASS EP scoring & DRC foreign worker quota compliance"
+  ]
+}

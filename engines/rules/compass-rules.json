@@ -1,0 +1,56 @@
+{
+  "statute": "Employment of Foreign Manpower Act (EFMA)",
+  "authority": "Ministry of Manpower (MOM)",
+  "passMark": 40,
+  "criteria": {
+    "C1_Salary": {
+      "name": "Salary relative to local PMET norms",
+      "p90": { "points": 20, "description": "At or above 90th percentile" },
+      "p65": { "points": 10, "description": "65th to 89th percentile" },
+      "below_p65": { "points": 0, "description": "Below 65th percentile" }
+    },
+    "C2_Qualifications": {
+      "name": "Candidate qualifications",
+      "topTier": { "points": 20, "description": "Top-tier institution / Ivy League / NUS / NTU" },
+      "degreeEquivalent": { "points": 10, "description": "Recognized university degree or professional equivalent" },
+      "noDegree": { "points": 0, "description": "No recognized degree" }
+    },
+    "C3_Diversity": {
+      "name": "Firm nationality diversity",
+      "lessThan5Percent": { "points": 20, "description": "Candidate nationality < 5% of firm PMETs" },
+      "between5And25Percent": { "points": 10, "description": "Candidate nationality 5% - 25% of firm PMETs" },
+      "moreThan25Percent": { "points": 0, "description": "Candidate nationality > 25% of firm PMETs" },
+      "smallFirmExemption": { "thresholdEmployees": 25, "defaultPoints": 10 }
+    },
+    "C4_LocalSupport": {
+      "name": "Support for local employment",
+      "aboveP50": { "points": 20, "description": "Firm local PMET share >= 50th percentile of sector" },
+      "betweenP20AndP50": { "points": 10, "description": "Firm local PMET share 20th - 49th percentile" },
+      "belowP20": { "points": 0, "description": "Firm local PMET share < 20th percentile" },
+      "smallFirmExemption": { "thresholdEmployees": 25, "defaultPoints": 10 }
+    },
+    "C5_SkillsShortageBonus": {
+      "name": "Shortage Occupation List (SOL)",
+      "eligibleAndNationalityLow": { "points": 20, "description": "On SOL list and nationality < 33%" },
+      "eligibleAndNationalityHigh": { "points": 10, "description": "On SOL list but nationality >= 33%" },
+      "notEligible": { "points": 0, "description": "Not on SOL list" }
+    },
+    "C6_StrategicBonus": {
+      "name": "Strategic Economic Priorities (SEP)",
+      "supported": { "points": 10, "description": "Participating in recognized economic agency initiatives" },
+      "notSupported": { "points": 0, "description": "Standard business" }
+    }
+  },
+  "minimumQualifyingSalary": {
+    "nonFinancialServices": {
+      "baseAge23AndBelow": 5000,
+      "progressiveIncreasePerYear": 250,
+      "maxAtAge45AndAbove": 10500
+    },
+    "financialServices": {
+      "baseAge23AndBelow": 5500,
+      "progressiveIncreasePerYear": 275,
+      "maxAtAge45AndAbove": 11500
+    }
+  }
+}

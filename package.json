@@ -1,0 +1,76 @@
+{
+  "name": "singapore-business-agent-skills",
+  "version": "1.0.0",
+  "description": "Production-oriented AI domain-intelligence infrastructure for Singapore legal (ACRA), tax (IRAS), corporate governance, HR/employment & immigration (MOM/CPF), data privacy (PDPA), and cross-border Singapore-Indonesia corporate reasoning.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "bin": {
+    "sg-agent-skills": "./bin/sg-agent-skills.js",
+    "sbas": "./bin/sg-agent-skills.js"
+  },
+  "scripts": {
+    "test": "node tests/units/tax-engines.test.js && node tests/units/hr-engines.test.js && node tests/units/legal-engines.test.js && node tests/units/finance-engines.test.js && node tests/units/strategic-engines.test.js && node tests/units/typescript-typings.test.js",
+    "test:security": "node tests/security/injection.test.js && node tests/security/adversarial.test.js && node tests/security/supply-chain.test.js",
+    "test:cli": "node tests/units/cli.test.js",
+    "test:integration": "node tests/integration/cross-domain.test.js",
+    "test:smoke": "bash scripts/package-smoke-test.sh",
+    "test:sandbox": "bash scripts/sandbox-test.sh",
+    "test:perf": "node scripts/perf-gate.js",
+    "test:all": "npm test && npm run test:security && npm run test:cli && npm run test:integration && npm run test:perf",
+    "generate:catalog": "node scripts/generate-capability-catalog.js",
+    "validate:capabilities": "node scripts/validate-capabilities.js",
+    "validate:suite": "node scripts/validate-suite.js",
+    "validate:schema": "node tests/schema/validator.test.js",
+    "validate:release": "node scripts/validate-release.js",
+    "sha256:verify": "bash scripts/sha256sums.sh verify",
+    "validate": "node scripts/validate-release.js"
+  },
+  "author": "adamriofc",
+  "license": "AGPL-3.0-or-later",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamriofc/singapore-business-agent-skills.git"
+  },
+  "keywords": [
+    "singapore",
+    "business-intelligence",
+    "iras",
+    "acra",
+    "cpf",
+    "mom",
+    "pdpa",
+    "corporate-tax",
+    "gst",
+    "compass",
+    "employment-act",
+    "withholding-tax",
+    "double-tax-avoidance",
+    "sora",
+    "enterprise-singapore",
+    "agentic-ai",
+    "deterministic-engine",
+    "sovereign-ai"
+  ],
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "bin",
+    "engines",
+    "tax-sg",
+    "hr-sg",
+    "legal-sg",
+    "finance-sg",
+    "strategic-sg",
+    "bundles",
+    "registry",
+    "README.md",
+    "LICENSE",
+    "SKILL_PROTOCOL.md",
+    "canonical-metadata.json",
+    "SHA256SUMS.txt"
+  ],
+  "dependencies": {}
+}

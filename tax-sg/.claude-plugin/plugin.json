@@ -1,0 +1,8 @@
+{
+  "name": "tax-sg",
+  "version": "1.0.0",
+  "description": "Production-grade Singapore Tax Intelligence & Statutory Compliance: IRAS CIT 17%, SUTE/PTE, GST 9%, Withholding Tax Sections 45/45A, and SG-ID DTA.",
+  "author": {
+    "name": "adamriofc"
+  }
+}

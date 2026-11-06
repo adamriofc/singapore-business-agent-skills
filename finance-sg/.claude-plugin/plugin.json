@@ -1,0 +1,8 @@
+{
+  "name": "finance-sg",
+  "version": "1.0.0",
+  "description": "Singapore Corporate Finance & Treasury Intelligence: MAS SORA benchmark rates, WACC debt tax shield calculations, and SFRS working capital & cash conversion cycle analytics.",
+  "author": {
+    "name": "adamriofc"
+  }
+}

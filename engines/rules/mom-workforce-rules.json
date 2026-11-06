@@ -1,0 +1,66 @@
+{
+  "statute": "Employment Act 1968 & Employment of Foreign Manpower Act",
+  "authority": "Ministry of Manpower (MOM)",
+  "partIVEmploymentAct": {
+    "coverage": {
+      "workmenWageCapSgd": 4500,
+      "nonWorkmenWageCapSgd": 2600,
+      "managersAndExecutivesCovered": false
+    },
+    "workingHours": {
+      "maxStandardHoursPerWeek": 44,
+      "maxDailyHoursStandard": 9,
+      "maxTotalDailyHoursIncludingOvertime": 12,
+      "maxOvertimeHoursPerMonth": 72
+    },
+    "overtimeFormula": {
+      "rateMultiplier": 1.5,
+      "hourlyBasicRateFormula": "(12 * MonthlyBasicSalary) / (52 * 44)",
+      "nonWorkmenCapSalaryForOvertimeSgd": 2600
+    },
+    "annualLeave": {
+      "year1MinDays": 7,
+      "annualIncrementDays": 1,
+      "maxDaysYear8Onwards": 14
+    }
+  },
+  "foreignWorkforceQuotas": {
+    "services": {
+      "dependencyRatioCeilingPercent": 35.0,
+      "sPassSubDrcPercent": 10.0,
+      "levies": {
+        "sPassTier1": 330,
+        "sPassTier2": 650,
+        "workPermitBasic": 450,
+        "workPermitTier2": 600,
+        "workPermitTier3": 800
+      }
+    },
+    "manufacturing": {
+      "dependencyRatioCeilingPercent": 60.0,
+      "sPassSubDrcPercent": 15.0,
+      "levies": {
+        "sPassTier1": 330,
+        "sPassTier2": 650,
+        "workPermitBasic": 370,
+        "workPermitTier2": 470,
+        "workPermitTier3": 650
+      }
+    },
+    "construction": {
+      "dependencyRatioCeilingPercent": 87.5,
+      "sPassSubDrcPercent": 15.0,
+      "levies": {
+        "sPassTier1": 330,
+        "sPassTier2": 650,
+        "workPermitHigherSkilled": 300,
+        "workPermitBasicSkilled": 700
+      }
+    }
+  },
+  "localQualifyingSalary": {
+    "monthlySgd": 1600,
+    "effectiveDate": "2024-07-01",
+    "partTimeRatePerHourSgd": 10.50
+  }
+}

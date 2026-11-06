@@ -1,0 +1,38 @@
+{
+  "statute": "Companies Act 1967 (Cap. 50)",
+  "authority": "Accounting and Corporate Regulatory Authority (ACRA)",
+  "filingDeadlines": {
+    "privateNonListed": {
+      "agmMonthsAfterFye": 6,
+      "arMonthsAfterFye": 7,
+      "agmExemptionPermitted": true
+    },
+    "listedCompany": {
+      "agmMonthsAfterFye": 4,
+      "arMonthsAfterFye": 5,
+      "agmExemptionPermitted": false
+    }
+  },
+  "lateFilingPenalties": {
+    "tier1_upTo3MonthsLate": 300,
+    "tier2_moreThan3MonthsLate": 600
+  },
+  "smallCompanyAuditExemption": {
+    "schedule": "Thirteenth Schedule",
+    "requiredCriteriaCount": 2,
+    "criteria": {
+      "maxAnnualRevenueSgd": 10000000,
+      "maxTotalAssetsSgd": 10000000,
+      "maxFullTimeEmployees": 50
+    },
+    "consecutiveYearsRequired": 2
+  },
+  "statutoryGovernance": {
+    "minResidentDirectors": 1,
+    "companySecretaryMaxMonthsAfterIncorporation": 6,
+    "soleDirectorCannotBeSecretary": true,
+    "rorcThresholdPercentage": 25.0,
+    "rorcLodgmentWindowDays": 30,
+    "rorcNonComplianceFineMax": 25000
+  }
+}

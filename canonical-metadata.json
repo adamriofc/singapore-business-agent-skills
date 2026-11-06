@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0.0",
+  "version": "1.0.0",
+  "plugins": 5,
+  "bundles": 5,
+  "skills": 15,
+  "engines": 15,
+  "goldenCases": 25,
+  "benchmarkDomains": 5,
+  "benchmarkAssertions": 60,
+  "totalTestAssertions": 120,
+  "nodeSupport": {
+    "minimumSupported": "20",
+    "ltsRecommended": "22",
+    "currentTested": "26"
+  },
+  "generatedAt": "2026-11-06T00:00:00.000Z",
+  "generator": "scripts/generate-metadata.js"
+}

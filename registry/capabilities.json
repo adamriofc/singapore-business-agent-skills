@@ -1,0 +1,1113 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T16:06:07.834Z",
+  "repository": "https://github.com/adamriofc/singapore-business-agent-skills",
+  "total_capabilities": 15,
+  "capabilities": [
+    {
+      "id": "cit-tax-sg",
+      "canonical_id": "tax.cit-tax-sg",
+      "skillName": "cit-tax-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "description": "Calculate Singapore Corporate Income Tax (CIT) 17%, Start-Up Tax Exemption (SUTE), Partial Tax Exemption (PTE), and CIT Rebate under the Income Tax Act 1947.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "tax_statutory_compliance",
+          "tax_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "chargeable_income",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "is_startup",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "year_of_assessment",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "has_local_employee",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "dta-sg-id",
+      "canonical_id": "tax.dta-sg-id",
+      "skillName": "dta-sg-id",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "description": "Evaluate Singapore-Indonesia Double Tax Agreement (DTA) relief, reduced withholding rates, and foreign tax credits under Treaty Articles 10, 11, 12, and 14.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "tax_statutory_compliance",
+          "tax_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "income_type",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "gross_amount",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "flow_direction",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "equity_percentage",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "royalty_category",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "has_cor",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "gst-sg",
+      "canonical_id": "tax.gst-sg",
+      "skillName": "gst-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "description": "Audit Singapore Goods and Services Tax (GST) compulsory registration liability S$1M threshold and compute net GST 9% filings under Goods and Services Tax Act 1993.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "tax_statutory_compliance",
+          "tax_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "past_turnover",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "projected_turnover",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "supplies",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "purchases",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "imported_b2b",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "wht-sg",
+      "canonical_id": "tax.wht-sg",
+      "skillName": "wht-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "description": "Calculate Singapore Withholding Tax (WHT) on cross-border payments under Income Tax Act Sections 45, 45A, and 45D including gross-up absorption formulas.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "tax_statutory_compliance",
+          "tax_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "payment_type",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "gross_amount_sgd",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "is_gross_up",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "custom_treaty_rate",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "compass-scoring",
+      "canonical_id": "hr.compass-scoring",
+      "skillName": "compass-scoring",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "description": "Evaluate Singapore Ministry of Manpower (MOM) COMPASS point-based framework for Employment Pass (EP) applications across 4 foundational criteria and 2 bonus criteria.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "hr_statutory_compliance",
+          "hr_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "monthly_salary",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "candidate_age",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "sector",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "salary_rank",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "qualification_level",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "firm_pmet_count",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "candidate_nat_share",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "local_share_rank",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "is_sol",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "has_sep",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "cpf-calculator",
+      "canonical_id": "hr.cpf-calculator",
+      "skillName": "cpf-calculator",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "description": "Calculate Central Provident Fund (CPF) monthly contributions, Ordinary/Additional Wage caps, Skills Development Levy (SDL), and Self-Help Group deductions under CPF Act 1953.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "hr_statutory_compliance",
+          "hr_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "ordinary_wage",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "age",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "additional_wage",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "residential_status",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "calendar_year",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "community_fund",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "foreign-workforce-quota",
+      "canonical_id": "hr.foreign-workforce-quota",
+      "skillName": "foreign-workforce-quota",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "description": "Calculate Dependency Ratio Ceiling (DRC), S-Pass sub-DRC headroom, Local Qualifying Salary (LQS) weighting, and Foreign Worker Levy (FWL) under MOM statutory regulations.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "hr_statutory_compliance",
+          "hr_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "sector",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "local_headcount",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "local_salaries",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "current_spass",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "current_wp",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "mom-overtime",
+      "canonical_id": "hr.mom-overtime",
+      "skillName": "mom-overtime",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "description": "Audit Part IV Employment Act coverage, overtime pay rates (1.5x hourly rate), monthly 72-hour overtime limit, and annual leave statutory schedules under Singapore Ministry of Manpower (MOM) regulations.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "hr_statutory_compliance",
+          "hr_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "employee_category",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "monthly_basic_salary",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "overtime_hours",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "daily_max_hours",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "years_of_service",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "acra-statutory-deadlines",
+      "canonical_id": "legal.acra-statutory-deadlines",
+      "skillName": "acra-statutory-deadlines",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "description": "Audit ACRA statutory corporate compliance timelines, Annual General Meeting (AGM) and Annual Return (AR) deadlines, late filing penalty ladders, and corporate secretarial mandates under Companies Act 1967.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "legal_statutory_compliance",
+          "legal_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "financial_year_end_date",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "is_listed_company",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "current_date",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "is_agm_dispensed",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "has_resident_director",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "is_sole_director_secretary",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "pdpa-breach-notification",
+      "canonical_id": "legal.pdpa-breach-notification",
+      "skillName": "pdpa-breach-notification",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "description": "Audit mandatory data breach notification thresholds (72-hour PDPC deadline), significant harm criteria, and statutory maximum financial penalties under Singapore PDPA 2012.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "legal_statutory_compliance",
+          "legal_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "affected_individuals_count",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "compromised_categories",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "is_encrypted",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "remedial_eliminated_harm",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "annual_turnover",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "assessment_timestamp",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "small-company-audit",
+      "canonical_id": "legal.small-company-audit",
+      "skillName": "small-company-audit",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "description": "Evaluate Small Company Audit Exemption qualification criteria under the Thirteenth Schedule of the Singapore Companies Act 1967 across standalone and corporate group tiers.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "legal_statutory_compliance",
+          "legal_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "current_year_financials",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "prior_year_financials",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "is_newly_incorporated",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "is_part_of_group",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "group_financials",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "sora-wacc",
+      "canonical_id": "finance.sora-wacc",
+      "skillName": "sora-wacc",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "description": "Calculate Weighted Average Cost of Capital (WACC) using the Singapore Overnight Rate Average (SORA) benchmark, CAPM cost of equity, and Singapore 17% CIT tax shield.",
+      "risk_level": "HIGH",
+      "rule_type": "computational",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "finance_statutory_compliance",
+          "finance_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "equity_value",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "debt_value",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "risk_free_rate",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "beta",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "equity_risk_premium",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "sora_rate",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "credit_spread",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "cit_rate",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "working-capital-sg",
+      "canonical_id": "finance.working-capital-sg",
+      "skillName": "working-capital-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "description": "Calculate Net Working Capital (NWC), short-term solvency ratios (Current, Quick, Cash), and Cash Conversion Cycle (DSO, DIO, DPO) under Singapore Financial Reporting Standards (SFRS).",
+      "risk_level": "HIGH",
+      "rule_type": "computational",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "finance_statutory_compliance",
+          "finance_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "current_assets",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "current_liabilities",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "annual_revenue",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "annual_cogs",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "cash",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "receivables",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "inventory",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "payables",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "cross-border-holding-sg-id",
+      "canonical_id": "strategic.cross-border-holding-sg-id",
+      "skillName": "cross-border-holding-sg-id",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "description": "Model cross-border corporate holding efficiency between Direct Investment and Singapore Holding Company intermediary under SG-ID DTA Article 10, Section 13(8) FSIE, and Section 13W safe harbours.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "strategic_statutory_compliance",
+          "strategic_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "dividend_amount",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "equity_percentage",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "holding_duration_months",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "has_cor",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "origin_cit_rate",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "annual_maintenance_cost",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    },
+    {
+      "id": "enterprise-grant-sg",
+      "canonical_id": "strategic.enterprise-grant-sg",
+      "skillName": "enterprise-grant-sg",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "description": "Evaluate Enterprise Singapore (EnterpriseSG) and IMDA government grant eligibility, 30% local equity condition, and co-funding caps across EDG, PSG, and MRA schemes.",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "quality_tier": "expert-reviewed",
+      "capability": {
+        "purpose": [
+          "strategic_statutory_compliance",
+          "strategic_deterministic_calculation"
+        ],
+        "not_for": [
+          "unverified_tax_fraud",
+          "unauthorized_legal_filing"
+        ],
+        "requires": [
+          {
+            "name": "grant_scheme",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "qualifying_project_cost",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "local_shareholding_pct",
+            "type": "number|string|boolean",
+            "required": true
+          },
+          {
+            "name": "is_registered_in_sg",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "group_turnover",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "group_employees",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "is_sustainability",
+            "type": "number|string|boolean",
+            "required": false
+          },
+          {
+            "name": "mra_claimed",
+            "type": "number|string|boolean",
+            "required": false
+          }
+        ],
+        "produces": [
+          {
+            "name": "statutoryCalculation",
+            "type": "object"
+          },
+          {
+            "name": "complianceAudit",
+            "type": "object"
+          }
+        ],
+        "consumes": [
+          "context.entity",
+          "statutory.ruleset"
+        ],
+        "deterministic": true,
+        "risk": {
+          "level": "HIGH",
+          "human_review_required": true
+        },
+        "cross_domain_relevance": {}
+      }
+    }
+  ]
+}

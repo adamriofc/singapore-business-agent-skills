@@ -1,0 +1,47 @@
+{
+  "statute": "Income Tax Act 1947",
+  "authority": "Inland Revenue Authority of Singapore (IRAS)",
+  "standardCitRate": 0.17,
+  "startUpTaxExemption": {
+    "maxQualifyingYears": 3,
+    "tier1": {
+      "cap": 100000,
+      "exemptionRate": 0.75,
+      "maxExemption": 75000
+    },
+    "tier2": {
+      "cap": 100000,
+      "exemptionRate": 0.50,
+      "maxExemption": 50000
+    },
+    "maxTotalExemption": 125000,
+    "eligibilityCriteria": [
+      "INCORPORATED_IN_SINGAPORE",
+      "SINGAPORE_TAX_RESIDENT",
+      "MAX_20_SHAREHOLDERS",
+      "ALL_INDIVIDUALS_OR_AT_LEAST_ONE_INDIVIDUAL_HOLDING_MIN_10_PERCENT",
+      "NOT_INVESTMENT_HOLDING_OR_PROPERTY_DEVELOPMENT"
+    ]
+  },
+  "partialTaxExemption": {
+    "tier1": {
+      "cap": 10000,
+      "exemptionRate": 0.75,
+      "maxExemption": 7500
+    },
+    "tier2": {
+      "cap": 190000,
+      "exemptionRate": 0.50,
+      "maxExemption": 95000
+    },
+    "maxTotalExemption": 102500
+  },
+  "corporateIncomeTaxRebate": {
+    "ya2024": {
+      "rebatePercent": 0.50,
+      "capIdrOrSgd": 40000,
+      "cashGrantMinimum": 2000,
+      "cashGrantEligibility": "AT_LEAST_ONE_LOCAL_EMPLOYEE_WITH_CPF"
+    }
+  }
+}

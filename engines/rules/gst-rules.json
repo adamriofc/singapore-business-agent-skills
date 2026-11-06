@@ -1,0 +1,19 @@
+{
+  "statute": "Goods and Services Tax Act 1993",
+  "authority": "Inland Revenue Authority of Singapore (IRAS)",
+  "currentRate": 0.09,
+  "historicalRates": [
+    { "period": "2024-present", "rate": 0.09 },
+    { "period": "2023", "rate": 0.08 },
+    { "period": "2007-2022", "rate": 0.07 }
+  ],
+  "compulsoryRegistrationThreshold": 1000000,
+  "retrospectiveTestQuarterLookback": 4,
+  "prospectiveTestMonthsLookahead": 12,
+  "lowValueGoodsThresholdSgd": 400,
+  "reverseChargeAppliesTo": "IMPORTED_SERVICES_AND_DIGITAL_B2B",
+  "penalties": {
+    "lateRegistrationFineMax": 10000,
+    "statutoryPenaltyRate": 0.10
+  }
+}

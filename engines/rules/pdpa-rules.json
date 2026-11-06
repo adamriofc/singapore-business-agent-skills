@@ -1,0 +1,34 @@
+{
+  "statute": "Personal Data Protection Act 2012 (PDPA) & PDPA Amendment Act 2020",
+  "authority": "Personal Data Protection Commission (PDPC)",
+  "elevenObligations": [
+    "CONSENT",
+    "PURPOSE_LIMITATION",
+    "NOTIFICATION",
+    "ACCESS_AND_CORRECTION",
+    "ACCURACY",
+    "PROTECTION",
+    "RETENTION_LIMITATION",
+    "TRANSFER_LIMITATION",
+    "DATA_BREACH_NOTIFICATION",
+    "ACCOUNTABILITY",
+    "DATA_PORTABILITY"
+  ],
+  "mandatoryBreachNotification": {
+    "thresholdAffectedIndividuals": 500,
+    "significantHarmCategories": [
+      "FINANCIAL_DATA",
+      "NRIC_OR_NATIONAL_ID",
+      "MEDICAL_AND_HEALTH_RECORDS",
+      "BIOMETRIC_DATA",
+      "CREDENTIALS_AND_PASSWORDS"
+    ],
+    "notificationDeadlineHours": 72,
+    "notificationDeadlineDays": 3
+  },
+  "financialPenalties": {
+    "largeEnterpriseTurnoverThresholdSgd": 10000000,
+    "largeEnterpriseMaxPenaltyPercentage": 0.10,
+    "standardMaxPenaltySgd": 1000000
+  }
+}

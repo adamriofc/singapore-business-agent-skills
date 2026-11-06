@@ -1,0 +1,154 @@
+{
+  "statute": "Central Provident Fund Act 1953",
+  "authority": "Central Provident Fund Board (CPF Board) & Ministry of Manpower (MOM)",
+  "ordinaryWageCeilings": {
+    "2023": 6000,
+    "2024": 6800,
+    "2025": 7400,
+    "2026": 8000
+  },
+  "additionalWageCeilingFormula": {
+    "annualBase": 102000,
+    "description": "102,000 - Total OW subject to CPF in the calendar year"
+  },
+  "ratesCitizenAndSprYear3Onwards": [
+    {
+      "minAge": 0,
+      "maxAge": 55,
+      "employeeRate": 0.20,
+      "employerRate": 0.17,
+      "totalRate": 0.37
+    },
+    {
+      "minAge": 55.001,
+      "maxAge": 60,
+      "employeeRate": 0.16,
+      "employerRate": 0.15,
+      "totalRate": 0.31
+    },
+    {
+      "minAge": 60.001,
+      "maxAge": 65,
+      "employeeRate": 0.105,
+      "employerRate": 0.115,
+      "totalRate": 0.22
+    },
+    {
+      "minAge": 65.001,
+      "maxAge": 70,
+      "employeeRate": 0.075,
+      "employerRate": 0.09,
+      "totalRate": 0.165
+    },
+    {
+      "minAge": 70.001,
+      "maxAge": 120,
+      "employeeRate": 0.05,
+      "employerRate": 0.075,
+      "totalRate": 0.125
+    }
+  ],
+  "sprYear1Rates": [
+    {
+      "minAge": 0,
+      "maxAge": 55,
+      "employeeRate": 0.05,
+      "employerRate": 0.04,
+      "totalRate": 0.09
+    },
+    {
+      "minAge": 55.001,
+      "maxAge": 60,
+      "employeeRate": 0.05,
+      "employerRate": 0.04,
+      "totalRate": 0.09
+    },
+    {
+      "minAge": 60.001,
+      "maxAge": 65,
+      "employeeRate": 0.05,
+      "employerRate": 0.035,
+      "totalRate": 0.085
+    },
+    {
+      "minAge": 65.001,
+      "maxAge": 120,
+      "employeeRate": 0.05,
+      "employerRate": 0.035,
+      "totalRate": 0.085
+    }
+  ],
+  "sprYear2Rates": [
+    {
+      "minAge": 0,
+      "maxAge": 55,
+      "employeeRate": 0.15,
+      "employerRate": 0.09,
+      "totalRate": 0.24
+    },
+    {
+      "minAge": 55.001,
+      "maxAge": 60,
+      "employeeRate": 0.125,
+      "employerRate": 0.09,
+      "totalRate": 0.215
+    },
+    {
+      "minAge": 60.001,
+      "maxAge": 65,
+      "employeeRate": 0.075,
+      "employerRate": 0.06,
+      "totalRate": 0.135
+    },
+    {
+      "minAge": 65.001,
+      "maxAge": 120,
+      "employeeRate": 0.05,
+      "employerRate": 0.035,
+      "totalRate": 0.085
+    }
+  ],
+  "skillsDevelopmentLevy": {
+    "rate": 0.0025,
+    "minimumSgd": 2.0,
+    "maximumSgd": 11.25,
+    "wageCapForMaxSgd": 4500
+  },
+  "selfHelpGroupFunds": {
+    "cdac": [
+      { "maxWage": 2000, "amount": 0.50 },
+      { "maxWage": 3500, "amount": 1.00 },
+      { "maxWage": 5000, "amount": 1.50 },
+      { "maxWage": 7500, "amount": 2.00 },
+      { "maxWage": 999999999, "amount": 3.00 }
+    ],
+    "mbmf": [
+      { "maxWage": 1000, "amount": 3.00 },
+      { "maxWage": 2000, "amount": 4.50 },
+      { "maxWage": 3000, "amount": 6.50 },
+      { "maxWage": 4000, "amount": 11.00 },
+      { "maxWage": 6000, "amount": 15.00 },
+      { "maxWage": 8000, "amount": 19.50 },
+      { "maxWage": 10000, "amount": 24.00 },
+      { "maxWage": 999999999, "amount": 30.00 }
+    ],
+    "sinda": [
+      { "maxWage": 1000, "amount": 1.00 },
+      { "maxWage": 1500, "amount": 3.00 },
+      { "maxWage": 2500, "amount": 5.00 },
+      { "maxWage": 4500, "amount": 7.00 },
+      { "maxWage": 7500, "amount": 9.00 },
+      { "maxWage": 10000, "amount": 12.00 },
+      { "maxWage": 999999999, "amount": 30.00 }
+    ],
+    "ea": [
+      { "maxWage": 1000, "amount": 2.00 },
+      { "maxWage": 1500, "amount": 4.00 },
+      { "maxWage": 2500, "amount": 6.00 },
+      { "maxWage": 4000, "amount": 9.00 },
+      { "maxWage": 7000, "amount": 12.00 },
+      { "maxWage": 10000, "amount": 16.00 },
+      { "maxWage": 999999999, "amount": 20.00 }
+    ]
+  }
+}

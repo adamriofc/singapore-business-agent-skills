@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-06T00:00:00.000Z",
+  "version": "1.0.0",
+  "thresholdDegradationMaxPercent": 30,
+  "baselineOpsPerSec": {
+    "tax-sg": 140000,
+    "hr-sg": 120000,
+    "legal-sg": 130000,
+    "finance-sg": 170000,
+    "strategic-sg": 150000
+  }
+}

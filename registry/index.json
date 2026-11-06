@@ -1,0 +1,166 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-11-06T00:00:00.000Z",
+  "repository": "https://github.com/adamriofc/singapore-business-agent-skills",
+  "total_domains": 5,
+  "total_plugins": 5,
+  "total_skills": 15,
+  "total_engines": 15,
+  "quality_tiers": {
+    "tested": 0,
+    "source-verified": 0,
+    "expert-reviewed": 15
+  },
+  "skills": [
+    {
+      "id": "cit-tax-sg",
+      "name": "cit-tax-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "calculateSingaporeCit",
+      "statutory_reference": "Singapore Income Tax Act 1947 Section 43"
+    },
+    {
+      "id": "gst-sg",
+      "name": "gst-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "calculateGstFiling",
+      "statutory_reference": "Singapore Goods and Services Tax Act 1993"
+    },
+    {
+      "id": "wht-sg",
+      "name": "wht-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "calculateSingaporeWht",
+      "statutory_reference": "Singapore Income Tax Act 1947 Section 45"
+    },
+    {
+      "id": "dta-sg-id",
+      "name": "dta-sg-id",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "evaluateDtaSgIdRelief",
+      "statutory_reference": "Singapore-Indonesia Double Tax Agreement (DTA) Articles 10, 11, 12, 14"
+    },
+    {
+      "id": "cpf-calculator",
+      "name": "cpf-calculator",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "calculateSingaporeCpf",
+      "statutory_reference": "Central Provident Fund Act 1953"
+    },
+    {
+      "id": "mom-overtime",
+      "name": "mom-overtime",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "calculateMomOvertimeAndCompliance",
+      "statutory_reference": "Singapore Employment Act 1968 Part IV"
+    },
+    {
+      "id": "compass-scoring",
+      "name": "compass-scoring",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "evaluateCompassEpEligibility",
+      "statutory_reference": "MOM Complementarity Assessment Framework (COMPASS)"
+    },
+    {
+      "id": "foreign-workforce-quota",
+      "name": "foreign-workforce-quota",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "calculateForeignWorkforceQuota",
+      "statutory_reference": "Employment of Foreign Manpower Act (EFMA)"
+    },
+    {
+      "id": "acra-statutory-deadlines",
+      "name": "acra-statutory-deadlines",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "calculateAcraStatutoryDeadlines",
+      "statutory_reference": "Singapore Companies Act 1967 Sections 175 & 197"
+    },
+    {
+      "id": "small-company-audit",
+      "name": "small-company-audit",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "evaluateSmallCompanyAuditExemption",
+      "statutory_reference": "Singapore Companies Act 1967 Thirteenth Schedule"
+    },
+    {
+      "id": "pdpa-breach-notification",
+      "name": "pdpa-breach-notification",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "evaluatePdpaBreachNotification",
+      "statutory_reference": "Personal Data Protection Act 2012 Part VIA"
+    },
+    {
+      "id": "sora-wacc",
+      "name": "sora-wacc",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "computational",
+      "engine": "calculateSingaporeWacc",
+      "statutory_reference": "MAS Singapore Overnight Rate Average (SORA)"
+    },
+    {
+      "id": "working-capital-sg",
+      "name": "working-capital-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "computational",
+      "engine": "calculateSingaporeWorkingCapital",
+      "statutory_reference": "Singapore Financial Reporting Standards (SFRS)"
+    },
+    {
+      "id": "enterprise-grant-sg",
+      "name": "enterprise-grant-sg",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "evaluateEnterpriseGrant",
+      "statutory_reference": "Enterprise Singapore (EnterpriseSG) Grant Guidelines"
+    },
+    {
+      "id": "cross-border-holding-sg-id",
+      "name": "cross-border-holding-sg-id",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "evaluateCrossBorderHoldingStructure",
+      "statutory_reference": "SG-ID DTA Article 10, ITA Section 13(8) & Section 13W"
+    }
+  ]
+}
