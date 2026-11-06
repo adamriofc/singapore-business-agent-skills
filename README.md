@@ -1,8 +1,8 @@
 # Singapore Business Agent Skills
 
-*Give AI agents an authentic business brain for Singapore corporate operations & cross-border governance.*
+*Give AI agents a business brain for Singapore business.*
 
-**Singapore corporate, tax, manpower & statutory intelligence for AI agents — combining IRAS rulesets, ACRA corporate compliance, MOM manpower frameworks, MAS financial benchmarks, and deterministic statutory computational engines.**
+**Singapore business intelligence for AI agents — combining regulatory grounded skills, temporal rulesets, deterministic engines, and auditable provenance.**
 
 <p align="center">
   <img src="docs/singapore-business-agent-skills-hero.svg" alt="Singapore Business Agent Skills Banner" width="100%">
@@ -35,56 +35,20 @@
 | **Node.js Compatibility** | `20 / 22 / 24` | `20` (Minimum Supported), `22` (LTS Recommended), `24` (Current Tested) |
 <!-- /GENERATED:STATS -->
 
-> **Evidence Boundary Note**: Engineered with mathematical determinism and audited against official Singapore statutory gazettes (IRAS, ACRA, MOM, CPF Board, MAS, PDPC). High-consequence corporate actions (such as statutory AGM filings or cross-border APA agreements) should remain subject to qualified professional human oversight.
+> **Evidence Boundary Note**: Independent external domain validation and enterprise production proof are still pending.
 
----
+**Singapore Business Agent Skills** is a domain intelligence infrastructure designed to give AI agents an authentic Singapore business and regulatory intelligence layer. Built for **OpenWork Desktop**, **OpenCode CLI**, **Claude Code (CLI)**, **Cursor IDE**, **Codex**, **OpenClaw**, **Hermes**, **Gemini**, and custom agent frameworks, this repository integrates **15 Agent Skills** across **5 canonical plugins** (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`) with **15 Deterministic Computational & Statutory Engines** (`engines/`) and single source of truth temporal JSON rulesets (`engines/rules/`).
 
-### 🏛️ Standalone Sovereign Corporate Intelligence Infrastructure
-
-**Singapore Business Agent Skills (`singapore-business-agent-skills`)** is an independent, production-grade **Sovereign Business Intelligence Suite** designed specifically for the Republic of Singapore's corporate, tax, manpower, monetary, and data governance frameworks.
-
-Singapore serves as a premier global financial center, regional corporate headquarters, and international arbitration hub. Singapore corporate entities operate under a distinctive common-law legal system with precise statutory requirements:
-- **Corporate Governance & Secretarial (ACRA)**: *Companies Act 1967* statutory AGM and Annual Return timelines, Section 145 resident director and Section 171 corporate secretary obligations, and Thirteenth Schedule small company audit exemptions.
-- **Taxation & Revenue (IRAS)**: *Income Tax Act 1947* 17% headline Corporate Income Tax (CIT), Start-Up Tax Exemption (SUTE), Partial Tax Exemption (PTE), Section 13(8) Foreign Sourced Income Exemption (FSIE), Sections 45/45A withholding taxes, and statutory 9% Goods and Services Tax (GST).
-- **Manpower & Employment (MOM & CPF Board)**: *Employment Act 1968* Part IV overtime regulations, *Central Provident Fund Act 1953* progressive Ordinary Wage (OW) ceiling transitions ($6,800 to $8,000), COMPASS points-based Employment Pass framework, and sector-specific Dependency Ratio Ceilings (DRC).
-- **Financial Benchmarks & Monetary Policy (MAS)**: Singapore Overnight Rate Average (SORA) benchmark rate, Corporate Weighted Average Cost of Capital (WACC), and Singapore Financial Reporting Standards (SFRS).
-- **Data Protection & Compliance (PDPC)**: *Personal Data Protection Act 2012* (PDPA Part VIA) mandatory 72-hour data breach notification protocols and administrative financial penalty thresholds.
-
-```text
-┌─────────────────────────────────────────────────────────────────────────┐
-│               SINGAPORE BUSINESS AGENT SKILLS SUITE v1.0.0              │
-│       15 Agent Skills · 5 Domain Plugins · 15 Deterministic Engines     │
-├───────────────────┬─────────────────────────────────────────────────────┤
-│ DOMAIN            │ STATUTORY COVERAGE & ENGINES                        │
-├───────────────────┼─────────────────────────────────────────────────────┤
-│ 1. tax-sg         │ IRAS CIT (17%), SUTE, PTE, GST (9%), WHT 45/45A/45D │
-│ 2. hr-sg          │ CPF ($8k Cap), MOM OT (Part IV), COMPASS, DRC Quota │
-│ 3. legal-sg       │ ACRA AGM/AR Deadlines, Small Co Audit, PDPA 72h     │
-│ 4. finance-sg     │ MAS SORA Benchmark, Corporate WACC, SFRS Liquidity  │
-│ 5. strategic-sg   │ EnterpriseSG Grants (EDG/PSG/MRA), Holding Safe Hbr │
-└───────────────────┴─────────────────────────────────────────────────────┘
-```
-
----
-
-### 💡 Why Standard LLMs Fail at Singapore Corporate, Tax & Manpower Calculations
-
-Generic large language models (such as unassisted GPT-4o or Claude 3.5 Sonnet) operate via probabilistic next-token prediction. When tasked with Singapore statutory compliance, standard LLMs encounter 3 critical failure modes:
-
-1. **Arithmetic Hallucination**: AI models predict tax bracket sums and rebate calculations rather than executing statutory arithmetic. For example, unassisted LLMs frequently miss the tiered thresholds of the Start-Up Tax Exemption (SUTE) or miscalculate the 50% Corporate Income Tax (CIT) Rebate capped at S$40,000 for Year of Assessment (YA) 2024.
-2. **Temporal Ambiguity & Multi-Year Statutory Roadmaps**: Singapore regulations enforce progressive, multi-year statutory transitions that AI context windows conflate:
-   - **CPF Ordinary Wage (OW) Ceiling**: Increased from S$6,000 (pre-Sept 2023) to S$6,800 (Jan 2024), S$7,400 (Jan 2025), and S$8,000 (Jan 2026).
-   - **GST Rate Progression**: Shifted from 7% to 8% (2023) and 9% (from 1 Jan 2024).
-   - **MOM COMPASS Framework**: Enforced from 1 Sept 2023 for new Employment Pass (EP) applications and 1 Sept 2024 for renewals.
-3. **Unverifiable Statutory Lineage**: Standard LLMs cannot provide cryptographic audit trails confirming which specific act or gazette (e.g., *Companies Act 1967*, *Employment of Foreign Manpower Act*, *PDPA Part VIA*) governed a particular recommendation.
-
----
+### 💡 Why Standard LLMs Fail at Singapore Business & Compliance Calculations
+Generic AI models (such as unassisted ChatGPT or Claude) predict words probabilistically (*token prediction*). When tasked with calculating Corporate Income Tax (CIT) with Start-Up Tax Exemption (SUTE), CPF progressive wage ceilings, MOM COMPASS scoring, or ACRA statutory filing deadlines, standard LLMs encounter 3 critical failure modes:
+1. **Arithmetic Hallucination**: AI models guess numbers rather than computing equations, leading to incorrect tax bracket assignments, missed YA 2024 rebate caps, and faulty CPF contribution math.
+2. **Temporal Ambiguity**: AI models fail to track statutory wage caps and rate adjustments across transition windows (such as CPF Ordinary Wage ceiling progression from S$6,800 in 2024 to S$7,400 in 2025 and S$8,000 in 2026, or the GST rate transition to 9%).
+3. **Unverifiable Lineage**: Standard AI responses lack traceable references to official statutory acts (*Singapore Statutes Online*), such as the *Companies Act 1967*, *Income Tax Act 1947*, *Employment Act 1968*, and *Personal Data Protection Act 2012*, rendering them unsuited for corporate audits.
 
 ### 🛡️ The Hybrid Architecture Solution
-
-This repository strictly decouples **natural language reasoning** from **mathematical computation**:
-- **Agent Skill (`SKILL.md`)**: Analyzes unstructured context, extracts parameters, evaluates business intent, and synthesizes clear executive explanations.
-- **Deterministic Engine (`engines/*.js`)**: Computes exact, immutable mathematics with **zero floating-point drift**, verified against static JSON statutory rulesets (`engines/rules/`) backed by **SHA-256 cryptographic trust anchors**.
+This repository decouples AI **reasoning** from **calculation**:
+- **AI (Agent Skill)**: Understands natural language, extracts parameters, and synthesizes explanations.
+- **Engine (Node.js)**: Computes exact invariant mathematics (deterministic computation removes LLM arithmetic hallucination within the engine) per official government rulesets.
 
 ---
 
@@ -102,7 +66,11 @@ This repository strictly decouples **natural language reasoning** from **mathema
 | **Hermes** | Tool-use / Function Calling via pure JSON | 🟡 **Compatible** | Engine outputs are pure JSON; arguments map directly |
 | **Custom SDK / CLI** | Programmatic Library & CLI binary | ✅ **Verified** | Root SDK (`index.js`), CLI (`sg-agent-skills`), Typings (`index.d.ts`) |
 
+> **Integration Note — OpenClaw & Hermes**: These runtimes consume skills via their own tool-directory or MCP mechanism. Copy the relevant `*/skills/*/SKILL.md` files to your runtime's skill path, and import engine functions from `engines/*.js` directly. All engines are pure Node.js with no external dependencies.
+
 ### 🧠 Minimum Model Capability Requirements
+
+To ensure optimal execution fidelity without vendor lock in, host agents should satisfy these minimum capability baselines across different task domains:
 
 | Capability Tier | Minimum Model Specification | Target Domain & Workloads |
 |---|---|---|
