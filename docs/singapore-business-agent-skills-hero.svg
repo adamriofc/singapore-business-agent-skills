@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="100%" height="100%">
+  <defs>
+    <!-- Background Linear Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <!-- Title Accent Gradient -->
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+
+    <!-- Singapore Crimson & Silver Gradient -->
+    <linearGradient id="flag-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F8FAFC"/>
+    </linearGradient>
+
+    <!-- Heritage Badge Gradient -->
+    <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#312E81"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Card Background with Subtle Border -->
+  <rect width="1200" height="280" rx="10" fill="url(#bg-grad)" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Top Singapore National Accent Bar -->
+  <rect x="0" y="0" width="1200" height="4" rx="2" fill="url(#flag-grad)"/>
+
+  <!-- Main Title, Subtitle, & Heritage Extension Tag -->
+  <g transform="translate(48, 44)">
+    <g transform="translate(0, 0)">
+      <text x="0" y="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="33" font-weight="800" fill="url(#title-grad)" letter-spacing="-0.8">
+        singapore-business-agent-skills
+      </text>
+
+      <!-- Extension of Core Indonesia Ecosystem Pill -->
+      <g transform="translate(560, 10)">
+        <rect x="0" y="0" width="280" height="24" rx="12" fill="url(#badge-grad)" stroke="#6366F1" stroke-width="1"/>
+        <circle cx="14" cy="12" r="4" fill="#818CF8"/>
+        <text x="26" y="16" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#E0E7FF">
+          Extension of Indonesia Business Agent Suite
+        </text>
+      </g>
+    </g>
+
+    <text x="0" y="64" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="400" fill="#94A3B8" letter-spacing="-0.1">
+      Statutory Corporate, Tax, Manpower &amp; Cross-Border Reasoning Infrastructure for AI Agents
+    </text>
+  </g>
+
+  <!-- Runtime Compatibility Pills Row -->
+  <g transform="translate(48, 126)">
+    <!-- OpenWork -->
+    <rect x="0" y="0" width="96" height="22" rx="11" fill="#1E3A5F" stroke="#2563EB" stroke-width="1"/>
+    <text x="48" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#93C5FD" text-anchor="middle">OpenWork</text>
+    <!-- OpenCode -->
+    <rect x="104" y="0" width="86" height="22" rx="11" fill="#1E3A5F" stroke="#2563EB" stroke-width="1"/>
+    <text x="147" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#93C5FD" text-anchor="middle">OpenCode</text>
+    <!-- Claude Code -->
+    <rect x="198" y="0" width="98" height="22" rx="11" fill="#2D1B4E" stroke="#7C3AED" stroke-width="1"/>
+    <text x="247" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#C4B5FD" text-anchor="middle">Claude Code</text>
+    <!-- Cursor -->
+    <rect x="304" y="0" width="68" height="22" rx="11" fill="#1A2F1A" stroke="#16A34A" stroke-width="1"/>
+    <text x="338" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#86EFAC" text-anchor="middle">Cursor</text>
+    <!-- Codex -->
+    <rect x="380" y="0" width="66" height="22" rx="11" fill="#1A2F1A" stroke="#16A34A" stroke-width="1"/>
+    <text x="413" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#86EFAC" text-anchor="middle">Codex</text>
+    <!-- OpenClaw -->
+    <rect x="454" y="0" width="82" height="22" rx="11" fill="#3B1F00" stroke="#EA580C" stroke-width="1"/>
+    <text x="495" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#FDBA74" text-anchor="middle">OpenClaw</text>
+    <!-- Hermes -->
+    <rect x="544" y="0" width="72" height="22" rx="11" fill="#3B1F00" stroke="#EA580C" stroke-width="1"/>
+    <text x="580" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#FDBA74" text-anchor="middle">Hermes</text>
+    <!-- Antigravity -->
+    <rect x="624" y="0" width="90" height="22" rx="11" fill="#2E1065" stroke="#9333EA" stroke-width="1"/>
+    <text x="669" y="15" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#E9D5FF" text-anchor="middle">Antigravity</text>
+  </g>
+
+  <!-- Horizontal Separator Line -->
+  <line x1="48" y1="172" x2="1152" y2="172" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- 4 Stat Columns -->
+  <g transform="translate(0, 196)">
+    <!-- Stat 1: Agent Skills -->
+    <g transform="translate(48, 0)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#64748B" letter-spacing="0.8">AGENT SKILLS</text>
+      <text x="0" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="17" font-weight="700" fill="#38BDF8">15 Skills (5 Plugins)</text>
+    </g>
+
+    <!-- Stat 2: Computational Engines -->
+    <g transform="translate(334, 0)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#64748B" letter-spacing="0.8">COMPUTATIONAL ENGINES</text>
+      <text x="0" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="17" font-weight="700" fill="#34D399">15 Deterministic</text>
+    </g>
+
+    <!-- Stat 3: Golden Corpus -->
+    <g transform="translate(620, 0)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#64748B" letter-spacing="0.8">GOLDEN CORPUS</text>
+      <text x="0" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="17" font-weight="700" fill="#FBBF24">25 Cases (5 Domains)</text>
+    </g>
+
+    <!-- Stat 4: Total Test Assertions -->
+    <g transform="translate(906, 0)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#64748B" letter-spacing="0.8">TOTAL ASSERTIONS</text>
+      <text x="0" y="24" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="17" font-weight="700" fill="#C084FC">120+ Assertions</text>
+    </g>
+  </g>
+</svg>
