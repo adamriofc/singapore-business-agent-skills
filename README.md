@@ -2,7 +2,7 @@
 
 *Give AI agents an authentic business brain for Singapore corporate operations & cross-border governance.*
 
-**Singapore sovereign corporate, tax, manpower & statutory intelligence for AI agents — combining IRAS rulesets, ACRA corporate compliance, MOM manpower frameworks, MAS financial benchmarks, and seamless bilateral cross-border interoperability with Indonesia Business Agent Skills.**
+**Singapore sovereign corporate, tax, manpower & statutory intelligence for AI agents — combining IRAS rulesets, ACRA corporate compliance, MOM manpower frameworks, MAS financial benchmarks, and deterministic statutory computational engines.**
 
 <p align="center">
   <img src="docs/singapore-business-agent-skills-hero.svg" alt="Singapore Business Agent Skills Banner" width="100%">
@@ -15,7 +15,7 @@
   <a href="engines/"><img src="https://img.shields.io/badge/Hybrid%20Engine-LLM--Safe-orange.svg" alt="LLM-Safe Hybrid Engine"></a>
   <a href="tests/"><img src="https://img.shields.io/badge/Test%20Suite-120%2B%20Assertions-success.svg" alt="120+ Test Assertions"></a>
   <a href="bundles/full-business-suite.json"><img src="https://img.shields.io/badge/Suite-15%20Skills%20%C2%B7%205%20Domains-blueviolet.svg" alt="15 Skills · 5 Domains"></a>
-  <a href="https://github.com/adamriofc/indonesia-business-agent-skills"><img src="https://img.shields.io/badge/Ecosystem-ASEAN%20Twin--Core-indigo.svg" alt="ASEAN Twin-Core Ecosystem"></a>
+  <a href="engines/rules/"><img src="https://img.shields.io/badge/Rulesets-SHA--256%20Verified-success.svg" alt="SHA-256 Verified"></a>
 </p>
 
 ---
@@ -39,30 +39,30 @@
 
 ---
 
-### 🌐 Standalone Sovereign Core & ASEAN Twin-Core Architecture
+### 🏛️ Standalone Sovereign Corporate Intelligence Infrastructure
 
-**Singapore Business Agent Skills (`singapore-business-agent-skills`)** is an independent, production-grade **Sovereign Business Intelligence Core** designed specifically for the Republic of Singapore's common-law corporate, tax, manpower, and monetary frameworks.
+**Singapore Business Agent Skills (`singapore-business-agent-skills`)** is an independent, production-grade **Sovereign Business Intelligence Suite** designed specifically for the Republic of Singapore's corporate, tax, manpower, monetary, and data governance frameworks.
 
-Together with **[Indonesia Business Agent Skills (`indonesia-business-agent-skills`)](https://github.com/adamriofc/indonesia-business-agent-skills)**, it forms the **ASEAN Twin-Core Architecture** — two equal, sovereign pillars that provide comprehensive computational intelligence across Southeast Asia's two most critical economic anchors:
-- **Singapore Sovereign Core (`Pte Ltd`)**: Regional corporate treasury, holding entity governance, territorial single-tier tax system, intellectual property holding safe harbours, Section 13(8) Foreign Sourced Income Exemption (FSIE), and MAS SORA-linked liquidity.
-- **Indonesia Sovereign Core (`PT PMA`)**: Southeast Asia's largest domestic industrial and consumer market, domestic supply chains, KBLI statutory licensing, BPJS workforce contributions, and domestic PPh/PPN tax obligations.
-
-Rather than a subordinate extension, both suites operate as **Peer Sovereign Cores** built on the same zero-dependency architectural doctrine, 18-check release gate rigor, and cryptographic trust-anchor specification, interconnected natively via a bilateral Cross-Border Double Taxation Agreement (DTA) Gateway:
+Singapore serves as a premier global financial center, regional corporate headquarters, and international arbitration hub. Singapore corporate entities operate under a distinctive common-law legal system with precise statutory requirements:
+- **Corporate Governance & Secretarial (ACRA)**: *Companies Act 1967* statutory AGM and Annual Return timelines, Section 145 resident director and Section 171 corporate secretary obligations, and Thirteenth Schedule small company audit exemptions.
+- **Taxation & Revenue (IRAS)**: *Income Tax Act 1947* 17% headline Corporate Income Tax (CIT), Start-Up Tax Exemption (SUTE), Partial Tax Exemption (PTE), Section 13(8) Foreign Sourced Income Exemption (FSIE), Sections 45/45A withholding taxes, and statutory 9% Goods and Services Tax (GST).
+- **Manpower & Employment (MOM & CPF Board)**: *Employment Act 1968* Part IV overtime regulations, *Central Provident Fund Act 1953* progressive Ordinary Wage (OW) ceiling transitions ($6,800 to $8,000), COMPASS points-based Employment Pass framework, and sector-specific Dependency Ratio Ceilings (DRC).
+- **Financial Benchmarks & Monetary Policy (MAS)**: Singapore Overnight Rate Average (SORA) benchmark rate, Corporate Weighted Average Cost of Capital (WACC), and Singapore Financial Reporting Standards (SFRS).
+- **Data Protection & Compliance (PDPC)**: *Personal Data Protection Act 2012* (PDPA Part VIA) mandatory 72-hour data breach notification protocols and administrative financial penalty thresholds.
 
 ```text
-┌────────────────────────────────────────────────────────────────────────┐
-│             SOUTHEAST ASIA AGENT BUSINESS INTELLIGENCE SUITE           │
-├───────────────────────────────────┬────────────────────────────────────┤
-│ SINGAPORE SOVEREIGN CORE          │ INDONESIA SOVEREIGN CORE           │
-│ singapore-business-agent-skills   │ indonesia-business-agent-skills    │
-│ 15 Skills · 5 Plugins · 15 Engines│ 94 Skills · 6 Plugins · 61 Engines │
-│ Regional Treasury, CIT, CPF, MAS  │ Domestic Operations, PPh, BPJS, OSS│
-└───────────────────────────────────┴────────────────────────────────────┘
-                  │                                   │
-                  └───────────────┬───────────────────┘
-                                  ▼
-         Bilateral SG-ID Double Taxation Agreement (DTA) Gateway
-        Dividends (10%) · Interest (10%) · Royalties (10%) · FSIE
+┌─────────────────────────────────────────────────────────────────────────┐
+│               SINGAPORE BUSINESS AGENT SKILLS SUITE v1.0.0              │
+│       15 Agent Skills · 5 Domain Plugins · 15 Deterministic Engines     │
+├───────────────────┬─────────────────────────────────────────────────────┤
+│ DOMAIN            │ STATUTORY COVERAGE & ENGINES                        │
+├───────────────────┼─────────────────────────────────────────────────────┤
+│ 1. tax-sg         │ IRAS CIT (17%), SUTE, PTE, GST (9%), WHT 45/45A/45D │
+│ 2. hr-sg          │ CPF ($8k Cap), MOM OT (Part IV), COMPASS, DRC Quota │
+│ 3. legal-sg       │ ACRA AGM/AR Deadlines, Small Co Audit, PDPA 72h     │
+│ 4. finance-sg     │ MAS SORA Benchmark, Corporate WACC, SFRS Liquidity  │
+│ 5. strategic-sg   │ EnterpriseSG Grants (EDG/PSG/MRA), Holding Safe Hbr │
+└───────────────────┴─────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -133,35 +133,34 @@ flowchart TD
     
     Integrity --> ValidatedMath["Deterministic Invariant Calculation Output"]
     
-    ValidatedMath --> Bridge["Bilateral SG-ID DTA Gateway<br/>Cross-Border Holding Optimization with Core ID Suite"]
+    ValidatedMath --> HoldingGovernance["Corporate Holding & DTA Treaty Execution<br/>(IRAS Treaty Relief & S13(8) FSIE Safe Harbours)"]
     
-    Bridge --> Synthesis["Agent Narrative Synthesis &amp; Executive Reporting"]
+    HoldingGovernance --> Synthesis["Agent Narrative Synthesis &amp; Executive Reporting"]
 ```
 
 ---
 
-## 🌉 Cross-Border Singapore-Indonesia Bilateral Bridge
+## 🌉 Cross-Border Holding Governance & Bilateral Treaty Execution
 
-For regional groups operating across both jurisdictions, `singapore-business-agent-skills` bridges directly into `indonesia-business-agent-skills` to evaluate the **Double Taxation Agreement (DTA)** between Singapore and Indonesia:
+For corporate enterprises and multinational holding structures, `singapore-business-agent-skills` provides native deterministic engines to evaluate **Double Taxation Agreements (DTA)**, withholding tax relief, and capital repatriation safe harbours:
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Founder as Regional Group CFO / Founder
-    participant SG as Singapore Pte Ltd (Holding / Treasury)
-    participant DTA as SG-ID Bilateral Treaty Gateway
-    participant ID as Indonesian PT PMA (Operating Co)
+    actor Treasurer as Group CFO / Corporate Treasurer
+    participant SG as Singapore Pte Ltd (Regional Holding / Treasury)
+    participant DTA as Bilateral DTA Relief Engine
+    participant Regional as Cross-Border Operating Subsidiary
 
-    Founder->>ID: Generate IDR 50B Gross Operating Revenue
-    ID->>ID: Compute Domestic PPh Badan (22%) & PPN (12%) via Core indonesia-business-agent-skills
-    Founder->>DTA: Distribute Dividends & Offshore Services
-    Note over DTA: evaluateDtaSgIdRelief() checks Art 10, 11, 12 & Form DGT-1
-    DTA->>ID: Reduce Standard PPh 26 (20%) ➔ DTA Treaty Rate (10%)
-    ID-->>SG: Remit Dividend Net of 10% Withholding Tax
+    Treasurer->>Regional: Realize Regional Operating Revenue
+    Treasurer->>DTA: Remit Dividends, Royalties & Technical Fees to Singapore
+    Note over DTA: evaluateDtaSgIdRelief() checks Treaty Articles & Relief Prerequisites
+    DTA->>Regional: Apply Treaty Reduced Withholding Rates (e.g. 10% vs 20% domestic)
+    Regional-->>SG: Remit Dividend & Invoiced Fees Net of Treaty Withholding
     Note over SG: evaluateCrossBorderHoldingStructure() evaluates S13(8) FSIE
     SG->>SG: Qualify for Section 13(8) Foreign Sourced Income Exemption (0% CIT)
-    SG->>Founder: Distribute Outbound Dividends under Single-Tier System (0% CIT)
-    Note over Founder: Effective Total Tax Leakage Reduced by up to 10-15% Legally
+    SG->>Treasurer: Distribute Outbound Dividends under Single-Tier Corporate Tax System (0% CIT)
+    Note over Treasurer: Zero Double Taxation & Complete Mathematical Determinism
 ```
 
 ---
@@ -542,8 +541,8 @@ console.log(JSON.stringify(result, null, 2));
 
 ## ❓ Frequently Asked Questions (FAQ)
 
-### Q1: How does this repository connect to `indonesia-business-agent-skills`?
-> **Answer**: `singapore-business-agent-skills` is an independent, standalone sovereign business intelligence core for the Republic of Singapore. Together with `indonesia-business-agent-skills`, they form the **ASEAN Twin-Core Architecture** — two equal sovereign pillars providing deterministic intelligence across Southeast Asia. Both repositories share the same zero-dependency architectural doctrine, 18-check release gate rigor, closed prompt-injection defense boundaries, and SHA-256 trust-anchor specification. When interconnected, AI agents execute bilateral cross-border evaluations (such as the SG-ID Double Taxation Agreement and cross-border holding structures) with complete mathematical determinism.
+### Q1: Is this repository an independent, standalone suite?
+> **Answer**: **Yes, 100%.** `singapore-business-agent-skills` is a completely independent, standalone sovereign business intelligence core for the Republic of Singapore. It operates with zero external runtime dependencies (`dependencies: {}`), native mathematical determinism, its own verified SHA-256 statutory rulesets, and does not require any external repository or package to execute Singapore corporate secretarial, tax, manpower, financial, or cross-border treaty reasoning.
 
 ### Q2: Why should AI agents not calculate Singapore tax or CPF using standard LLM token generation?
 > **Answer**: Standard LLMs predict words probabilistically and frequently hallucinate numbers. In Singapore tax and payroll, an arithmetic error can lead to under-withholding penalties from IRAS (Section 94 of ITA) or CPFB late interest charges (1.5% per month). This repository isolates all calculations inside pure Node.js engines with static rulesets, eliminating LLM mathematical hallucination.
