@@ -1,9 +1,16 @@
 /**
- * Singapore Business Agent Skills (`index.js`)
+ * Singapore Business Agent Skills — Root SDK Interface (`index.js`)
  *
- * Production-grade sovereign AI domain intelligence for Singapore corporate law (ACRA),
- * tax statutory compliance (IRAS), workforce & immigration (MOM/CPF), data privacy (PDPA),
- * financial structuring (MAS/SORA), and bilateral Singapore-Indonesia cross-border operations.
+ * Universal, zero-dependency, pure Node.js SDK interface for enterprise backends,
+ * AI agent frameworks, and custom applications.
+ *
+ * Provides direct access to deterministic computational and statutory compliance engines:
+ *   - Tax: CIT (Section 43 & Startup Exemption 43A), GST (Section 19), WHT (Section 45/45A), DTA Singapore-Indonesia
+ *   - HR: CPF Statutory Contributions, MOM Overtime (Part IV Employment Act), COMPASS Scoring, Foreign Workforce Quota
+ *   - Legal: ACRA Statutory Deadlines (AGM/AR), Small Company Audit Exemption (13th Schedule), PDPA Breach Assessment (Section 26D)
+ *   - Finance: SORA WACC Floating Debt Cost, Working Capital & Cash Conversion Cycle
+ *   - Strategy & Cross-Border: Enterprise Singapore Grant Assessment, Cross-Border Singapore-Indonesia Holding Structuring
+ *   - Security: Closed Delimiter Prompt Sanitization
  *
  * ZERO runtime dependencies, 100% deterministic Node.js standard library implementation.
  */
