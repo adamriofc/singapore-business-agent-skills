@@ -1,0 +1,14 @@
+# CODEOWNERS for singapore-business-agent-skills
+
+# Global maintainer
+* @adamriofc
+
+# Critical computational rulesets & cryptographic integrity
+/engines/rules/ @adamriofc
+/engines/rules/integrity.js @adamriofc
+/SHA256SUMS.txt @adamriofc
+
+# Workflows & release infrastructure
+/.github/workflows/ @adamriofc
+/SKILL_PROTOCOL.md @adamriofc
+/PROVENANCE.md @adamriofc

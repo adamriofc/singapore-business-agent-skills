@@ -93,5 +93,11 @@ jobs:
       - name: Validate Agent Capabilities
         run: npm run validate:capabilities
 
+      - name: Validate Documentation SSOT
+        run: npm run validate:docs
+
+      - name: Run Deterministic Engine Benchmark
+        run: npm run benchmark
+
       - name: Execute 18-Check Release Gate
         run: npm run validate:release

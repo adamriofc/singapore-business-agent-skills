@@ -1,0 +1,81 @@
+[
+  {
+    "caseId": "ACRA-PRIVATE-COMPLIANT",
+    "description": "ACRA private non-listed company statutory filing deadlines (AGM 6m, AR 7m)",
+    "engine": "calculateAcraStatutoryDeadlines",
+    "input": {
+      "financialYearEndDate": "2025-12-31",
+      "isListedCompany": false,
+      "hasResidentDirector": true,
+      "isSoleDirectorSecretary": false,
+      "currentDate": "2026-06-01"
+    },
+    "expected": {
+      "companyType": "PRIVATE_NON_LISTED",
+      "agmDeadlineDate": "2026-06-30",
+      "arFilingDeadlineDate": "2026-07-31",
+      "isAnnualReturnOverdue": false,
+      "statutoryLatePenaltySgd": 0,
+      "isGovernanceCompliant": true
+    }
+  },
+  {
+    "caseId": "ACRA-LISTED-OVERDUE-T1",
+    "description": "ACRA public listed company overdue filing with Tier 1 statutory late penalty",
+    "engine": "calculateAcraStatutoryDeadlines",
+    "input": {
+      "financialYearEndDate": "2025-12-31",
+      "isListedCompany": true,
+      "currentDate": "2026-06-01"
+    },
+    "expected": {
+      "companyType": "PUBLIC_LISTED",
+      "agmDeadlineDate": "2026-04-30",
+      "arFilingDeadlineDate": "2026-05-31",
+      "isAnnualReturnOverdue": true,
+      "penaltyTier": "TIER_1_UP_TO_3_MONTHS",
+      "statutoryLatePenaltySgd": 300
+    }
+  },
+  {
+    "caseId": "ACRA-SMALL-COMPANY-EXEMPT",
+    "description": "ACRA Small Company Audit Exemption meeting statutory 2-of-3 criteria",
+    "engine": "evaluateSmallCompanyAuditExemption",
+    "input": {
+      "isPrivateCompany": true,
+      "currentYearFinancials": {
+        "annualRevenueSgd": 4500000,
+        "totalAssetsSgd": 3200000,
+        "fullTimeEmployees": 18
+      },
+      "priorYearFinancials": {
+        "annualRevenueSgd": 3800000,
+        "totalAssetsSgd": 2700000,
+        "fullTimeEmployees": 15
+      }
+    },
+    "expected": {
+      "isExemptFromAudit": true,
+      "auditRequirementStatus": "AUDIT_EXEMPT_UNAUDITED_STATEMENTS_PERMITTED",
+      "verdictCode": "QUALIFIES_AS_SMALL_COMPANY_AUDIT_EXEMPT"
+    }
+  },
+  {
+    "caseId": "PDPA-BREACH-NRIC-72H",
+    "description": "PDPA mandatory data breach notification for significant harm (NRIC/FIN)",
+    "engine": "evaluatePdpaBreachNotification",
+    "input": {
+      "affectedIndividualsCount": 85,
+      "compromisedDataCategories": ["NRIC_OR_FIN", "FINANCIAL_ACCOUNTS_OR_CREDIT_CARDS"],
+      "annualSingaporeTurnoverSgd": 5000000,
+      "assessmentCompletedTimestamp": "2026-11-06T10:00:00.000Z"
+    },
+    "expected": {
+      "isMandatoryToNotifyPdpc": true,
+      "pdpcNotificationDeadlineHours": 72,
+      "pdpcDeadlineTimestamp": "2026-11-09T10:00:00.000Z",
+      "isMandatoryToNotifyIndividuals": true,
+      "maximumStatutoryFinancialPenaltySgd": 1000000
+    }
+  }
+]

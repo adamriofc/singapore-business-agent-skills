@@ -1,0 +1,63 @@
+[
+  {
+    "caseId": "ENTERPRISE-EDG-STANDARD",
+    "description": "Enterprise Singapore EDG standard 50% co-funding grant evaluation",
+    "engine": "evaluateEnterpriseGrant",
+    "input": {
+      "grantScheme": "EDG",
+      "qualifyingProjectCostSgd": 200000,
+      "localShareholdingPercentage": 35,
+      "isRegisteredInSingapore": true,
+      "groupAnnualTurnoverSgd": 5000000,
+      "groupEmployeeCount": 25
+    },
+    "expected": {
+      "isEligibleForGrant": true,
+      "statutorySupportRatePercent": 50,
+      "approvedGrantFundingSgd": 100000,
+      "companyCoPaymentShareSgd": 100000
+    }
+  },
+  {
+    "caseId": "ENTERPRISE-MRA-CAPPED",
+    "description": "Enterprise Singapore MRA grant statutory cap constraint (S$100k per market)",
+    "engine": "evaluateEnterpriseGrant",
+    "input": {
+      "grantScheme": "MRA",
+      "qualifyingProjectCostSgd": 60000,
+      "localShareholdingPercentage": 100,
+      "mraCumulativeClaimedSgd": 80000
+    },
+    "expected": {
+      "availableCapHeadroomSgd": 20000,
+      "approvedGrantFundingSgd": 20000,
+      "companyCoPaymentShareSgd": 40000
+    }
+  },
+  {
+    "caseId": "CROSSBORDER-SG-ID-DIVIDEND",
+    "description": "SG-ID cross-border holding structure dividend repatriation waterfall with DTA and Section 13(8) FSIE",
+    "engine": "evaluateCrossBorderHoldingStructure",
+    "input": {
+      "dividendAmountIdrOrSgd": 1000000,
+      "equityShareholdingPercent": 100,
+      "shareHoldingDurationMonths": 24,
+      "hasValidCorCertificate": true,
+      "operatingTaxRateInOrigin": 0.22,
+      "estimatedAnnualSgMaintenanceCostSgd": 8000
+    },
+    "expected": {
+      "directWithholdingTaxRate": 0.20,
+      "directWithholdingTaxPayable": 200000,
+      "sgHoldCoWhtRate": 0.10,
+      "sgHoldCoWhtPayable": 100000,
+      "section13_8_FsieExemptionApplies": true,
+      "singaporeCitOnForeignDividend": 0,
+      "netCashDelivered": 900000,
+      "grossTaxSavingsBenefit": 100000,
+      "netFinancialEfficiencyDelta": 92000,
+      "isHoldingStructureEconomicallySuperior": true,
+      "section13W_CapitalGainsSafeHarbourQualified": true
+    }
+  }
+]

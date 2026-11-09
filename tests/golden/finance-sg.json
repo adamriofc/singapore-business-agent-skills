@@ -1,0 +1,73 @@
+[
+  {
+    "caseId": "SORA-WACC-STANDARD",
+    "description": "Corporate WACC under SORA benchmark with standard 60/40 capital structure and 17% CIT tax shield",
+    "engine": "calculateSingaporeWacc",
+    "input": {
+      "marketValueOfEquitySgd": 6000000,
+      "marketValueOfDebtSgd": 4000000,
+      "riskFreeRate": 0.030,
+      "equityBeta": 1.2,
+      "equityRiskPremium": 0.055,
+      "soraBaseRate": 0.035,
+      "debtCreditSpread": 0.015,
+      "citTaxRate": 0.17
+    },
+    "expected": {
+      "equityWeightPercent": 60,
+      "debtWeightPercent": 40,
+      "costOfEquityKePercent": 9.6,
+      "preTaxCostOfDebtKdPercent": 5.0,
+      "afterTaxCostOfDebtPercent": 4.15,
+      "weightedAverageCostOfCapitalPercent": 7.42
+    }
+  },
+  {
+    "caseId": "SORA-WACC-ALL-EQUITY",
+    "description": "100% Equity financed Singapore company WACC boundary",
+    "engine": "calculateSingaporeWacc",
+    "input": {
+      "marketValueOfEquitySgd": 5000000,
+      "marketValueOfDebtSgd": 0,
+      "riskFreeRate": 0.030,
+      "equityBeta": 1.0,
+      "equityRiskPremium": 0.050
+    },
+    "expected": {
+      "equityWeightPercent": 100,
+      "debtWeightPercent": 0,
+      "costOfEquityKePercent": 8.0,
+      "weightedAverageCostOfCapitalPercent": 8.0
+    }
+  },
+  {
+    "caseId": "WORKING-CAPITAL-CCC-SURPLUS",
+    "description": "Singapore SME working capital liquidity, Cash Conversion Cycle (75 days), and capital surplus",
+    "engine": "calculateSingaporeWorkingCapital",
+    "input": {
+      "currentAssetsSgd": 2000000,
+      "currentLiabilitiesSgd": 1000000,
+      "cashAndEquivalentsSgd": 500000,
+      "tradeReceivablesSgd": 700000,
+      "inventorySgd": 800000,
+      "tradePayablesSgd": 400000,
+      "annualRevenueSgd": 7300000,
+      "annualCogsSgd": 3650000
+    },
+    "expected": {
+      "netWorkingCapitalSgd": 1000000,
+      "currentRatio": 2.0,
+      "quickRatio": 1.2,
+      "cashRatio": 0.5,
+      "isSolventShortTerm": true,
+      "daysSalesOutstandingDso": 35,
+      "daysInventoryOutstandingDio": 80,
+      "daysPayableOutstandingDpo": 40,
+      "operatingCycleDays": 115,
+      "cashConversionCycleDays": 75,
+      "workingCapitalRequiredForCccSgd": 750000,
+      "workingCapitalSurplusOrDeficitSgd": 250000,
+      "position": "WORKING_CAPITAL_SURPLUS"
+    }
+  }
+]

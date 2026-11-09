@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/claude-plugin-marketplace.json",
+  "name": "singapore-business-agent-skills",
+  "description": "Production-oriented compliance, tax, legal, and operational domain-intelligence infrastructure for AI agents operating in the Singapore business ecosystem.",
+  "owner": {
+    "name": "adamriofc"
+  },
+  "plugins": [
+    {
+      "name": "tax-sg",
+      "source": "./tax-sg",
+      "description": "Production-grade Singapore Tax Intelligence, Engineering & Compliance: Corporate Income Tax (CIT Section 43), GST 9% filings, Section 45 Withholding Tax (WHT), and bilateral SG-ID Double Tax Agreement (DTA) treaty relief."
+    },
+    {
+      "name": "hr-sg",
+      "source": "./hr-sg",
+      "description": "Production-grade Singapore Human Resources, Employment & Manpower Intelligence: CPF contributions & wage ceiling progression (2024-2026), MOM Part IV Overtime audits, COMPASS EP points eligibility, and Foreign Workforce Quota (DRC/FWL)."
+    },
+    {
+      "name": "legal-sg",
+      "source": "./legal-sg",
+      "description": "Production-grade Singapore Corporate Governance & Legal Compliance: ACRA statutory filing deadlines (AGM/AR), 13th Schedule Small Company Audit Exemption, and PDPA mandatory 72-hour data breach notification."
+    },
+    {
+      "name": "finance-sg",
+      "source": "./finance-sg",
+      "description": "Production-grade Singapore Corporate Finance Intelligence: SORA benchmark & CAPM WACC capital structure modeling, and Net Working Capital with Cash Conversion Cycle (CCC) liquidity management."
+    },
+    {
+      "name": "strategic-sg",
+      "source": "./strategic-sg",
+      "description": "Production-grade Singapore Strategic Planning & Cross-Border Expansion Intelligence: Enterprise Singapore government grants (EDG/PSG/MRA) co-funding, and SG-ID cross-border holding structure dividend optimization."
+    }
+  ]
+}

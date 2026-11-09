@@ -17,10 +17,14 @@
     "test:sandbox": "bash scripts/sandbox-test.sh",
     "test:perf": "node scripts/perf-gate.js",
     "test:all": "npm test && npm run test:security && npm run test:cli && npm run test:integration && npm run test:perf",
+    "benchmark": "node scripts/benchmark.js --json-report docs/benchmark-results/latest.json",
+    "generate:metadata": "node scripts/generate-metadata.js",
     "generate:catalog": "node scripts/generate-capability-catalog.js",
     "validate:capabilities": "node scripts/validate-capabilities.js",
     "validate:suite": "node scripts/validate-suite.js",
     "validate:schema": "node tests/schema/validator.test.js",
+    "validate:docs": "node scripts/validate-docs.js",
+    "validate:metadata": "node scripts/generate-metadata.js --check",
     "validate:release": "node scripts/validate-release.js",
     "sha256:verify": "bash scripts/sha256sums.sh verify",
     "validate": "node scripts/validate-release.js"
@@ -70,7 +74,9 @@
     "LICENSE",
     "SKILL_PROTOCOL.md",
     "canonical-metadata.json",
-    "SHA256SUMS.txt"
+    "SHA256SUMS.txt",
+    "schemas",
+    ".claude-plugin"
   ],
   "dependencies": {}
 }

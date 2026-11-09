@@ -1,0 +1,117 @@
+[
+  {
+    "caseId": "CIT-STARTUP-YA2024",
+    "description": "New Startup Exemption YA 2024 Chargeable Income S$200,000 with 50% CIT Rebate",
+    "engine": "calculateSingaporeCit",
+    "input": {
+      "chargeableIncome": 200000,
+      "isQualifyingStartup": true,
+      "yearOfAssessment": 2024
+    },
+    "expected": {
+      "chargeableIncomeSgd": 200000,
+      "totalExemptIncomeSgd": 125000,
+      "taxBeforeRebateSgd": 12750,
+      "citRebateSgd": 6375,
+      "netTaxPayableSgd": 6375,
+      "effectiveTaxRatePercent": 3.19
+    }
+  },
+  {
+    "caseId": "CIT-PARTIAL-YA2024",
+    "description": "Partial Tax Exemption (General Company) YA 2024 Chargeable Income S$300,000",
+    "engine": "calculateSingaporeCit",
+    "input": {
+      "chargeableIncome": 300000,
+      "isQualifyingStartup": false,
+      "yearOfAssessment": 2024
+    },
+    "expected": {
+      "totalExemptIncomeSgd": 102500,
+      "taxBeforeRebateSgd": 33575,
+      "citRebateSgd": 16787.5,
+      "netTaxPayableSgd": 16787.5
+    }
+  },
+  {
+    "caseId": "GST-RATE-2022",
+    "description": "Historical GST statutory rate before 2023 transition",
+    "engine": "calculateSingaporeGstRate",
+    "input": {
+      "dateStr": "2022-12-31"
+    },
+    "expected": {
+      "rate": 0.07
+    }
+  },
+  {
+    "caseId": "GST-RATE-2023",
+    "description": "Historical GST statutory rate during 2023 transition",
+    "engine": "calculateSingaporeGstRate",
+    "input": {
+      "dateStr": "2023-06-15"
+    },
+    "expected": {
+      "rate": 0.08
+    }
+  },
+  {
+    "caseId": "GST-RATE-2024",
+    "description": "Current GST statutory rate from 2024 onwards (9%)",
+    "engine": "calculateSingaporeGstRate",
+    "input": {
+      "dateStr": "2024-01-01"
+    },
+    "expected": {
+      "rate": 0.09
+    }
+  },
+  {
+    "caseId": "GST-REG-RETROSPECTIVE",
+    "description": "Compulsory GST Registration retrospective breach (> S$1,000,000)",
+    "engine": "evaluateGstRegistrationLiability",
+    "input": {
+      "past4QuartersTurnover": [300000, 300000, 300000, 300000],
+      "projectedNext12MonthsTurnover": 50000
+    },
+    "expected": {
+      "isCompulsoryRegistrationRequired": true,
+      "retrospectiveBreach": true,
+      "prospectiveBreach": false
+    }
+  },
+  {
+    "caseId": "GST-FILING-9PCT",
+    "description": "GST Form 5 Net Filing calculation under 9% rate with reverse charge",
+    "engine": "calculateGstFiling",
+    "input": {
+      "standardRatedSuppliesSgd": 500000,
+      "taxablePurchasesSgd": 200000,
+      "importedB2bServicesSgd": 50000,
+      "effectiveRate": 0.09
+    },
+    "expected": {
+      "outputTaxStandardSgd": 45000,
+      "reverseChargeOutputTaxSgd": 4500,
+      "totalOutputTaxSgd": 49500,
+      "totalInputTaxClaimedSgd": 22500,
+      "netGstPayableSgd": 27000,
+      "position": "NET_PAYABLE_TO_IRAS"
+    }
+  },
+  {
+    "caseId": "WHT-INTEREST-DOMESTIC",
+    "description": "Section 45 Non-resident interest payment statutory domestic 15% withholding",
+    "engine": "calculateSingaporeWht",
+    "input": {
+      "paymentType": "INTEREST",
+      "grossAmountSgd": 100000
+    },
+    "expected": {
+      "statutoryDomesticRate": 0.15,
+      "withholdingTaxPayableToIrasSgd": 15000,
+      "netRemittanceToNonResidentSgd": 85000,
+      "irasFormType": "FORM_IR37"
+    }
+  }
+]

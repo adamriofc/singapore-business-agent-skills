@@ -1,0 +1,115 @@
+[
+  {
+    "caseId": "CPF-CITIZEN-STANDARD-2024",
+    "description": "CPF Standard Citizen <= 55 yo Ordinary Wage S$6,000 in 2024 with SDL & CDAC",
+    "engine": "calculateSingaporeCpf",
+    "input": {
+      "ordinaryWage": 6000,
+      "additionalWage": 0,
+      "age": 30,
+      "residentialStatus": "CITIZEN",
+      "calendarYear": 2024,
+      "communityFund": "CDAC"
+    },
+    "expected": {
+      "employeeCpfSgd": 1200,
+      "employerCpfSgd": 1020,
+      "totalCpfSgd": 2220,
+      "skillsDevelopmentLevySgd": 11.25,
+      "selfHelpGroupDeductionSgd": 2,
+      "netTakeHomePaySgd": 4798,
+      "totalEmployerCostSgd": 7031.25
+    }
+  },
+  {
+    "caseId": "CPF-OW-CEILING-2024",
+    "description": "CPF Ordinary Wage statutory ceiling in calendar year 2024 (S$6,800)",
+    "engine": "calculateSingaporeCpf",
+    "input": {
+      "ordinaryWage": 10000,
+      "age": 30,
+      "calendarYear": 2024
+    },
+    "expected": {
+      "owSubjectToCpfSgd": 6800
+    }
+  },
+  {
+    "caseId": "CPF-OW-CEILING-2025",
+    "description": "CPF Ordinary Wage statutory ceiling in calendar year 2025 (S$7,400)",
+    "engine": "calculateSingaporeCpf",
+    "input": {
+      "ordinaryWage": 10000,
+      "age": 30,
+      "calendarYear": 2025
+    },
+    "expected": {
+      "owSubjectToCpfSgd": 7400
+    }
+  },
+  {
+    "caseId": "CPF-OW-CEILING-2026",
+    "description": "CPF Ordinary Wage statutory ceiling in calendar year 2026 (S$8,000)",
+    "engine": "calculateSingaporeCpf",
+    "input": {
+      "ordinaryWage": 10000,
+      "age": 30,
+      "calendarYear": 2026
+    },
+    "expected": {
+      "owSubjectToCpfSgd": 8000
+    }
+  },
+  {
+    "caseId": "CPF-AW-CEILING-BONUS",
+    "description": "CPF Annual Additional Wage (AW) ceiling cap on S$50,000 bonus",
+    "engine": "calculateSingaporeCpf",
+    "input": {
+      "ordinaryWage": 6800,
+      "additionalWage": 50000,
+      "age": 30,
+      "calendarYear": 2024,
+      "ytdOrdinaryWages": 74800
+    },
+    "expected": {
+      "awCeilingRemainingSgd": 20400,
+      "awSubjectToCpfSgd": 20400
+    }
+  },
+  {
+    "caseId": "MOM-OT-WORKMAN-PART4",
+    "description": "MOM Part IV Workman S$3,000 basic salary with 20 OT hours compliant",
+    "engine": "calculateMomOvertimeAndCompliance",
+    "input": {
+      "employeeCategory": "WORKMAN",
+      "monthlyBasicSalarySgd": 3000,
+      "overtimeHours": 20,
+      "dailyMaxHoursWorked": 10,
+      "yearsOfService": 3
+    },
+    "expected": {
+      "isCoveredUnderPartIV": true,
+      "coverageStatusReason": "WORKMAN_SALARY_WITHIN_CAP",
+      "overtimeHoursWorked": 20,
+      "totalOvertimePayPayableSgd": 472,
+      "statutoryAnnualLeaveDays": 9,
+      "isFullyCompliant": true
+    }
+  },
+  {
+    "caseId": "MOM-OT-CAP-VIOLATION",
+    "description": "MOM Part IV Overtime breach: 80 OT hours (> 72h) and 14h daily (> 12h)",
+    "engine": "calculateMomOvertimeAndCompliance",
+    "input": {
+      "employeeCategory": "WORKMAN",
+      "monthlyBasicSalarySgd": 2000,
+      "overtimeHours": 80,
+      "dailyMaxHoursWorked": 14
+    },
+    "expected": {
+      "exceedsMonthlyOtCap": true,
+      "exceedsDailyWorkCap": true,
+      "isFullyCompliant": false
+    }
+  }
+]

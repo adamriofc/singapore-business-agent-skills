@@ -8,7 +8,7 @@
   "goldenCases": 25,
   "benchmarkDomains": 5,
   "benchmarkAssertions": 60,
-  "totalTestAssertions": 120,
+  "totalTestAssertions": 237,
   "nodeSupport": {
     "minimumSupported": "20",
     "ltsRecommended": "22",
