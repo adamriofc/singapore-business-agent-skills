@@ -2,24 +2,24 @@
   "manifestVersion": "1.2.0",
   "provenancePolicy": "The git tag is the authoritative immutable release boundary. This manifest documents release lineage (version, source, metrics) but does NOT attempt to self-reference its own commit hash — such self-referential SHA attestation is cryptographically impossible in Git. Integrity is established by: (1) immutable git tag, (2) SHA256SUMS.txt for rulesets, (3) canonical-metadata.json, (4) npm test golden corpus.",
   "repository": "https://github.com/adamriofc/singapore-business-agent-skills",
-  "releaseVersion": "v1.0.0",
-  "releaseTag": "v1.0.0",
-  "releaseSourceCommitHash": "initial-release",
-  "releaseSourceDescription": "Initial production release v1.0.0: Singapore business agent skills infrastructure (IRAS CIT/GST/WHT, CPF/MOM/COMPASS, ACRA Companies Act, PDPA, SORA WACC, EnterpriseSG, SG-ID DTA)",
-  "generatedAt": "2026-11-06T00:00:00.000Z",
+  "releaseVersion": "v2.0.0",
+  "releaseTag": "v2.0.0",
+  "releaseSourceCommitHash": "master",
+  "releaseSourceDescription": "Production release v2.0.0: Pure Singapore Regulatory Core with 6 domains (Tax, HR, Legal, Finance, Strategic, Marketing), 71 skills, 64 computational engines, 130 golden cases, 683 benchmark assertions, 1357 test assertions, zero external runtime dependencies.",
+  "generatedAt": "2026-11-10T20:15:00.000Z",
   "metrics": {
-    "plugins": 5,
-    "bundles": 5,
-    "skills": 15,
-    "engines": 15,
-    "goldenCases": 25,
-    "benchmarkDomains": 5,
-    "benchmarkAssertions": 60,
-    "totalTestAssertions": 120
+    "plugins": 6,
+    "bundles": 6,
+    "skills": 71,
+    "engines": 64,
+    "goldenCases": 130,
+    "benchmarkDomains": 6,
+    "benchmarkAssertions": 683,
+    "totalTestAssertions": 1357
   },
   "integrityHashes": {
-    "sha256sumsFileHash": "5fb75a7f701bc8155197a5b4ffe670bf9f6288faff256ba787bdb64d10d27897",
-    "benchmarkArtifactHash": "1942e4b1a331f4aed46b82370a9462fa6025abb2ad4f6b09bb8e564b988f07b4"
+    "sha256sumsFileHash": "6869558b23dda1cca90f64dc0eb168e02299639c708b12803dba0419d8390317",
+    "benchmarkArtifactHash": "fd0322be84b70d91c98f2713f1a692450388a9b3d3f3b0e57e01e9450c407740"
   },
   "nodeMatrix": {
     "minimumSupported": "20",

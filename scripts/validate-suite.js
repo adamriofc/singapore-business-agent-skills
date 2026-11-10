@@ -26,7 +26,7 @@ const REGISTRY_PATH = path.join(ROOT, 'registry/index.json');
 const CAPABILITIES_PATH = path.join(ROOT, 'registry/capabilities.json');
 const METADATA_PATH = path.join(ROOT, 'canonical-metadata.json');
 
-const CANONICAL_PLUGINS = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg'];
+const CANONICAL_PLUGINS = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg', 'marketing-sg'];
 const EXPECTED_FULL_SUITE_BUNDLE = 'full-business-suite.json';
 
 function validateSuite() {
@@ -141,7 +141,7 @@ function validateSuite() {
       console.error(`❌ [6] full-business-suite missing plugins: ${missingPlugins.join(', ')}`);
       errors++;
     } else {
-      console.log('  ✅ [6] full-business-suite covers all 5 canonical plugins.');
+      console.log(`  ✅ [6] full-business-suite covers all ${CANONICAL_PLUGINS.length} canonical plugins.`);
     }
   }
 

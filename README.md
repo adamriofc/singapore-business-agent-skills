@@ -13,8 +13,8 @@
   <a href="https://github.com/adamriofc/singapore-business-agent-skills/actions/workflows/ci.yml"><img src="https://github.com/adamriofc/singapore-business-agent-skills/actions/workflows/ci.yml/badge.svg" alt="CI Pipeline"></a>
   <a href="https://app.openworklabs.com/"><img src="https://img.shields.io/badge/OpenCode-Compatible-brightgreen.svg" alt="OpenCode Compatibility"></a>
   <a href="engines/"><img src="https://img.shields.io/badge/Hybrid%20Engine-LLM--Safe-orange.svg" alt="LLM-Safe Hybrid Engine"></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/Test%20Suite-120%2B%20Assertions-success.svg" alt="120+ Test Assertions"></a>
-  <a href="bundles/full-business-suite.json"><img src="https://img.shields.io/badge/Suite-15%20Skills%20%C2%B7%205%20Domains-blueviolet.svg" alt="15 Skills · 5 Domains"></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/Test%20Suite-1357%20Assertions-success.svg" alt="1357 Test Assertions"></a>
+  <a href="bundles/full-business-suite.json"><img src="https://img.shields.io/badge/Suite-71%20Skills%20%C2%B7%206%20Domains-blueviolet.svg" alt="71 Skills · 6 Domains"></a>
   <a href="engines/rules/"><img src="https://img.shields.io/badge/Rulesets-SHA--256%20Verified-success.svg" alt="SHA-256 Verified"></a>
 </p>
 
@@ -25,19 +25,19 @@
 <!-- GENERATED:STATS -->
 | Metric | Single Source of Truth Value | Measurement Scope |
 |---|---|---|
-| **Repository Version** | `v1.0.0` | SemVer release boundary |
-| **Canonical Plugins** | `5` | Active domain plugins (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`) |
-| **Agent Skills** | `15` | Machine-readable `SKILL.md` capability packs |
-| **Deterministic Engines** | `15` | Pure Node.js calculation & statutory evaluation engines (`engines/`) |
-| **Golden Cases** | `25` | Static corpus cases across 5 benchmark domains |
-| **Benchmark Assertions** | `60` | Deterministic assertions in benchmark suites |
-| **Total Test Assertions** | `120+` | Deepened matrix assertions across full `npm test` suite |
+| **Repository Version** | `v2.0.0` | SemVer release boundary |
+| **Canonical Plugins** | `6` | Active domain plugins (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`, `marketing-sg`) |
+| **Agent Skills** | `71` | Machine-readable `SKILL.md` capability packs |
+| **Deterministic Engines** | `64` | Pure Node.js calculation & statutory evaluation engines (`engines/`) |
+| **Golden Cases** | `130` | Static corpus cases across 6 benchmark domains |
+| **Benchmark Assertions** | `683` | Deterministic assertions in benchmark suites |
+| **Total Test Assertions** | `1357` | Deepened matrix assertions across full `npm test` suite |
 | **Node.js Compatibility** | `20 / 22 / 24` | `20` (Minimum Supported), `22` (LTS Recommended), `24` (Current Tested) |
 <!-- /GENERATED:STATS -->
 
-> **Evidence Boundary Note**: Independent external domain validation and enterprise production proof are still pending.
+> **Evidence Boundary Note**: Independent external domain validation and enterprise production proof are ongoing as part of versioned release qualification.
 
-**Singapore Business Agent Skills** is a domain intelligence infrastructure designed to give AI agents an authentic Singapore business and regulatory intelligence layer. Built for **OpenWork Desktop**, **OpenCode CLI**, **Claude Code (CLI)**, **Cursor IDE**, **Codex**, **OpenClaw**, **Hermes**, **Gemini**, and custom agent frameworks, this repository integrates **15 Agent Skills** across **5 canonical plugins** (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`) with **15 Deterministic Computational & Statutory Engines** (`engines/`) and single source of truth temporal JSON rulesets (`engines/rules/`).
+**Singapore Business Agent Skills** is a domain intelligence infrastructure designed to give AI agents an authentic Singapore business and regulatory intelligence layer. Built for **OpenWork Desktop**, **OpenCode CLI**, **Claude Code (CLI)**, **Cursor IDE**, **Codex**, **OpenClaw**, **Hermes**, **Gemini**, and custom agent frameworks, this repository integrates **71 Agent Skills** across **6 canonical plugins** (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`, `marketing-sg`) with **64 Deterministic Computational & Statutory Engines** (`engines/`) and single source of truth temporal JSON rulesets (`engines/rules/`).
 
 ### 💡 Why Standard LLMs Fail at Singapore Business & Compliance Calculations
 Generic AI models (such as unassisted ChatGPT or Claude) predict words probabilistically (*token prediction*). When tasked with calculating Corporate Income Tax (CIT) with Start-Up Tax Exemption (SUTE), CPF progressive wage ceilings, MOM COMPASS scoring, or ACRA statutory filing deadlines, standard LLMs encounter 3 critical failure modes:
@@ -47,7 +47,7 @@ Generic AI models (such as unassisted ChatGPT or Claude) predict words probabili
 
 ### 🛡️ The Hybrid Architecture Solution
 This repository decouples AI **reasoning** from **calculation**:
-- **AI (Agent Skill)**: Understands natural language, extracts parameters, and synthesizes explanations.
+- **AI (Agent Skill)**: Understands natural language, extracts parameters, enforces closed delimiter boundaries, and synthesizes explanations.
 - **Engine (Node.js)**: Computes exact invariant mathematics (deterministic computation removes LLM arithmetic hallucination within the engine) per official government rulesets.
 
 ---
@@ -56,9 +56,9 @@ This repository decouples AI **reasoning** from **calculation**:
 
 | Agent Runtime / Environment | Integration Level | Status | Verification Mechanism |
 |---|---|---|---|
-| **Node.js (v20, v22, v24)** | Native Engine Execution (`engines/`) | ✅ **Verified** | CI Matrix (`npm test` 120+ assertions & 25 golden cases) |
+| **Node.js (v20, v22, v24)** | Native Engine Execution (`engines/`) | ✅ **Verified** | CI Matrix (`npm test` 1357 assertions & 130 golden cases) |
 | **OpenCode CLI** | Native Skill Integration (`.opencode/skills/`) | ✅ **Verified** | Dynamic YAML Schema & Skill Protocol Tests |
-| **OpenWork Desktop & Cloud** | Native Plugin Manifest (`.claude-plugin/`) | ✅ **Verified** | 5 Manifest Checks & SHA-256 Ruleset Integrity |
+| **OpenWork Desktop & Cloud** | Native Plugin Manifest (`.claude-plugin/`) | ✅ **Verified** | 6 Manifest Checks & SHA-256 Ruleset Integrity |
 | **Claude Code (CLI)** | Native Plugin Installer (`npx skills`) | ✅ **Verified** | Universal Skill Protocol (`SKILL_PROTOCOL.md`) |
 | **Cursor IDE** | Skill Shorthand (`.cursor/skills/`) | 🟡 **Compatible** | Agent Skill Standard Structure (`SKILL.md`) |
 | **Codex** | Skill Shorthand (`.agents/skills/`) | 🟡 **Compatible** | Agent Skill Standard Structure (`SKILL.md`) |
@@ -74,7 +74,7 @@ To ensure optimal execution fidelity without vendor lock in, host agents should 
 
 | Capability Tier | Minimum Model Specification | Target Domain & Workloads |
 |---|---|---|
-| **Class A: Complex Statutory & Legal Reasoning** | • High deductive reasoning capacity<br>• Context window $\ge$ 16k tokens<br>• Frontier cloud model or $\ge$ 70B local open-weights | Companies Act 1967 governance, PDPA 72-hour breach materiality assessments, MOM COMPASS strategic economic bonus scoring, and SG-ID cross-border holding tax treaty optimization. |
+| **Class A: Complex Statutory & Legal Reasoning** | • High deductive reasoning capacity<br>• Context window $\ge$ 16k tokens<br>• Frontier cloud model or $\ge$ 70B local open-weights | Companies Act 1967 governance, PDPA 72-hour breach materiality assessments, MOM COMPASS strategic economic bonus scoring, and corporate holding structure optimization. |
 | **Class B: Structured Tool-Use & Parameter Extraction** | • Native Function Calling / Tool-Use support<br>• Strict JSON schema adherence<br>• Efficient cloud model or $\ge$ 7B–14B local model | Parameter extraction from business queries, CLI tool invocation (`sg-agent-skills cit`, `cpf`, `compass`), and automated statutory deadline alerting. |
 
 ---
@@ -85,25 +85,27 @@ To ensure optimal execution fidelity without vendor lock in, host agents should 
 flowchart TD
     User["User / Agent Prompt"] --> SemanticContext["SEMANTIC BUSINESS CONTEXT<br/>Entity Type, Revenue, Headcount, Sector, Nationality"]
     
-    SemanticContext --> Router["STATUTORY DOMAIN ROUTER<br/>ACRA · IRAS · MOM · CPF · MAS · PDPC"]
+    SemanticContext --> Router["STATUTORY DOMAIN ROUTER<br/>ACRA · IRAS · MOM · CPF · MAS · PDPC · ASAS"]
     
-    Router --> TaxDomain["tax-sg Engines<br/>CIT 17%, SUTE, PTE, GST 9%, WHT 45/45A"]
-    Router --> HrDomain["hr-sg Engines<br/>CPF Ceilings $8k, MOM OT, COMPASS, DRC Quota"]
-    Router --> LegalDomain["legal-sg Engines<br/>ACRA AGM/AR Deadlines, Small Co Audit, PDPA 72h"]
-    Router --> FinanceDomain["finance-sg Engines<br/>MAS SORA WACC, SFRS Working Capital &amp; CCC"]
-    Router --> StrategicDomain["strategic-sg Engines<br/>EnterpriseSG Grants, SG-ID Cross-Border Holding"]
+    Router --> TaxDomain["tax-sg Engines (14)<br/>CIT 17%, SUTE, PTE, GST 9%, WHT 45/45A, FTC, EIS, BEPS Pillar 2"]
+    Router --> HrDomain["hr-sg Engines (14)<br/>CPF Ceilings $8k, MOM OT, COMPASS, DRC Quota, PWM, KETs"]
+    Router --> LegalDomain["legal-sg Engines (14)<br/>ACRA Deadlines, Small Co Audit, PDPA 72h, IPOS, Striking-Off"]
+    Router --> FinanceDomain["finance-sg Engines (16)<br/>MAS SORA WACC, SFRS 115/116, ECL 109, VCC Waterfall, FX Hedge"]
+    Router --> StrategicDomain["strategic-sg Engines (6)<br/>EnterpriseSG Grants, Corporate Structuring, Scenario Planning"]
+    Router --> MarketingDomain["marketing-sg Engines (7)<br/>ASAS SCAP Compliance, PDPA BCI Outbound, Geo SEO, Ads ROI"]
     
     TaxDomain --> Rulesets["SSOT Statutory Rulesets<br/>(engines/rules/*.json)"]
     HrDomain --> Rulesets
     LegalDomain --> Rulesets
     FinanceDomain --> Rulesets
     StrategicDomain --> Rulesets
+    MarketingDomain --> Rulesets
     
     Rulesets --> Integrity["Cryptographic SHA-256 Trust Anchor<br/>(SHA256SUMS.txt &amp; integrity.js)"]
     
     Integrity --> ValidatedMath["Deterministic Invariant Calculation Output"]
     
-    ValidatedMath --> HoldingGovernance["Corporate Holding & DTA Treaty Execution<br/>(IRAS Treaty Relief & S13(8) FSIE Safe Harbours)"]
+    ValidatedMath --> HoldingGovernance["Corporate Holding & Statutory Execution<br/>(IRAS Tax Relief & S13(8) FSIE / S13W Safe Harbours)"]
     
     HoldingGovernance --> Synthesis["Agent Narrative Synthesis &amp; Executive Reporting"]
 ```
@@ -135,31 +137,31 @@ singapore-business-agent-skills/
 
 ## 🏢 Singapore Business Agent Suite — Installation Profiles
 
-**One cohesive ecosystem. Five Singapore business domains. Choose your installation profile.**
+**One cohesive ecosystem. Six Singapore business domains. Choose your installation profile.**
 
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
-│             SINGAPORE BUSINESS AGENT SUITE v1.0.0               │
-│         15 Skills · 5 Plugins · 15 Deterministic Engines        │
+│             SINGAPORE BUSINESS AGENT SUITE v2.0.0               │
+│         71 Skills · 6 Plugins · 64 Deterministic Engines        │
 ├──────────────────────────┬──────────────────────────────────────┤
 │  FULL SUITE              │  SELECTIVE PROFILES                  │
-│  All 5 domains           │  Compliance Pack (ACRA, IRAS, MOM)   │
-│  15 skills               │  Finance & Strategy Pack             │
-│  15 engines              │  Cross-Border ASEAN Expansion        │
+│  All 6 domains           │  Compliance Pack (ACRA, IRAS, MOM)   │
+│  71 skills               │  Finance & Strategy Pack             │
+│  64 engines              │  Growth & Marketing Pack             │
 └──────────────────────────┴──────────────────────────────────────┘
 ```
 
 ### Profile A — Full Business Suite (Recommended)
-> All 5 domains · 15 skills · 15 engines
+> All 6 domains · 71 skills · 64 engines
 
 ```bash
 npx skills add adamriofc/singapore-business-agent-skills
 ```
 
-**Use case**: Regional founders, venture builders, corporate secretarial firms, enterprise AI agents, and cross-border advisory practices.
+**Use case**: Regional founders, venture builders, corporate secretarial firms, enterprise AI agents, and full-service Singapore business advisory practices.
 
 ### Profile B — Singapore Compliance & Corporate Governance Pack
-> `legal-sg` + `tax-sg` + `hr-sg` · 11 skills · 11 engines
+> `legal-sg` + `tax-sg` + `hr-sg` · 42 skills · 64 engines
 
 ```bash
 npx skills add adamriofc/singapore-business-agent-skills --domains legal-sg,tax-sg,hr-sg
@@ -168,31 +170,22 @@ npx skills add adamriofc/singapore-business-agent-skills --domains legal-sg,tax-
 **Use case**: Corporate secretaries, tax agents, HR managers, and corporate counsel managing ACRA AGM/AR filings, IRAS CIT/GST returns, MOM COMPASS scoring, and PDPA breach reporting.
 
 ### Profile C — Finance, Treasury & Strategy Pack
-> `finance-sg` + `strategic-sg` + `tax-sg` · 8 skills · 8 engines
+> `finance-sg` + `strategic-sg` + `tax-sg` · 36 skills · 64 engines
 
 ```bash
 npx skills add adamriofc/singapore-business-agent-skills --domains finance-sg,strategic-sg,tax-sg
 ```
 
-**Use case**: CFOs, corporate treasurers, M&A analysts, and investment holding directors structuring MAS SORA-linked credit facilities, SFRS working capital, and SG-ID cross-border holding tax models.
+**Use case**: CFOs, corporate treasurers, M&A analysts, and investment holding directors structuring MAS SORA-linked credit facilities, SFRS working capital, and Section 13(8) FSIE corporate holding tax models.
 
-### Profile D — Manpower & Talent Mobility Pack
-> `hr-sg` · 4 skills · 4 engines
-
-```bash
-npx skills add adamriofc/singapore-business-agent-skills --domains hr-sg
-```
-
-**Use case**: HR managers, recruitment firms, talent mobility specialists, and corporate immigration teams managing CPF contributions, MOM overtime limits, COMPASS EP evaluations, and DRC quota headroom.
-
-### Profile E — Cross-Border ASEAN Holding & Expansion Pack
-> `strategic-sg` + `tax-sg` + `finance-sg` · 8 skills · 8 engines
+### Profile D — Growth & Marketing Pack
+> `marketing-sg` + `strategic-sg` · 13 skills · 64 engines
 
 ```bash
-npx skills add adamriofc/singapore-business-agent-skills --domains strategic-sg,tax-sg,finance-sg
+npx skills add adamriofc/singapore-business-agent-skills --domains marketing-sg,strategic-sg
 ```
 
-**Use case**: Cross-border holding structures, foreign subsidiary dividend repatriation, bilateral DTA withholding tax relief, EnterpriseSG international expansion grants (MRA/EDG), and Section 13W capital gains safe harbour.
+**Use case**: Growth leads, marketing managers, and agency teams managing ASAS advertising compliance, PDPA BCI outbound lead qualification, Singapore hyper-local SEO, and paid ad ROAS optimization.
 
 > **Architecture Note**: The Agent (LLM) owns orchestration. The Suite exposes capabilities — it does not route, plan, or execute reasoning on behalf of the agent. Each domain plugin remains independently installable and versioned in lockstep.
 >
@@ -237,10 +230,11 @@ claude plugin install hr-sg@singapore-business-agent-skills
 claude plugin install legal-sg@singapore-business-agent-skills
 claude plugin install finance-sg@singapore-business-agent-skills
 claude plugin install strategic-sg@singapore-business-agent-skills
+claude plugin install marketing-sg@singapore-business-agent-skills
 ```
 
 **💬 AI Agent Prompt Guide**:
-> *"Please register the marketplace source `adamriofc/singapore-business-agent-skills` and install the domain plugins (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`) using `claude plugin install <plugin>@singapore-business-agent-skills`."*
+> *"Please register the marketplace source `adamriofc/singapore-business-agent-skills` and install the domain plugins (`tax-sg`, `hr-sg`, `legal-sg`, `finance-sg`, `strategic-sg`, `marketing-sg`) using `claude plugin install <plugin>@singapore-business-agent-skills`."*
 
 ---
 
@@ -255,6 +249,7 @@ cp -r hr-sg/skills/* .agents/skills/
 cp -r legal-sg/skills/* .agents/skills/
 cp -r finance-sg/skills/* .agents/skills/
 cp -r strategic-sg/skills/* .agents/skills/
+cp -r marketing-sg/skills/* .agents/skills/
 
 # OpenCode & Cursor native paths
 mkdir -p .opencode/skills .cursor/skills
@@ -263,7 +258,7 @@ cp -r .agents/skills/* .cursor/skills/
 ```
 
 **💬 AI Agent Prompt Guide**:
-> *"Please clone `https://github.com/adamriofc/singapore-business-agent-skills` and copy all skills from its domain directories (`tax-sg/skills`, `hr-sg/skills`, `legal-sg/skills`, `finance-sg/skills`, `strategic-sg/skills`) into my project's `.agents/skills/` (or `.opencode/skills/` / `.cursor/skills/`)."*
+> *"Please clone `https://github.com/adamriofc/singapore-business-agent-skills` and copy all skills from its domain directories (`tax-sg/skills`, `hr-sg/skills`, `legal-sg/skills`, `finance-sg/skills`, `strategic-sg/skills`, `marketing-sg/skills`) into my project's `.agents/skills/` (or `.opencode/skills/` / `.cursor/skills/`)."*
 
 ---
 
@@ -271,7 +266,7 @@ cp -r .agents/skills/* .cursor/skills/
 1. Open **Settings > Plugins**.
 2. Click **Add Plugin from Repository**.
 3. Input the GitHub URL: `https://github.com/adamriofc/singapore-business-agent-skills`.
-4. The 5 plugins and 15 skills activate automatically.
+4. The 6 plugins and 71 skills activate automatically.
 
 *Native MCP Server Integration (OpenWork Library / Claude Desktop)*:
 ```json
@@ -354,7 +349,7 @@ print("Net Tax Payable:", res.json()["result"]["netTaxPayableSgd"])
 | `/calc/cit` | Corporate Income Tax 17%, SUTE, PTE, YA 2024 rebate & cash grant (*Income Tax Act Sec 43*) |
 | `/calc/gst` | GST 9%, retrospective/prospective registration threshold audit (*GST Act 1993 Sec 8 & 9*) |
 | `/calc/wht` | Statutory non-resident withholding tax (*Income Tax Act Sections 45, 45A, 45D*) |
-| `/calc/dta-relief` | Bilateral DTA relief evaluation for dividends, interest, royalties, and services |
+| `/calc/foreign-tax-credit` | Foreign Tax Credit (FTC) & Pooling evaluation (*Income Tax Act Sections 50, 50A, 50B*) |
 | `/calc/cpf` | CPF calculation with progressive OW ceiling transitions ($6.8k–$8.0k), SDL & Self-Help funds |
 | `/calc/mom-ot` | Employment Act Part IV 1.5x overtime pay, monthly 72h limit, and daily 12h cap audit |
 | `/calc/compass` | MOM COMPASS 40-point Employment Pass eligibility evaluation (C1–C4 + C5/C6 bonuses) |
@@ -365,41 +360,99 @@ print("Net Tax Payable:", res.json()["result"]["netTaxPayableSgd"])
 | `/calc/sora-wacc` | Corporate WACC using MAS Compounded SORA, CAPM cost of equity, and 17% CIT tax shield |
 | `/calc/working-capital` | Liquidity ratios (Current, Quick, Cash) & Cash Conversion Cycle (DSO/DIO/DPO) under SFRS |
 | `/calc/enterprise-grant` | Enterprise Singapore EDG, PSG, and MRA co-funding grant eligibility and payout calculation |
-| `/calc/cross-border-holding` | Holding structure comparison, Section 13(8) FSIE exemption, and Section 13W safe harbour |
+| `/calc/corporate-structuring` | Holding structure evaluation, Section 13(8) FSIE exemption, and Section 13W safe harbour |
 
 **💬 AI Agent Prompt Guide**:
 > *"Please start the Singapore Business REST API microservice by running `npx sg-agent-skills serve --port 3000` or import calculation engines directly via `require('singapore-business-agent-skills')`."*
 
 ---
 
-## 📦 Plugin Inventory & Skill Catalog (15 Skills Across 5 Plugins)
+## 📦 Plugin Inventory & Skill Catalog (71 Skills Across 6 Plugins)
 
-All 15 capabilities are fully mapped in `registry/index.json` with defined *Quality Tiers* (`source-verified`, `tested`, `expert-reviewed`):
+All 71 capabilities are fully mapped in `registry/index.json` with verified provenance and deterministic engine bindings:
 
-### 1. `tax-sg`: Singapore Tax Intelligence, Engineering & Compliance (4 Skills)
-* `cit-tax-sg`: Corporate Income Tax (CIT) 17% calculation incorporating Start-Up Tax Exemption (SUTE: 75% on first $10k, 50% on next $190k), Partial Tax Exemption (PTE: 75% on first $10k, 50% on next $190k), YA 2024 50% CIT Rebate (cap S$40k), and CIT Rebate Cash Grant (S$2,000 for entities with $\ge 1$ local employee with CPF).
-* `gst-sg`: Goods and Services Tax (GST) calculation supporting statutory 9% rate (effective 1 Jan 2024), retrospective & prospective compulsory registration liability audit (S$1,000,000 taxable turnover ceiling), and quarterly input/output GST return ledger.
-* `wht-sg`: Statutory Withholding Tax (WHT) under Income Tax Act Sections 45 (interest 15%), 45A (royalties 10%), and 45D (director fees 24% / technical service fees 17%).
-* `dta-sg-id`: Singapore-Indonesia Double Tax Agreement (DTA) bilateral relief engine for dividends (Art 10: 10%), interest (Art 11: 10%), royalties (Art 12: 10%), and independent personal services (Art 14).
+### 1. `tax-sg`: Singapore Tax Intelligence, Engineering & Compliance (14 Skills)
+* `capital-allowance-sg`: Tax depreciation under Sections 19, 19A, and Low-Value Asset pooling up to S$30k.
+* `cit-tax-sg`: Corporate Income Tax 17%, SUTE (75% on first $10k, 50% on next $190k), PTE, and YA 2024 rebate.
+* `dtl-foreign-tax-credit-sg`: Foreign Tax Credit (FTC) claims, Double Taxation Relief, and Section 50D pooling.
+* `eis-tax-sg`: Enterprise Innovation Scheme 400% tax deductions on qualifying R&D, IP, and training up to S$400k cap.
+* `group-relief-sg`: Group Relief loss transfer between qualifying 75% corporate group members under Section 37C.
+* `gst-sg`: GST 9% computation, retrospective/prospective compulsory registration audit (S$1M turnover threshold).
+* `loss-carry-sg`: Loss carry-forward and carry-back relief under Sections 37/37E with shareholding continuity tests.
+* `pillar-two-dtt-sg`: BEPS 2.0 Pillar Two Domestic Top-up Tax (DTT) and GloBE Effective Tax Rate (15% threshold).
+* `s13o-s13u-family-office-sg`: Fund and Family Office tax exemptions under Sections 13O and 13U per MAS criteria.
+* `stamp-duty-absd-sg`: Buyer's Stamp Duty (BSD) and Additional Buyer's Stamp Duty (ABSD) calculations.
+* `tax-audit-risk-sg`: Corporate tax audit risk detection, GST F5 vs CIT revenue variance, and director loan exposures.
+* `tax-residency-sg`: Corporate tax residency, Central Management and Control (CM&C), and Certificate of Residence (CoR).
+* `transfer-pricing-sg`: Transfer Pricing Documentation thresholds, Arm's Length Range, and Section 34E 5% surcharge.
+* `wht-sg`: Statutory Withholding Tax under Sections 45 (interest 15%), 45A (royalties 10%), and 45D (fees 17%/24%).
 
-### 2. `hr-sg`: Singapore Labor, Manpower & Employment Compliance (4 Skills)
-* `cpf-calculator`: Central Provident Fund (CPF) calculation with statutory progressive Ordinary Wage (OW) ceiling transition ($6,800 in 2024, $7,400 in 2025, $8,000 in 2026), age brackets, Additional Wage (AW) ceiling cap ($102,000 − Total OW capped), Skills Development Levy (SDL: 0.25%, min $2, max $11.25), and ethnic self-help group funds (CDAC, MBMF, SINDA, ECF).
-* `mom-overtime`: Employment Act 1968 Part IV coverage evaluation (workman $\le$ S$4,500, non-workman $\le$ S$2,600), 1.5x basic hourly rate overtime pay calculation, statutory 72-hour monthly OT limit and 12-hour daily work limit compliance audit, and annual leave entitlement.
-* `compass-scoring`: MOM Complementarity Assessment Framework (COMPASS) deterministic evaluation for Employment Pass (EP) eligibility across 4 foundational criteria (Salary C1, Qualifications C2, Diversity C3, Support for Local Employment C4) and 2 bonus criteria (Skills Bonus C5, Strategic Economic Priorities C6) against the 40-point pass mark.
-* `foreign-workforce-quota`: Dependency Ratio Ceiling (DRC) and S-Pass sub-quota calculation across Services (DRC 35%, S-Pass 10%), Manufacturing (DRC 60%), Construction, Process, and Marine Shipyard sectors, with tiered Foreign Worker Levy (FWL) schedules.
+### 2. `hr-sg`: Singapore Labor, Manpower & Employment Compliance (14 Skills)
+* `annual-leave-sg`: Statutory annual leave (7 to 14 days), MOM pro-rata formulas, and termination encashment.
+* `compass-scoring`: MOM COMPASS point evaluation for Employment Pass eligibility across 4 foundational & 2 bonus criteria.
+* `cpf-calculator`: Central Provident Fund calculation with progressive OW caps ($6.8k–$8.0k), SDL, and self-help funds.
+* `employment-contract-sg`: Employment contract audit against Employment Act standards, non-competes, and probation.
+* `foreign-workforce-quota`: Dependency Ratio Ceiling (DRC), S-Pass sub-quotas, and Foreign Worker Levy (FWL) tiers.
+* `itemised-payslip-sg`: Mandatory itemised payslip compliance audit under Employment Act Section 95A.
+* `key-employment-terms-sg`: Key Employment Terms (KETs) written statement verification under Employment Act Section 95A.
+* `maternity-paternity-leave-sg`: Government-Paid Maternity Leave (GPML) and Paternity Leave (GPPL) calculations.
+* `mom-overtime`: Employment Act Part IV 1.5x overtime pay, monthly 72h limit, and daily 12h work cap compliance.
+* `progressive-wage-model-sg`: Progressive Wage Model (PWM) baseline wage and Local Qualifying Salary (LQS) checks.
+* `public-holiday-pay-sg`: Public holiday compensation, extra day's pay, and mutual substitution agreements.
+* `retrenchment-benefit-sg`: Retrenchment benefit calculations, Employment Act eligibility, and mandatory MOM notification.
+* `sick-hospitalisation-leave-sg`: Paid outpatient sick leave (14 days) and hospitalisation leave (60 days) tracking.
+* `workplace-fairness-sg`: Workplace Fairness Legislation (WFL) anti-discrimination audit against protected characteristics.
 
-### 3. `legal-sg`: Corporate Secretarial, ACRA Governance & Data Privacy (3 Skills)
-* `acra-statutory-deadlines`: Companies Act 1967 statutory AGM (within 6 months of FYE for private companies, 4 months for public listed) and Annual Return (AR: within 7 months of FYE for private, 5 months for public listed) filing deadline calculations, late filing tier penalties (S$300 to S$600), and Sections 145/171 resident director and secretary governance audit.
-* `small-company-audit`: Small Company Audit Exemption evaluation under the Thirteenth Schedule of the Companies Act 1967 (revenue $\le$ S$10M, assets $\le$ S$10M, employees $\le$ 50) including 2-of-3 consecutive financial years rule and consolidated group test.
-* `pdpa-breach-notification`: Personal Data Protection Act 2012 (Part VIA) mandatory data breach notification evaluation (72-hour statutory deadline to PDPC), significant harm and significant scale ($\ge 500$ individuals) triggers, and turnover-based administrative financial penalty ceiling (up to 10% of annual turnover in Singapore).
+### 3. `legal-sg`: Corporate Secretarial, ACRA Governance & Data Privacy (14 Skills)
+* `acra-statutory-deadlines`: Companies Act AGM (6m/4m post-FYE) and Annual Return (7m/5m post-FYE) deadlines and late penalties.
+* `corporate-secretarial-sg`: Secretarial governance audit, Register of Registrable Controllers (RORC), and minute maintenance.
+* `corporate-structuring-sg`: Corporate entity structuring, subsidiary governance, Section 13(8) FSIE, and Section 13W safe harbour.
+* `director-duties-sg`: Statutory director eligibility (Sec 145), disqualification risks (Sec 148/149), and fiduciary conflict audits.
+* `ipos-trademark-check`: IPOS trademark Nice Classification audit, absolute/relative refusal risks, and statutory fees.
+* `nda-singapore`: Non-Disclosure Agreement drafting and audit under Singapore governing law and SIAC arbitration.
+* `pdpa-breach-notification`: PDPA Part VIA mandatory 72-hour data breach notification, significant harm/scale thresholds.
+* `service-agreement-sg`: B2B commercial service contract audit compliant with Singapore Contract Law and UCTA.
+* `shareholder-agreement-sg`: Shareholder agreements, pre-emption rights, drag-along/tag-along clauses, and reserved matters.
+* `singapore-contract-reviewer`: Comprehensive commercial agreement audit under Singapore common law and statutory acts.
+* `small-company-audit`: Small Company Audit Exemption evaluation under Companies Act Thirteenth Schedule (2-of-3 test).
+* `striking-off-sg`: ACRA Section 344A striking-off readiness audit, tax clearance confirmation, and zero-liability checks.
+* `tadm-dispute-resolution`: Tripartite Alliance for Dispute Management (TADM) mediation and Employment Claims Tribunal jurisdiction.
+* `whistleblowing-policy-sg`: Corporate whistleblowing governance, SGX Rulebook alignment, and protected disclosure channels.
 
-### 4. `finance-sg`: Corporate Finance, Treasury & SFRS Financial Standards (2 Skills)
-* `sora-wacc`: Corporate Weighted Average Cost of Capital (WACC) using the Singapore Overnight Rate Average (SORA) benchmark rate, CAPM cost of equity, and 17% CIT debt tax shield.
-* `working-capital-sg`: Working capital efficiency, liquidity ratios (Current, Quick, Cash ratios), and Cash Conversion Cycle (DSO, DIO, DPO) under Singapore Financial Reporting Standards (SFRS).
+### 4. `finance-sg`: Corporate Finance, Treasury & SFRS Financial Standards (16 Skills)
+* `break-even-analysis-sg`: Cost-Volume-Profit analysis, contribution margins, break-even revenue, and operating leverage.
+* `capital-budgeting-sg`: Capital budgeting evaluation (NPV, IRR, Payback Period) benchmarked against corporate hurdle rates.
+* `cash-flow-forecast-sg`: Direct weekly cash flow forecasting, operating runway projection, and liquidity buffer warnings.
+* `ecl-sfrs109-allowance`: Expected Credit Loss (ECL) provisioning under SFRS(I) 9 matrix and IRAS tax deductibility audit.
+* `financial-modeling-sg`: Integrated 3-statement financial forecasting (P&L, Balance Sheet, Cash Flow) with debt sizing.
+* `financial-ratio-analysis-sg`: Comprehensive 14-ratio financial health analysis across liquidity, solvency, and profitability.
+* `financial-statements-sfrs`: SFRS 1 compliant financial statements compilation with accrual adjustments and note disclosures.
+* `fx-hedging-sg`: Foreign exchange forward rate calculation, mark-to-market valuation, and hedge effectiveness testing.
+* `inventory-valuation-sfrs2`: Inventory valuation under SFRS(I) 1-2 (FIFO, Weighted Average Cost) and lower-of-cost-and-NRV tests.
+* `lease-sfrs116-accounting`: Lease liability and Right-of-Use (ROU) asset amortization schedule under SFRS(I) 16.
+* `sfrs-accounting-standards`: Multi-standard accounting evaluation under Singapore Financial Reporting Standards Framework.
+* `sfrs-audit-trail`: Financial audit readiness, internal control verification, and supporting documentation trail checks.
+* `sora-wacc`: Corporate WACC using MAS 3-month Compounded SORA benchmark rate, CAPM cost of equity, and CIT tax shield.
+* `unit-economics-sg`: SaaS and digital business unit economics (LTV, CAC, Payback Period, Net Revenue Retention).
+* `vcc-waterfall-distribution`: Variable Capital Company (VCC) capital return and carried interest waterfall calculations.
+* `working-capital-sg`: Working capital efficiency, liquidity ratios, and Cash Conversion Cycle (DSO/DIO/DPO) under SFRS.
 
-### 5. `strategic-sg`: Strategic Management, Enterprise Grants & Cross-Border Governance (2 Skills)
-* `enterprise-grant-sg`: Enterprise Singapore (EnterpriseSG) and IMDA grant co-funding evaluation for Enterprise Development Grant (EDG), Productivity Solutions Grant (PSG), and Market Readiness Assistance (MRA) with SME qualifying shareholding checks ($\ge 30\%$ local equity).
-* `cross-border-holding-sg-id`: Cross-border holding structure optimization comparing Direct Investment vs Singapore Holding Company intermediary under the SG-ID DTA, Section 13(8) foreign-sourced dividend tax exemption, Single-Tier 0% outbound dividend tax, and Section 13W capital gains safe harbour.
+### 5. `strategic-sg`: Strategic Management & Enterprise Grants (6 Skills)
+* `competitive-moat-sg`: Singapore competitive cluster moat analysis, switching costs, and network effect evaluations.
+* `enterprise-grant-sg`: Enterprise Singapore (EnterpriseSG) EDG, PSG, and MRA grant co-funding calculations and eligibility.
+* `holding-structuring-sg`: Regional corporate holding architecture, Section 13(8) FSIE exemption, and Section 13W safe harbour.
+* `market-entry-sg`: Singapore market entry feasibility, corporate form comparison (Pte Ltd vs Branch vs Rep Office).
+* `scenario-planning-sg`: Deterministic sensitivity and macro scenario simulation across inflation, interest rates, and FX shocks.
+* `strategic-risk-sg`: Enterprise risk assessment framework aligned with SGX-ST Code of Corporate Governance.
+
+### 6. `marketing-sg`: Singapore Marketing & Growth Intelligence (7 Skills)
+* `sg-ads-roi`: Paid ad performance metrics (CAC, ROAS, LTV:CAC) factoring Singapore 9% GST tax liability on ad spend.
+* `sg-b2b-outbound`: B2B Business Contact Information (BCI) outbound compliance under PDPA Section 4(4)(d) and cadence design.
+* `sg-brand-positioning`: Brand positioning, perception mapping, and differentiation in the Singapore commercial market.
+* `sg-content-localization`: Natural Singapore English and professional business communication localization.
+* `sg-lead-qualification`: B2B lead scoring, qualification criteria, and ICP matching against Singapore corporate registry profiles.
+* `sg-seo-geo`: Hyper-local Singapore SEO signals (.sg ccTLD, postal codes, UEN metadata, SingPass/PayNow schema).
+* `sg-social-campaign`: Social media campaign strategy aligned with ASAS Singapore Code of Advertising Practice (SCAP).
 
 ---
 
@@ -442,7 +495,7 @@ This suite is designed for **any professional who needs accurate, regulation-gro
 | Calculate net CIT with SUTE and YA 2024 50% rebate | `cit-tax-sg` + engine |
 | Audit S$1M turnover threshold for mandatory GST registration | `gst-sg` |
 | Compute cross-border withholding tax under ITA Sections 45/45A/45D | `wht-sg` |
-| Optimize bilateral SG-ID tax treaty relief for cross-border royalties | `dta-sg-id` |
+| Evaluate foreign tax credit pooling and double taxation relief | `dtl-foreign-tax-credit-sg` |
 
 **Cross-domain**: `tax-sg` + `finance-sg` — corporate income tax computation integrated with WACC debt tax shield modeling.
 
@@ -492,9 +545,9 @@ This suite is designed for **any professional who needs accurate, regulation-gro
 | Audit statutory board composition & resident director mandate (Sec 145) | `acra-statutory-deadlines` |
 | Assess mandatory 72-hour PDPA Part VIA data breach reporting criteria | `pdpa-breach-notification` |
 | Evaluate Small Company audit exemption for corporate restructuring | `small-company-audit` |
-| Structure cross-border dispute and choice-of-law arbitration clauses | `cross-border-holding-sg-id` |
+| Audit commercial contract risk and limitation of liability clauses under UCTA | `singapore-contract-reviewer` |
 
-**Cross-domain**: `legal-sg` + `strategic-sg` — corporate restructuring governance aligned with bilateral investment holding safe harbours.
+**Cross-domain**: `legal-sg` + `strategic-sg` — corporate restructuring governance aligned with investment holding safe harbours.
 
 > ⚡ **30-Second Killer Cross-Domain Demo**
 >
@@ -559,28 +612,28 @@ This suite is designed for **any professional who needs accurate, regulation-gro
 
 ---
 
-### 🌐 ASEAN Regional Group CFO / Cross-Border Holding Director
-**Problem**: Structuring cross-border dividends, management fees, and IP royalties between a Singapore Regional Holding entity and regional operating subsidiaries.
+### 🌐 Regional Group CFO / International Holding Director
+**Problem**: Structuring cross-border dividends, subsidiary governance, and capital gains exemptions for a Singapore Holding Company.
 
 | Task | Skills Used |
 |---|---|
-| Compare Direct Investment vs Singapore Holding Company tax leakages | `cross-border-holding-sg-id` |
-| Apply SG-ID DTA treaty rate reductions on dividends and royalties | `dta-sg-id` |
-| Evaluate Enterprise Singapore MRA / EDG overseas expansion grants | `enterprise-grant-sg` |
-| Qualify for Section 13(8) Foreign Sourced Income Exemption (FSIE) | `cross-border-holding-sg-id` |
+| Evaluate Singapore Holding Company tax exemptions & repatriation | `holding-structuring-sg` |
+| Apply Foreign Tax Credit (FTC) & Pooling under Sections 50/50A/50B | `dtl-foreign-tax-credit-sg` |
+| Evaluate Enterprise Singapore MRA / EDG internationalization grants | `enterprise-grant-sg` |
+| Qualify for Section 13(8) Foreign Sourced Income Exemption (FSIE) | `holding-structuring-sg` |
 
-**Cross-domain**: `strategic-sg` + `tax-sg` + `finance-sg` + `legal-sg` — regional corporate holding treasury architecture minimizing foreign withholding taxes and eliminating double taxation.
+**Cross-domain**: `strategic-sg` + `tax-sg` + `finance-sg` + `legal-sg` — corporate holding treasury architecture minimizing foreign withholding taxes and eliminating double taxation.
 
 > ⚡ **30-Second Killer Cross-Domain Demo**
 >
-> **User**: *"Our group in Jakarta (PT PMA) is paying S$500,000 in dividends and S$200,000 in software royalties to our parent company in Singapore. Compare the total tax leakage under standard domestic rates vs our SG-ID DTA holding structure."*
+> **User**: *"Our overseas operating subsidiary is paying S$1,000,000 in dividends to our parent holding company in Singapore (operating jurisdiction headline CIT is 20%). Evaluate the Section 13(8) FSIE exemption, outbound dividend withholding tax, and Section 13W capital gains safe harbour if shares have been held for 24 months."*
 >
 > **Agent (Skill-Assisted Execution)**:
-> 1. **[Cross-Border Engine]** → `cross-border-holding-sg-id`: Without Treaty: Indonesian PPh 26 domestic withholding rate = 20% on dividends (S$100,000) and 20% on royalties (S$40,000) $\Rightarrow$ Total Leakage = **S$140,000**.
-> 2. **[Cross-Border Engine]** → Under SG-ID DTA (with Certificate of Residence & DGT-1): Dividend withholding reduced to 10% (Art 10 = S$50,000); Royalty withholding reduced to 10% (Art 12 = S$20,000) $\Rightarrow$ Total Withholding = **S$70,000**.
-> 3. **[CIT Engine]** → `cit-tax-sg`: Singapore Receipt: Headline tax in Indonesia (22%) exceeds 15% subject-to-tax test $\Rightarrow$ **100% Tax Exempt under Section 13(8) FSIE**.
-> 4. **[Safe Harbour]** → Section 13W Capital Gains Safe Harbour qualified (100% equity held for $> 24$ months).
-> 5. **[Synthesis]** → The Singapore holding structure secures an immediate **S$70,000 (50.0%) tax savings**, with zero subsequent corporate tax upon distribution to founders.
+> 1. **[Corporate Structuring Engine]** → `holding-structuring-sg`: Foreign tax rate test: Origin CIT (20%) $\ge$ 15% threshold (pass); Subject to tax in origin (pass); Beneficial recipient Singapore resident (pass) $\Rightarrow$ **100% Tax Exempt under Section 13(8) FSIE** (Singapore CIT payable = **S$0**).
+> 2. **[Single-Tier Engine]** → Under Singapore's One-Tier Corporate Tax System (Sec 13(1)(za)), outbound dividend distribution to shareholders incurs **0% withholding tax** (Singapore outbound WHT = **S$0**).
+> 3. **[Repatriation Economics]** → Net cash deliverable to holding shareholders = **S$992,000** (factoring S$8,000 annual corporate secretarial maintenance cost).
+> 4. **[Safe Harbour Engine]** → Section 13W Capital Gains Safe Harbour qualified: Equity shareholding $\ge 20\%$ (100%) held continuously for $\ge 24$ months $\Rightarrow$ **Confirmed Safe Harbour Exempt** from capital gains tax upon share disposal.
+> 5. **[Synthesis]** → The Singapore corporate holding framework secures zero corporate tax leakage on foreign dividends and full statutory safe harbour immunity on equity disposals.
 
 ---
 
@@ -626,7 +679,7 @@ This suite is designed for **any professional who needs accurate, regulation-gro
 
 **Skills used**: `acra-statutory-deadlines` + `small-company-audit` + `cit-tax-sg` + `compass-scoring` + `cpf-calculator` + `sora-wacc`
 
-> **The Agent owns all orchestration** — it selects which skills and engines to call based on the query context. The suite simply exposes all 15 capabilities for the agent to discover.
+> **The Agent owns all orchestration** — it selects which skills and engines to call based on the query context. The suite simply exposes all 71 capabilities for the agent to discover.
 
 ---
 
@@ -805,17 +858,18 @@ console.log(result);
 
 ---
 
-### 5. Cross-Border Holding & DTA Evaluation Engine — Actual Engine Output
+### 5. Corporate Structuring & Holding Governance Engine — Actual Engine Output
 
 ```javascript
-const { evaluateCrossBorderHoldingStructure } = require('singapore-business-agent-skills');
-const result = evaluateCrossBorderHoldingStructure({
-  dividendAmountIdrOrSgd: 1000000,
+const { evaluateCorporateStructuring } = require('singapore-business-agent-skills');
+const result = evaluateCorporateStructuring({
+  dividendAmountSgd: 1000000,
   equityShareholdingPercent: 100,
   shareHoldingDurationMonths: 24,
-  hasValidCorCertificate: true,
-  operatingTaxRateInOrigin: 0.22,
-  estimatedAnnualSgMaintenanceCostSgd: 8000
+  sourceJurisdictionHeadlineCitRate: 0.20,
+  subjectToTaxInSource: true,
+  isBonaFideResident: true,
+  annualMaintenanceCostSgd: 8000
 });
 console.log(result);
 ```
@@ -824,37 +878,30 @@ console.log(result);
 {
   "dividendGrossAmount": 1000000,
   "equityShareholdingPercentage": 100,
-  "hasValidCorCertificate": true,
-  "directHoldingScenario": {
-    "framework": "INDONESIA_DOMESTIC_PPH26",
-    "withholdingTaxRate": 0.2,
-    "withholdingTaxPayable": 200000,
-    "netCashDelivered": 800000,
-    "effectiveTaxLeakagePercent": 20
-  },
-  "singaporeHoldingScenario": {
-    "framework": "SINGAPORE_HOLDCO_UNDER_SG_ID_DTA",
-    "indonesiaOutboundWhtRate": 0.1,
-    "indonesiaWhtTaxPayable": 100000,
-    "dividendReceivedBySgHoldCo": 900000,
-    "section13_8_FsieExemptionApplies": true,
-    "singaporeCitOnForeignDividend": 0,
+  "holdingPeriodMonths": 24,
+  "singaporeHoldingAssessment": {
+    "qualifiesForSection138Fsie": true,
+    "singaporeCorporateTaxRate": 0,
+    "singaporeCorporateTaxPayable": 0,
     "singaporeOutboundDividendWhtRate": 0,
-    "netCashDelivered": 900000,
-    "effectiveTaxLeakagePercent": 10
+    "singaporeOutboundDividendWhtPayable": 0,
+    "netDividendRepatriated": 1000000,
+    "annualHoldingMaintenanceCost": 8000,
+    "netCashDeliverable": 992000,
+    "effectiveSingaporeTaxRate": 0
   },
-  "comparativeAnalysis": {
-    "grossTaxSavingsBenefit": 100000,
-    "annualSgHoldingMaintenanceCostEstimate": 8000,
-    "isHoldingStructureEconomicallySuperior": true,
-    "netFinancialEfficiencyDelta": 92000
+  "capitalGainsSection13W": {
+    "qualifiesForSection13WSafeHarbour": true,
+    "meetsShareholdingThreshold": true,
+    "meetsHoldingPeriodThreshold": true,
+    "capitalGainsTaxRateInSingapore": 0,
+    "statutoryExemptionStatus": "CONFIRMED_SAFE_HARBOUR_EXEMPT"
   },
-  "statutorySafeHarbours": {
-    "section13W_CapitalGainsSafeHarbourQualified": true,
-    "section13W_CriteriaMet": {
-      "holdingPercentageMeets20Percent": true,
-      "holdingPeriodMeets24Months": true
-    }
+  "statutoryBasis": {
+    "fsieStatute": "Income Tax Act 1947, Section 13(8) (Foreign-Sourced Income Exemption)",
+    "capitalGainsStatute": "Income Tax Act 1947, Section 13W (Exemption of Gains from Disposal of Shares)",
+    "singleTierStatute": "Income Tax Act 1947, Section 13(1)(za) (One-Tier Corporate Tax System)",
+    "governingAuthority": "Inland Revenue Authority of Singapore (IRAS) & ACRA"
   }
 }
 ```
@@ -916,7 +963,7 @@ console.log(result);
 > - **Ruleset (`engines/rules/*.json`)**: Cryptographically verified JSON database containing official government rates, statutory thresholds, and effective dates.
 
 ### Q10: How do we integrate these engines into existing ERP, HRMS, or corporate workflow microservices?
-> **Answer**: Integration is supported through 3 enterprise-grade paths:
+> **Answer**: Integration is supported through 3 integration paths:
 > 1. **Root SDK Module**: Directly import engines into your Node.js/TypeScript backend via `const sbas = require('singapore-business-agent-skills');`.
 > 2. **Standalone REST Microservice**: Run `npx sg-agent-skills serve --port 3000` to expose native JSON HTTP endpoints callable from Python (FastAPI/Django), PHP (Laravel), Go, Java, or ERP webhooks.
 > 3. **Universal CLI**: Execute deterministic calculations from bash scripts or cron jobs via `npx sg-agent-skills <target>`.
@@ -925,13 +972,13 @@ console.log(result);
 
 ## 🧪 Comprehensive Test & Verification Suite
 
-Our automated verification harness executes over **120+ total test assertions** and 25 golden corpus benchmarks across multiple testing dimensions:
+Our automated verification harness executes over **1357 total test assertions** and 130 golden corpus benchmarks across multiple testing dimensions:
 
 ```bash
-# 1. Run full unit test suite (Tax, HR, Legal, Finance, Strategy, TypeScript)
+# 1. Run full unit test suite (Tax, HR, Legal, Finance, Strategy, Marketing, TypeScript)
 npm test
 
-# 2. Run security suite (Prompt injection defense, adversarial fuzzing, supply-chain)
+# 2. Run security suite (Prompt injection defense, closed delimiter boundary verification)
 npm run test:security
 
 # 3. Run cross-domain end-to-end integration test

@@ -137,11 +137,11 @@ function runCrossDomainIntegrationTest() {
   console.log("  ✅ Stage 4 Complete: SORA-linked WACC and SFRS working capital surplus verified.");
 
   // ===============================================================
-  // STAGE 5: Regional Expansion & Cross-Border SG-ID Operations
+  // STAGE 5: Regional Expansion & Singapore Holding Governance
   // ===============================================================
-  console.log("  [Stage 5] EnterpriseSG Grant Application & Cross-Border Holding Optimization...");
+  console.log("  [Stage 5] EnterpriseSG Grant Application & Corporate Structuring Optimization...");
 
-  // EnterpriseSG MRA Grant for expanding to Indonesia: S$50k budget
+  // EnterpriseSG MRA Grant for international market expansion: S$50k budget
   const mraGrant = sbas.evaluateEnterpriseGrant({
     grantScheme: 'MRA',
     qualifyingProjectCostSgd: 50000,
@@ -151,21 +151,22 @@ function runCrossDomainIntegrationTest() {
   assert.strictEqual(mraGrant.isEligibleForGrant, true);
   assert.strictEqual(mraGrant.fundingCalculation.approvedGrantFundingSgd, 25000);
 
-  // Cross-Border Holding Structure: Repatriating S$500k dividend from Indonesian subsidiary
-  const crossBorder = sbas.evaluateCrossBorderHoldingStructure({
-    dividendAmountIdrOrSgd: 500000,
+  // Corporate Structuring: Repatriating S$500k dividend from regional operating subsidiary
+  const holding = sbas.evaluateCorporateStructuring({
+    dividendAmountSgd: 500000,
     equityShareholdingPercent: 100,
     shareHoldingDurationMonths: 24,
-    hasValidCorCertificate: true,
-    operatingTaxRateInOrigin: 0.22,
-    estimatedAnnualSgMaintenanceCostSgd: 8000
+    sourceJurisdictionHeadlineCitRate: 0.22,
+    subjectToTaxInSource: true,
+    isBonaFideResident: true,
+    annualMaintenanceCostSgd: 8000
   });
-  // DTA Art 10 reduces Indonesian WHT from 20% (100k) to 10% (50k) -> S$50,000 tax saved
-  assert.strictEqual(crossBorder.singaporeHoldingScenario.indonesiaOutboundWhtRate, 0.10);
-  assert.strictEqual(crossBorder.comparativeAnalysis.grossTaxSavingsBenefit, 50000);
-  assert.strictEqual(crossBorder.comparativeAnalysis.netFinancialEfficiencyDelta, 42000); // 50k - 8k = 42k
-  assert.strictEqual(crossBorder.statutorySafeHarbours.section13W_CapitalGainsSafeHarbourQualified, true);
-  console.log("  ✅ Stage 5 Complete: MRA grant secured & SG-ID cross-border holding tax savings realized.");
+  assert.strictEqual(holding.singaporeHoldingAssessment.qualifiesForSection138Fsie, true);
+  assert.strictEqual(holding.singaporeHoldingAssessment.singaporeCorporateTaxRate, 0);
+  assert.strictEqual(holding.singaporeHoldingAssessment.singaporeOutboundDividendWhtRate, 0);
+  assert.strictEqual(holding.singaporeHoldingAssessment.netCashDeliverable, 492000); // 500k - 8k = 492k
+  assert.strictEqual(holding.capitalGainsSection13W.qualifiesForSection13WSafeHarbour, true);
+  console.log("  ✅ Stage 5 Complete: MRA grant secured & Section 13(8) FSIE and 13W safe harbour realized.");
 
   console.log("\n==================================================================");
   console.log("🎉 Full End-to-End Cross-Domain Singapore Lifecycle Integration Test PASSED 100%!");

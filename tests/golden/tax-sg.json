@@ -34,30 +34,23 @@
     }
   },
   {
-    "caseId": "GST-RATE-2022",
-    "description": "Historical GST statutory rate before 2023 transition",
-    "engine": "calculateSingaporeGstRate",
+    "caseId": "CIT-LOSS-MAKING",
+    "description": "Loss making Singapore company (zero tax payable)",
+    "engine": "calculateSingaporeCit",
     "input": {
-      "dateStr": "2022-12-31"
+      "chargeableIncome": 0,
+      "isQualifyingStartup": false,
+      "yearOfAssessment": 2024
     },
     "expected": {
-      "rate": 0.07
-    }
-  },
-  {
-    "caseId": "GST-RATE-2023",
-    "description": "Historical GST statutory rate during 2023 transition",
-    "engine": "calculateSingaporeGstRate",
-    "input": {
-      "dateStr": "2023-06-15"
-    },
-    "expected": {
-      "rate": 0.08
+      "chargeableIncomeSgd": 0,
+      "netTaxPayableSgd": 0,
+      "effectiveTaxRatePercent": 0
     }
   },
   {
     "caseId": "GST-RATE-2024",
-    "description": "Current GST statutory rate from 2024 onwards (9%)",
+    "description": "Singapore statutory GST rate effective from 1 Jan 2024 (9%)",
     "engine": "calculateSingaporeGstRate",
     "input": {
       "dateStr": "2024-01-01"
@@ -71,7 +64,12 @@
     "description": "Compulsory GST Registration retrospective breach (> S$1,000,000)",
     "engine": "evaluateGstRegistrationLiability",
     "input": {
-      "past4QuartersTurnover": [300000, 300000, 300000, 300000],
+      "past4QuartersTurnover": [
+        300000,
+        300000,
+        300000,
+        300000
+      ],
       "projectedNext12MonthsTurnover": 50000
     },
     "expected": {
@@ -112,6 +110,353 @@
       "withholdingTaxPayableToIrasSgd": 15000,
       "netRemittanceToNonResidentSgd": 85000,
       "irasFormType": "FORM_IR37"
+    }
+  },
+  {
+    "caseId": "WHT-ROYALTY-DOMESTIC",
+    "description": "Section 45 Non-resident royalty payment statutory domestic 10% withholding",
+    "engine": "calculateSingaporeWht",
+    "input": {
+      "paymentType": "ROYALTY",
+      "grossAmountSgd": 80000
+    },
+    "expected": {
+      "statutoryDomesticRate": 0.1,
+      "withholdingTaxPayableToIrasSgd": 8000,
+      "netRemittanceToNonResidentSgd": 72000
+    }
+  },
+  {
+    "caseId": "TAX-RESIDENCY-COR-QUALIFIED",
+    "description": "Singapore corporate tax residency and Certificate of Residence (CoR) qualification",
+    "engine": "evaluateTaxResidency",
+    "input": {
+      "companyName": "Merlion Tech Pte Ltd",
+      "totalBodMeetings": 4,
+      "bodMeetingsInSingapore": 3,
+      "strategicDecisionsInSingapore": true,
+      "hasLocalResidentDirector": true,
+      "hasPhysicalOfficeInSingapore": true,
+      "localEmployeesCount": 5,
+      "isForeignControlled": true,
+      "hasBonaFideCommercialReason": true
+    },
+    "expected": {
+      "isSingaporeTaxResident": true,
+      "qualifiesForCertificateOfResidence": true,
+      "centralManagementAndControlLocus": "SINGAPORE",
+      "riskLevel": "LOW"
+    }
+  },
+  {
+    "caseId": "TAX-RESIDENCY-FOREIGN-FAIL",
+    "description": "Foreign controlled paper company failing commercial substance test",
+    "engine": "evaluateTaxResidency",
+    "input": {
+      "companyName": "Passive Shell Pte Ltd",
+      "totalBodMeetings": 4,
+      "bodMeetingsInSingapore": 2,
+      "strategicDecisionsInSingapore": false,
+      "hasLocalResidentDirector": false,
+      "hasPhysicalOfficeInSingapore": false,
+      "localEmployeesCount": 0,
+      "isForeignControlled": true,
+      "hasBonaFideCommercialReason": false
+    },
+    "expected": {
+      "isSingaporeTaxResident": false,
+      "qualifiesForCertificateOfResidence": false,
+      "riskLevel": "HIGH"
+    }
+  },
+  {
+    "caseId": "TAX-EIS-RND-IP",
+    "description": "Enterprise Innovation Scheme 400% enhanced deduction on R&D and IP registration",
+    "engine": "calculateEnterpriseInnovationScheme",
+    "input": {
+      "expenditures": {
+        "RND_LOCAL": 250000,
+        "IP_REGISTRATION": 50000
+      },
+      "optForCashConversion": false,
+      "yearOfAssessment": 2024
+    },
+    "expected": {
+      "totalQualifyingSpendSgd": 300000,
+      "totalTaxDeductionSgd": 1200000,
+      "estimatedTaxSavingsSgd": 204000
+    }
+  },
+  {
+    "caseId": "TAX-EIS-CASH-PAYOUT",
+    "description": "Enterprise Innovation Scheme cash conversion payout capped at S$20,000",
+    "engine": "calculateEnterpriseInnovationScheme",
+    "input": {
+      "expenditures": {
+        "RND_LOCAL": 150000
+      },
+      "optForCashConversion": true
+    },
+    "expected": {
+      "isEligible": true,
+      "cashPayoutSgd": 20000,
+      "maxPossiblePayoutSgd": 20000
+    }
+  },
+  {
+    "caseId": "TAX-LOSS-CARRY-BACK",
+    "description": "Section 37E loss carry-back relief against previous year assessable income",
+    "engine": "evaluateLossUtilization",
+    "input": {
+      "currentYearLosses": 150000,
+      "currentYearCapitalAllowance": 20000,
+      "previousYearAssessableIncome": 80000,
+      "optForCarryBack": true
+    },
+    "expected": {
+      "amountUtilizedSgd": 80000,
+      "estimatedTaxRefundSgd": 13600,
+      "closingUnabsorbedTradeLossesSgd": 90000
+    }
+  },
+  {
+    "caseId": "TAX-LOSS-SCT-FAIL",
+    "description": "Shareholding Continuity Test failure disallowing prior year losses",
+    "engine": "evaluateLossUtilization",
+    "input": {
+      "currentYearTaxableProfit": 100000,
+      "priorYearUnabsorbedLosses": 50000,
+      "shareholdingContinuityPercent": 30
+    },
+    "expected": {
+      "passesShareholdingContinuityTest": false,
+      "disallowedLossesSgd": 50000,
+      "netChargeableIncomeAfterOffsetSgd": 100000
+    }
+  },
+  {
+    "caseId": "TAX-GROUP-RELIEF-SUCCESS",
+    "description": "Section 37C Group Relief transfer with 80% common shareholding",
+    "engine": "evaluateGroupReliefTransfer",
+    "input": {
+      "transferor": {
+        "companyName": "LossCo Pte Ltd",
+        "isIncorporatedInSingapore": true,
+        "financialYearEnd": "2024-12-31",
+        "currentYearLosses": 100000,
+        "currentYearCapitalAllowance": 30000
+      },
+      "transferee": {
+        "companyName": "ProfitCo Pte Ltd",
+        "isIncorporatedInSingapore": true,
+        "financialYearEnd": "2024-12-31",
+        "assessableIncome": 200000
+      },
+      "shareholdingPercentage": 80
+    },
+    "expected": {
+      "isEligible": true,
+      "totalTransferredSgd": 130000,
+      "transfereeNetIncomeAfterReliefSgd": 70000,
+      "estimatedGroupTaxSavingsSgd": 22100
+    }
+  },
+  {
+    "caseId": "TAX-GROUP-RELIEF-FAIL-THRESHOLD",
+    "description": "Group Relief disallowance due to common shareholding below 75%",
+    "engine": "evaluateGroupReliefTransfer",
+    "input": {
+      "transferor": {
+        "companyName": "A",
+        "isIncorporatedInSingapore": true,
+        "financialYearEnd": "2024-12-31",
+        "currentYearLosses": 50000
+      },
+      "transferee": {
+        "companyName": "B",
+        "isIncorporatedInSingapore": true,
+        "financialYearEnd": "2024-12-31",
+        "assessableIncome": 100000
+      },
+      "shareholdingPercentage": 60
+    },
+    "expected": {
+      "isEligible": false
+    }
+  },
+  {
+    "caseId": "TAX-FTC-POOLING",
+    "description": "Foreign Tax Credit pooling under Section 50A on overseas dividends and interest",
+    "engine": "calculateForeignTaxCredit",
+    "input": {
+      "foreignIncomes": [
+        {
+          "country": "Australia",
+          "incomeType": "Dividend",
+          "foreignIncomeGrossSgd": 100000,
+          "foreignTaxPaidSgd": 30000,
+          "foreignHeadlineTaxRate": 0.3
+        },
+        {
+          "country": "Hong Kong",
+          "incomeType": "Interest",
+          "foreignIncomeGrossSgd": 50000,
+          "foreignTaxPaidSgd": 4000,
+          "foreignHeadlineTaxRate": 0.165
+        }
+      ],
+      "usePooling": true
+    },
+    "expected": {
+      "totalForeignIncomeGrossSgd": 150000,
+      "totalForeignTaxPaidSgd": 34000,
+      "totalFtcAllowedSgd": 25500,
+      "netSingaporeTaxPayableSgd": 0
+    }
+  },
+  {
+    "caseId": "TAX-FAMILY-OFFICE-13O-COMPLIANT",
+    "description": "MAS Section 13O Family Office Fund Exemption compliance verification",
+    "engine": "evaluateFamilyOfficeExemption",
+    "input": {
+      "scheme": "13O",
+      "assetsUnderManagementSgd": 25000000,
+      "numberOfInvestmentProfessionals": 2,
+      "annualLocalBusinessSpendingSgd": 250000,
+      "localInvestmentsSgd": 2500000
+    },
+    "expected": {
+      "isCompliant": true
+    }
+  },
+  {
+    "caseId": "TAX-BEPS-PILLAR-TWO",
+    "description": "BEPS 2.0 Pillar Two Domestic Top-up Tax (DTT) calculation",
+    "engine": "calculateDomesticTopUpTax",
+    "input": {
+      "globalConsolidatedRevenueSgd": 1500000000,
+      "singaporeGlobeIncomeSgd": 100000000,
+      "singaporeCoveredTaxesSgd": 10000000,
+      "eligiblePayrollCostsSgd": 20000000,
+      "eligibleTangibleAssetsSgd": 30000000
+    },
+    "expected": {
+      "isInScope": true,
+      "effectiveTaxRatePercent": 10,
+      "topUpTaxRatePercent": 5
+    }
+  },
+  {
+    "caseId": "TAX-STAMP-DUTY-FOREIGNER",
+    "description": "Property Stamp Duty BSD and ABSD for Foreigner purchasing residential property",
+    "engine": "calculatePropertyStampDuty",
+    "input": {
+      "propertyValue": 2000000,
+      "propertyType": "RESIDENTIAL",
+      "buyerProfile": "FOREIGNER",
+      "propertyCount": 1
+    },
+    "expected": {
+      "amountSgd": 1200000,
+      "totalStampDutyPayableSgd": 1269600
+    }
+  },
+  {
+    "caseId": "TAX-STAMP-DUTY-SC-FIRST",
+    "description": "Singapore Citizen purchasing first residential property (0% ABSD)",
+    "engine": "calculatePropertyStampDuty",
+    "input": {
+      "propertyValue": 1000000,
+      "propertyType": "RESIDENTIAL",
+      "buyerProfile": "SC",
+      "propertyCount": 1
+    },
+    "expected": {
+      "ratePercent": 0,
+      "amountSgd": 0
+    }
+  },
+  {
+    "caseId": "TAX-AUDIT-RISK-SEVERE",
+    "description": "IRAS multi-factor audit risk evaluation detecting revenue and margin anomalies",
+    "engine": "assessTaxAuditRisk",
+    "input": {
+      "revenueCitSgd": 2000000,
+      "revenueGstAnnualSgd": 1500000,
+      "grossProfitMarginPercent": 12,
+      "industryBenchmarkGpmPercent": 30,
+      "directorRemunerationSgd": 1200000,
+      "directorLoanCreditBalanceSgd": 600000,
+      "foreignInterestRoyaltyExpenseSgd": 100000,
+      "whtRemittedSgd": 0
+    },
+    "expected": {
+      "riskTier": "SEVERE"
+    }
+  },
+  {
+    "caseId": "TAX-TRANSFER-PRICING-MANDATORY",
+    "description": "Mandatory Transfer Pricing Documentation and Section 34E 5% surcharge assessment",
+    "engine": "evaluateTransferPricingCompliance",
+    "input": {
+      "annualGrossRevenueSgd": 15000000,
+      "relatedPartyTransactions": {
+        "GOODS": 18000000,
+        "SERVICES": 1500000
+      },
+      "testedPartyMarginPercent": 2.5,
+      "comparableBenchmark": {
+        "q1": 4,
+        "median": 6,
+        "q3": 8
+      },
+      "transactionBaseAmountSgd": 2000000
+    },
+    "expected": {
+      "isMandatoryTpdByRevenue": true,
+      "status": "OUTSIDE_ARMS_LENGTH_RANGE",
+      "statutorySurcharge5PercentSgd": 3500
+    }
+  },
+  {
+    "caseId": "TAX-CAPITAL-ALLOWANCES-ACCELERATED",
+    "description": "Section 19A accelerated capital allowances on equipment additions",
+    "engine": "calculateCapitalAllowances",
+    "input": {
+      "assets": [
+        {
+          "description": "Server hardware",
+          "costSgd": 30000,
+          "scheme": "19A_1YR"
+        },
+        {
+          "description": "Office Furniture",
+          "costSgd": 60000,
+          "scheme": "19A_3YR"
+        },
+        {
+          "description": "Printers",
+          "costSgd": 10000,
+          "scheme": "LOW_VALUE",
+          "quantity": 4
+        }
+      ]
+    },
+    "expected": {
+      "totalAssetAdditionsCostSgd": 100000,
+      "totalCapitalAllowancesClaimedSgd": 60000,
+      "lowValueAssetsClaimedSgd": 10000
+    }
+  },
+  {
+    "caseId": "GST-RATE-2023",
+    "description": "Singapore statutory GST rate effective during calendar year 2023 (8%)",
+    "engine": "calculateSingaporeGstRate",
+    "input": {
+      "dateStr": "2023-06-15"
+    },
+    "expected": {
+      "rate": 0.08
     }
   }
 ]

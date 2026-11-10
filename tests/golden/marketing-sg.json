@@ -1,0 +1,339 @@
+[
+  {
+    "caseId": "MKT-SEO-HIGH-AUTHORITY",
+    "description": "Hyper-local SEO evaluation for high authority Singapore .com.sg domain",
+    "engine": "auditSingaporeLocalSeo",
+    "input": {
+      "domainName": "enterprise.com.sg",
+      "targetKeywords": [
+        "Corporate Tax Services CBD",
+        "Singapore Raffles Place Accounting"
+      ],
+      "hreflangTags": [
+        "en-sg",
+        "en"
+      ],
+      "localBusinessSchema": {
+        "postalCode": "048624",
+        "uen": "202312345K"
+      },
+      "hasGoogleBusinessProfile": true
+    },
+    "expected": {
+      "localSeoScore": 100,
+      "status": "EXCELLENT_LOCAL_AUTHORITY",
+      "hasSingaporeCcTld": true,
+      "hasValidSingaporePostalCode": true,
+      "hasValidAcraUen": true
+    }
+  },
+  {
+    "caseId": "MKT-SEO-WEAK-REMEDIATION",
+    "description": "Hyper-local SEO audit for weak non-local domain requiring remediation",
+    "engine": "auditSingaporeLocalSeo",
+    "input": {
+      "domainName": "globalstartup.io",
+      "targetKeywords": [
+        "Cloud Software Solutions"
+      ],
+      "hasGoogleBusinessProfile": false
+    },
+    "expected": {
+      "status": "WEAK_LOCAL_SIGNALS_REMEDIATION_REQUIRED",
+      "hasSingaporeCcTld": false,
+      "hasValidSingaporePostalCode": false
+    }
+  },
+  {
+    "caseId": "MKT-SEO-MODERATE-LOCAL",
+    "description": "Local SEO presence with verified Google Business Profile and postal code but .com domain",
+    "engine": "auditSingaporeLocalSeo",
+    "input": {
+      "domainName": "regionalhub.com",
+      "targetKeywords": [
+        "Jurong Industrial Warehousing"
+      ],
+      "hreflangTags": [
+        "en-sg"
+      ],
+      "localBusinessSchema": {
+        "postalCode": "609966",
+        "uen": "202100123A"
+      },
+      "hasGoogleBusinessProfile": true
+    },
+    "expected": {
+      "status": "MODERATE_LOCAL_PRESENCE",
+      "hasSingaporeCcTld": false,
+      "hasValidSingaporePostalCode": true
+    }
+  },
+  {
+    "caseId": "MKT-CONTENT-ASAS-COMPLIANT",
+    "description": "B2B enterprise marketing copy certified 100% compliant with ASAS standards",
+    "engine": "auditSingaporeContentLocalization",
+    "input": {
+      "copyText": "Empowering Singapore enterprises with enterprise-grade financial governance and ACRA statutory compliance.",
+      "targetAudience": "B2B_ENTERPRISE"
+    },
+    "expected": {
+      "targetAudience": "B2B_ENTERPRISE",
+      "localizationQualityScore": 100,
+      "isAsasCompliant": true,
+      "totalBreachesDetected": 0
+    }
+  },
+  {
+    "caseId": "MKT-CONTENT-ASAS-BREACH",
+    "description": "Marketing copy audit flagging prohibited superlatives and therapeutic cures",
+    "engine": "auditSingaporeContentLocalization",
+    "input": {
+      "copyText": "We are the BEST IN SINGAPORE clinic! Guaranteed 100% cure for all patients. Our serum CURES chronic fatigue lah!",
+      "targetAudience": "B2B_ENTERPRISE",
+      "hasHsaTherapeuticApproval": false
+    },
+    "expected": {
+      "isAsasCompliant": false
+    }
+  },
+  {
+    "caseId": "MKT-CONTENT-SINGLISH-CONSUMER",
+    "description": "B2C consumer lifestyle copy with permitted colloquial Singlish nuances",
+    "engine": "auditSingaporeContentLocalization",
+    "input": {
+      "copyText": "Don't say bo-jio! Chope your weekend dining table now and enjoy shiok deals!",
+      "targetAudience": "B2C_CONSUMER",
+      "allowColloquialSinglish": true
+    },
+    "expected": {
+      "isAsasCompliant": true
+    }
+  },
+  {
+    "caseId": "MKT-OUTBOUND-B2B-BCI-COMPLIANT",
+    "description": "B2B corporate outbound cadence compliant with PDPA Section 4(4)(d) BCI exemption",
+    "engine": "evaluateSingaporeOutboundCadence",
+    "input": {
+      "recipientType": "B2B_CORPORATE_CAPACITY",
+      "outboundChannels": [
+        "EMAIL",
+        "LINKEDIN"
+      ],
+      "hasFunctionalUnsubscribeMechanism": true,
+      "hasClearSenderIdentity": true
+    },
+    "expected": {
+      "isFullyCompliant": true,
+      "bciExemptionApplies": true,
+      "isSpamControlActCompliant": true,
+      "totalBreachesDetected": 0
+    }
+  },
+  {
+    "caseId": "MKT-OUTBOUND-B2C-DNC-VIOLATION",
+    "description": "B2C telemarketing cadence flagged for missing DNC Registry check",
+    "engine": "evaluateSingaporeOutboundCadence",
+    "input": {
+      "recipientType": "B2C_INDIVIDUAL_CONSUMER",
+      "outboundChannels": [
+        "PHONE_VOICE",
+        "SMS_WHATSAPP"
+      ],
+      "hasCheckedDncRegistry": false,
+      "hasFunctionalUnsubscribeMechanism": true
+    },
+    "expected": {
+      "isFullyCompliant": false,
+      "bciExemptionApplies": false
+    }
+  },
+  {
+    "caseId": "MKT-OUTBOUND-SPAM-ACT-VIOLATION",
+    "description": "Email outbound violating Spam Control Act Section 11 by omitting unsubscribe",
+    "engine": "evaluateSingaporeOutboundCadence",
+    "input": {
+      "recipientType": "B2B_CORPORATE_CAPACITY",
+      "outboundChannels": [
+        "EMAIL"
+      ],
+      "hasFunctionalUnsubscribeMechanism": false,
+      "hasClearSenderIdentity": true
+    },
+    "expected": {
+      "isSpamControlActCompliant": false
+    }
+  },
+  {
+    "caseId": "MKT-SOCIAL-LINKEDIN-B2B",
+    "description": "LinkedIn corporate social campaign with optimal SGT CBD timing and micro-influencer budget",
+    "engine": "planSingaporeSocialCampaign",
+    "input": {
+      "platform": "LINKEDIN",
+      "campaignGoal": "B2B_LEAD_GEN",
+      "allocatedBudgetSgd": 10000,
+      "influencerTier": "MICRO"
+    },
+    "expected": {
+      "platform": "LINKEDIN",
+      "totalBudgetSgd": 10000,
+      "creatorPartnerships": 4000,
+      "paidMediaAmplification": 4500,
+      "creativeProduction": 1500,
+      "benchmarkEngagementRatePercent": 2.8
+    }
+  },
+  {
+    "caseId": "MKT-SOCIAL-INSTAGRAM-CONSUMER",
+    "description": "Instagram lifestyle campaign planned for evening commuter engagement",
+    "engine": "planSingaporeSocialCampaign",
+    "input": {
+      "platform": "INSTAGRAM",
+      "campaignGoal": "BRAND_AWARENESS",
+      "allocatedBudgetSgd": 5000,
+      "influencerTier": "NANO"
+    },
+    "expected": {
+      "platform": "INSTAGRAM",
+      "selectedTier": "NANO",
+      "benchmarkEngagementRatePercent": 4.5
+    }
+  },
+  {
+    "caseId": "MKT-SOCIAL-TIKTOK-GENZ",
+    "description": "TikTok campaign planned with high-engagement video creator allocation",
+    "engine": "planSingaporeSocialCampaign",
+    "input": {
+      "platform": "TIKTOK",
+      "campaignGoal": "BRAND_AWARENESS",
+      "allocatedBudgetSgd": 8000,
+      "influencerTier": "MID_TIER"
+    },
+    "expected": {
+      "platform": "TIKTOK",
+      "totalBudgetSgd": 8000
+    }
+  },
+  {
+    "caseId": "MKT-LEAD-TIER-1-ENTERPRISE",
+    "description": "Lead qualification engine scoring Tier 1 high-intent Enterprise corporate",
+    "engine": "scoreSingaporeB2bLead",
+    "input": {
+      "companyPaidUpCapitalSgd": 2000000,
+      "isGstRegisteredInIras": true,
+      "employeeHeadcount": 300,
+      "ssicSector": "FINANCIAL_SERVICES",
+      "decisionMakerSeniority": "C_SUITE",
+      "isBudgetConfirmed": true
+    },
+    "expected": {
+      "leadScore": 100,
+      "leadTier": "TIER_1_ENTERPRISE_PRIORITY",
+      "isIcpQualified": true,
+      "recommendedSalesMotion": "SENIOR_ACCOUNT_EXECUTIVE_OUTBOUND_AND_CUSTOM_POC"
+    }
+  },
+  {
+    "caseId": "MKT-LEAD-UNQUALIFIED-FILTER",
+    "description": "Lead qualification filtering out low-capital non-GST low-intent inquiry",
+    "engine": "scoreSingaporeB2bLead",
+    "input": {
+      "companyPaidUpCapitalSgd": 5000,
+      "isGstRegisteredInIras": false,
+      "employeeHeadcount": 3,
+      "ssicSector": "RETAIL_TRADE",
+      "decisionMakerSeniority": "INDIVIDUAL_CONTRIBUTOR",
+      "isBudgetConfirmed": false
+    },
+    "expected": {
+      "leadTier": "UNQUALIFIED_LOW_INTENT",
+      "isIcpQualified": false
+    }
+  },
+  {
+    "caseId": "MKT-LEAD-MID-MARKET-TIER-2",
+    "description": "Lead qualification scoring Mid-Market corporate prospect (Tier 2)",
+    "engine": "scoreSingaporeB2bLead",
+    "input": {
+      "companyPaidUpCapitalSgd": 100000,
+      "isGstRegisteredInIras": true,
+      "employeeHeadcount": 35,
+      "ssicSector": "INFORMATION_COMMUNICATIONS",
+      "decisionMakerSeniority": "DIRECTOR_VP",
+      "isBudgetConfirmed": true
+    },
+    "expected": {
+      "leadTier": "TIER_2_MID_MARKET",
+      "isIcpQualified": true
+    }
+  },
+  {
+    "caseId": "MKT-ADS-GST-REGISTERED-SCALABLE",
+    "description": "Paid digital media ads ROI factoring 9% GST Input Tax recovery on Form F5",
+    "engine": "calculateSingaporeAdsRoi",
+    "input": {
+      "adSpendExcludingGstSgd": 20000,
+      "acquiredCustomersCount": 50,
+      "totalAttributedRevenueSgd": 120000,
+      "customerLifespanMonths": 12,
+      "monthlyGrossMarginPerCustomerSgd": 300,
+      "isB2bGstRegistered": true
+    },
+    "expected": {
+      "baseAdSpendBeforeGst": 20000,
+      "statutory9PercentGst": 1800,
+      "grossTotalAdSpend": 21800,
+      "isGstClaimableAsInputTax": true,
+      "effectiveNetAdCost": 20000,
+      "blendedCacSgd": 400,
+      "customerLtvSgd": 3600,
+      "ltvToCacRatio": 9,
+      "returnOnAdSpendRoas": 6,
+      "marketingEfficiencyTier": "HEALTHY_SCALABLE_UNIT_ECONOMICS"
+    }
+  },
+  {
+    "caseId": "MKT-ADS-NON-GST-UNSUSTAINABLE",
+    "description": "Paid ads unit economics for non-GST registered SME suffering sunk 9% GST burden",
+    "engine": "calculateSingaporeAdsRoi",
+    "input": {
+      "adSpendExcludingGstSgd": 10000,
+      "acquiredCustomersCount": 10,
+      "totalAttributedRevenueSgd": 20000,
+      "customerLifespanMonths": 6,
+      "monthlyGrossMarginPerCustomerSgd": 150,
+      "isB2bGstRegistered": false
+    },
+    "expected": {
+      "effectiveNetAdCost": 10900,
+      "isGstClaimableAsInputTax": false,
+      "blendedCacSgd": 1090,
+      "customerLtvSgd": 900,
+      "ltvToCacRatio": 0.83,
+      "marketingEfficiencyTier": "UNSUSTAINABLE_CASH_DRAIN"
+    }
+  },
+  {
+    "caseId": "MKT-BRAND-PREMIUM-CATEGORY-LEADER",
+    "description": "Brand positioning and trust equity index audit for Singapore category leader",
+    "engine": "evaluateSingaporeBrandPositioning",
+    "input": {
+      "brandName": "SingaTrust Enterprise",
+      "targetSegment": "REGIONAL_ENTERPRISE",
+      "priceTier": "PREMIUM_LUXURY",
+      "coreDifferentiators": [
+        "Deterministic 64 engines",
+        "ACRA/IRAS alignment",
+        "Sandbox isolation"
+      ],
+      "hasRegisteredIposTrademark": true,
+      "alignsWithGreenPlan2030": true,
+      "hasMadeWithPassionEndorsement": true
+    },
+    "expected": {
+      "perceivedPremiumX": 8,
+      "positioningQuadrant": "PREMIUM_INNOVATOR_CATEGORY_LEADER",
+      "singaporeTrustIndex": 100,
+      "defensibilityTier": "HIGH_STRATEGIC_DEFENSIBILITY"
+    }
+  }
+]

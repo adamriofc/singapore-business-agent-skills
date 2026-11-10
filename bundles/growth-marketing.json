@@ -1,0 +1,41 @@
+{
+  "bundle_id": "growth-marketing",
+  "name": "Singapore Growth & Marketing Intelligence Pack",
+  "profile": "growth-marketing",
+  "version": "2.0.0",
+  "description": "Singapore market expansion, hyper-local SEO, B2B outbound lead generation under PDPA, ASAS advertising compliance, and regional competitive moat analysis.",
+  "plugins": [
+    {
+      "id": "marketing-sg",
+      "name": "Singapore Marketing & Growth Intelligence",
+      "version": "2.0.0",
+      "domain": "marketing",
+      "skills": 7
+    },
+    {
+      "id": "strategic-sg",
+      "name": "Singapore Strategic Planning Intelligence",
+      "version": "2.0.0",
+      "domain": "strategic",
+      "skills": 6
+    }
+  ],
+  "shared": {
+    "engines": 64,
+    "capabilityCatalog": "registry/capabilities.json"
+  },
+  "totals": {
+    "plugins": 2,
+    "skills": 13,
+    "engines": 64
+  },
+  "use_cases": [
+    "Singapore hyper-local SEO signals (.sg ccTLD, postal code, UEN structured schema)",
+    "ASAS Singapore Code of Advertising Practice (SCAP) compliance audit",
+    "PDPA Section 4(4)(d) B2B Business Contact Information (BCI) outbound cadence",
+    "B2B sales lead qualification and scoring against Singapore commercial buyer personas",
+    "Paid advertising ROI, CAC, ROAS with 9% GST tax liability factoring",
+    "Brand trust equity and local reputational sentiment scoring",
+    "EnterpriseSG market entry and competitive moat analysis"
+  ]
+}

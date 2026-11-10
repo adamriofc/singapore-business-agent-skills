@@ -95,7 +95,7 @@ function validateDocs() {
     'README.md', 'SKILL_PROTOCOL.md', 'CHANGELOG.md', 'PROVENANCE.md',
     'SECURITY.md', 'docs/BENCHMARK.md', 'docs/RELEASE.md'
   ];
-  const staleTerms = ['sovereign-core', 'sovereign business core', 'sg-tax-id', 'sg-hr-id'];
+  const staleTerms = ['sovereign', 'sg-tax-id', 'sg-hr-id'];
   currentDocFiles.forEach(docFile => {
     const filePath = path.join(ROOT, docFile);
     if (!fs.existsSync(filePath)) return;

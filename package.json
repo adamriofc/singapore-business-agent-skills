@@ -1,7 +1,7 @@
 {
   "name": "singapore-business-agent-skills",
-  "version": "1.0.0",
-  "description": "Production-oriented AI domain-intelligence infrastructure for Singapore legal (ACRA), tax (IRAS), corporate governance, HR/employment & immigration (MOM/CPF), data privacy (PDPA), and cross-border Singapore-Indonesia corporate reasoning.",
+  "version": "2.0.0",
+  "description": "Production-oriented AI domain-intelligence infrastructure for Singapore legal, tax, HR, finance, marketing, and strategic business reasoning.",
   "main": "index.js",
   "types": "index.d.ts",
   "bin": {
@@ -9,7 +9,7 @@
     "sbas": "./bin/sg-agent-skills.js"
   },
   "scripts": {
-    "test": "node tests/units/tax-engines.test.js && node tests/units/hr-engines.test.js && node tests/units/legal-engines.test.js && node tests/units/finance-engines.test.js && node tests/units/strategic-engines.test.js && node tests/units/typescript-typings.test.js",
+    "test": "node tests/units/tax-engines.test.js && node tests/units/hr-engines.test.js && node tests/units/legal-engines.test.js && node tests/units/finance-engines.test.js && node tests/units/strategic-engines.test.js && node tests/units/marketing-engines.test.js && node tests/units/typescript-typings.test.js && node tests/units/golden-corpus.test.js",
     "test:security": "node tests/security/injection.test.js && node tests/security/adversarial.test.js && node tests/security/supply-chain.test.js",
     "test:cli": "node tests/units/cli.test.js",
     "test:integration": "node tests/integration/cross-domain.test.js",

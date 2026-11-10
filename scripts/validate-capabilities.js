@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const bundles = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg'];
+const bundles = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg', 'marketing-sg'];
 
 function validateCapabilities() {
   console.log("🇸🇬 Running Agent Capability Contract Schema Validator...\n");
@@ -29,9 +29,13 @@ function validateCapabilities() {
   }
 
   const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+  const metadataPath = path.join(ROOT, 'canonical-metadata.json');
+  const expectedTotal = fs.existsSync(metadataPath)
+    ? JSON.parse(fs.readFileSync(metadataPath, 'utf8')).skills
+    : 71;
 
-  if (catalog.total_capabilities !== 15) {
-    console.error(`❌ Capability Catalog Mismatch: catalog claims ${catalog.total_capabilities} capabilities, expected 15.`);
+  if (catalog.total_capabilities !== expectedTotal) {
+    console.error(`❌ Capability Catalog Mismatch: catalog claims ${catalog.total_capabilities} capabilities, expected ${expectedTotal}.`);
     errors++;
   }
 

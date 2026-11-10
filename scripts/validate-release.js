@@ -78,10 +78,10 @@ function validateRelease() {
 
   // 6. Golden Corpus
   console.log("  [6/18] Verifying Golden Test Corpus...");
-  if (metadata.goldenCases !== 25 || metadata.benchmarkDomains !== 5) {
-    console.error(`❌ Golden Corpus Mismatch: expected 25/5, got ${metadata.goldenCases}/${metadata.benchmarkDomains}`);
+  if (metadata.goldenCases !== 130 || metadata.benchmarkDomains !== 6) {
+    console.error(`❌ Golden Corpus Mismatch: expected 130/6, got ${metadata.goldenCases}/${metadata.benchmarkDomains}`);
     errors++;
-  } else { checksPassed++; console.log(`    ✅ Golden corpus verified: 25 cases across 5 domains`); }
+  } else { checksPassed++; console.log(`    ✅ Golden corpus verified: 130 cases across 6 domains`); }
 
   // 7. Benchmark artifact
   console.log("  [7/18] Verifying Latest Benchmark Results Artifact...");
@@ -175,7 +175,7 @@ function validateRelease() {
     const domainCount = artifact.domains ? Object.keys(artifact.domains).length : 0;
     if (domainCount !== metadata.benchmarkDomains) {
       console.error(`❌ Benchmark Artifact Semantic Mismatch: artifact=${domainCount}, metadata=${metadata.benchmarkDomains}`); errors++;
-    } else { checksPassed++; console.log(`    ✅ Benchmark semantic alignment verified (5 domains)`); }
+    } else { checksPassed++; console.log(`    ✅ Benchmark semantic alignment verified (${metadata.benchmarkDomains} domains)`); }
   } catch (e) { console.error(`❌ Benchmark Artifact Semantic Check Failed: ${e.message}`); errors++; }
 
   // 16. Release manifest ↔ tag provenance

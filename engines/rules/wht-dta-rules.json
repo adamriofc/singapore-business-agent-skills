@@ -1,5 +1,5 @@
 {
-  "statute": "Income Tax Act 1947 Sections 45, 45A & Avoidance of Double Taxation Agreements (DTA)",
+  "statute": "Income Tax Act 1947 Sections 45, 45A, 45D & Avoidance of Double Taxation Agreements (DTA) Framework",
   "authority": "Inland Revenue Authority of Singapore (IRAS)",
   "domesticWhtRates": {
     "interest": 0.15,
@@ -8,25 +8,9 @@
     "directorsFeesNonResident": 0.24,
     "rentMovableProperty": 0.15
   },
-  "dtaSingaporeIndonesia": {
-    "treatyName": "Agreement between the Republic of Singapore and the Republic of Indonesia for the Avoidance of Double Taxation",
-    "effectiveDate": "1992-01-01",
-    "updatedProtocolEffectiveDate": "2021-01-01",
-    "dividends": {
-      "substantialParticipationRate": 0.10,
-      "substantialParticipationMinimumHolding": 0.25,
-      "generalPortfolioRate": 0.15
-    },
-    "interest": {
-      "standardTreatyRate": 0.10,
-      "governmentOrCentralBankExempt": true
-    },
-    "royalties": {
-      "industrialCommercialScientificEquipment": 0.08,
-      "patentCopyrightTrademarks": 0.10
-    },
-    "permanentEstablishmentThresholdMonths": 6,
-    "branchProfitTaxCap": 0.10,
-    "certificateOfResidenceRequirement": "COR_FROM_IRAS_OR_DGT_FORM_INDONESIA"
+  "dtaGeneralFramework": {
+    "certificateOfResidenceRequirement": "COR_FROM_IRAS",
+    "beneficialOwnershipRequirement": true,
+    "statutoryBasis": "Income Tax Act 1947, Section 49"
   }
 }

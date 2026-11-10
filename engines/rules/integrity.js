@@ -19,7 +19,7 @@ const EXPECTED_HASHES = {
   'gst-rules.json': '9951cde8002960dfa26a57483467c37915758297f4f8bb56a5da6635e71a1955',
   'mom-workforce-rules.json': 'eebf9f3818dd9eb5fd4ed8e75d34380e93bfc3218e663cab15b4d68287828f62',
   'pdpa-rules.json': '8efad5242814c8ca12aa60aabb7cf88f305578c1efcf7ccc7f0029cf51f8c43f',
-  'wht-dta-rules.json': '7b1e776335a9113197d507e9453390c7e7b73299b285606fb49e7510dee06e00'
+  'wht-dta-rules.json': '966a27e0b3a1a319ebaf822bfd9635c0fba484d3c58caa94b9aadc1acc9c4351'
 };
 
 const REQUIRED_RULESETS = Object.keys(EXPECTED_HASHES);

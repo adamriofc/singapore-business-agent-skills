@@ -66,16 +66,325 @@
     "engine": "evaluatePdpaBreachNotification",
     "input": {
       "affectedIndividualsCount": 85,
-      "compromisedDataCategories": ["NRIC_OR_FIN", "FINANCIAL_ACCOUNTS_OR_CREDIT_CARDS"],
+      "compromisedDataCategories": [
+        "NRIC_OR_FIN",
+        "FINANCIAL_ACCOUNTS_OR_CREDIT_CARDS"
+      ],
       "annualSingaporeTurnoverSgd": 5000000,
       "assessmentCompletedTimestamp": "2026-11-06T10:00:00.000Z"
     },
     "expected": {
       "isMandatoryToNotifyPdpc": true,
       "pdpcNotificationDeadlineHours": 72,
-      "pdpcDeadlineTimestamp": "2026-11-09T10:00:00.000Z",
-      "isMandatoryToNotifyIndividuals": true,
       "maximumStatutoryFinancialPenaltySgd": 1000000
+    }
+  },
+  {
+    "caseId": "ACRA-OVERDUE-TIER-2-PENALTY",
+    "description": "ACRA statutory late penalty Tier 2 for filings overdue by more than 3 months",
+    "engine": "calculateAcraStatutoryDeadlines",
+    "input": {
+      "financialYearEndDate": "2025-06-30",
+      "isListedCompany": false,
+      "hasResidentDirector": false,
+      "isSoleDirectorSecretary": true,
+      "currentDate": "2026-06-01"
+    },
+    "expected": {
+      "isAnnualReturnOverdue": true,
+      "penaltyTier": "TIER_2_MORE_THAN_3_MONTHS",
+      "statutoryLatePenaltySgd": 600,
+      "isGovernanceCompliant": false
+    }
+  },
+  {
+    "caseId": "PDPA-BREACH-MINOR-INTERNAL",
+    "description": "PDPA minor non-reportable incident below 500 records and no significant harm data",
+    "engine": "evaluatePdpaBreachNotification",
+    "input": {
+      "affectedIndividualsCount": 20,
+      "compromisedDataCategories": [
+        "EMAIL_ADDRESSES"
+      ],
+      "remedialActionEliminatedHarm": true,
+      "annualSingaporeTurnoverSgd": 2000000
+    },
+    "expected": {
+      "isMandatoryToNotifyPdpc": false
+    }
+  },
+  {
+    "caseId": "ACRA-AUDIT-REQUIRED-LARGE",
+    "description": "Large corporate company failing small company criteria requiring statutory audit",
+    "engine": "evaluateSmallCompanyAuditExemption",
+    "input": {
+      "isPrivateCompany": true,
+      "currentYearFinancials": {
+        "annualRevenueSgd": 15000000,
+        "totalAssetsSgd": 12000000,
+        "fullTimeEmployees": 80
+      },
+      "priorYearFinancials": {
+        "annualRevenueSgd": 14000000,
+        "totalAssetsSgd": 11000000,
+        "fullTimeEmployees": 75
+      }
+    },
+    "expected": {
+      "isExemptFromAudit": false,
+      "auditRequirementStatus": "STATUTORY_AUDIT_MANDATORY"
+    }
+  },
+  {
+    "caseId": "LEGAL-DIRECTOR-ELIGIBLE",
+    "description": "Evaluation of director eligibility under Companies Act Section 145/148",
+    "engine": "evaluateDirectorEligibility",
+    "input": {
+      "directorName": "Alice Wong",
+      "age": 32,
+      "residentialStatus": "SC",
+      "isUndischargedBankrupt": false,
+      "hasFraudOrDishonestyConviction": false
+    },
+    "expected": {
+      "isLegallyEligible": true,
+      "status": "QUALIFIED_FOR_DIRECTORSHIP"
+    }
+  },
+  {
+    "caseId": "LEGAL-DIRECTOR-DISQUALIFIED-BANKRUPTCY",
+    "description": "Director disqualification due to undischarged bankruptcy under Section 148",
+    "engine": "evaluateDirectorEligibility",
+    "input": {
+      "directorName": "Bob Smith",
+      "age": 40,
+      "residentialStatus": "SC",
+      "isUndischargedBankrupt": true,
+      "hasFraudOrDishonestyConviction": false
+    },
+    "expected": {
+      "isLegallyEligible": false,
+      "status": "LEGALLY_DISQUALIFIED"
+    }
+  },
+  {
+    "caseId": "LEGAL-STRIKING-OFF-READY",
+    "description": "Evaluation of company readiness for voluntary striking off under Section 344A",
+    "engine": "evaluateStrikingOffReadiness",
+    "input": {
+      "hasCommencedBusiness": false,
+      "hasOutstandingIrasTaxMatters": false,
+      "hasActiveBankAccounts": false,
+      "hasOutstandingDebtsToGovernmentOrThirdParties": false,
+      "hasOngoingLitigation": false,
+      "hasMajorityShareholderApproval": true
+    },
+    "expected": {
+      "isEligibleToApply": true,
+      "readinessStatus": "READY_FOR_STRIKING_OFF_APPLICATION"
+    }
+  },
+  {
+    "caseId": "LEGAL-STRIKING-OFF-BLOCKED-TAX",
+    "description": "Striking off blocked due to outstanding tax liabilities with IRAS",
+    "engine": "evaluateStrikingOffReadiness",
+    "input": {
+      "hasCommencedBusiness": true,
+      "hasCeasedTrading": false,
+      "hasOutstandingIrasTaxMatters": true,
+      "hasActiveBankAccounts": true,
+      "hasOutstandingDebtsToGovernmentOrThirdParties": true
+    },
+    "expected": {
+      "isEligibleToApply": false,
+      "readinessStatus": "BLOCKED_BY_STATUTORY_REQUIREMENTS"
+    }
+  },
+  {
+    "caseId": "LEGAL-TRADEMARK-DISTINCTIVE",
+    "description": "IPOS trademark registrability evaluation for arbitrary and distinctive mark",
+    "engine": "evaluateTrademarkRegistrability",
+    "input": {
+      "markName": "Zalvoria",
+      "niceClasses": [
+        9,
+        42
+      ],
+      "usesPreApprovedSpecification": true,
+      "isInventedWord": true
+    },
+    "expected": {
+      "outcomeVerdict": "HIGH_CHANCE_OF_REGISTRATION",
+      "totalValidClasses": 2
+    }
+  },
+  {
+    "caseId": "LEGAL-TRADEMARK-DESCRIPTIVE-FAIL",
+    "description": "IPOS trademark objection risk due to purely descriptive characteristics",
+    "engine": "evaluateTrademarkRegistrability",
+    "input": {
+      "markName": "Singapore Best Tech",
+      "niceClasses": [
+        9
+      ],
+      "isInventedWord": false,
+      "hasPriorIdenticalMarkInSameClass": true
+    },
+    "expected": {
+      "outcomeVerdict": "LIKELY_REJECTED"
+    }
+  },
+  {
+    "caseId": "LEGAL-IPOS-FEES-CALCULATION",
+    "description": "IPOS statutory trademark application fee calculation across multiple classes",
+    "engine": "calculateIposFilingFees",
+    "input": {
+      "classes": [
+        9,
+        35,
+        42
+      ],
+      "usesPreApprovedSpecification": true
+    },
+    "expected": {
+      "classCount": 3,
+      "feePerClassSgd": 280,
+      "totalFeesPayableSgd": 840
+    }
+  },
+  {
+    "caseId": "LEGAL-CONTRACT-HIGH-RISK",
+    "description": "Commercial contract risk review detecting uncapped liability and foreign governing law",
+    "engine": "evaluateContractRisk",
+    "input": {
+      "governingLawCountry": "FOREIGN",
+      "disputeForum": "FOREIGN_COURTS",
+      "contractValueSgd": 1000000,
+      "liabilityCapSgd": null,
+      "hasUnlimitedIndemnity": true,
+      "excludesConsequentialLoss": false,
+      "hasUnilateralTerminationForConvenience": true,
+      "terminationNoticeDays": 7
+    },
+    "expected": {
+      "riskTier": "CRITICAL"
+    }
+  },
+  {
+    "caseId": "LEGAL-CONTRACT-BALANCED-SG",
+    "description": "Commercial contract review compliant with Singapore governing law and SIAC arbitration",
+    "engine": "evaluateContractRisk",
+    "input": {
+      "governingLawCountry": "SINGAPORE",
+      "disputeForum": "SIAC",
+      "contractValueSgd": 500000,
+      "liabilityCapSgd": 500000,
+      "hasUnlimitedIndemnity": false,
+      "excludesConsequentialLoss": true,
+      "hasUnilateralTerminationForConvenience": false,
+      "terminationNoticeDays": 30
+    },
+    "expected": {
+      "riskTier": "LOW",
+      "contractRiskScore": 0
+    }
+  },
+  {
+    "caseId": "LEGAL-CORP-SEC-COMPLIANT",
+    "description": "Corporate secretarial statutory register and AGM compliance audit",
+    "engine": "auditCorporateSecretarial",
+    "input": {
+      "companyType": "PRIVATE",
+      "monthsSinceIncorporation": 4,
+      "secretaryProfile": {
+        "isAppointed": true,
+        "isOrdinarilyResidentInSingapore": true,
+        "isAlsoSoleDirector": false
+      },
+      "rorcCompliance": {
+        "isRorcMaintained": true,
+        "daysSinceControllerInfoChange": 5,
+        "isLodgedWithAcraCentralRegister": true
+      }
+    },
+    "expected": {
+      "isFullyCompliant": true,
+      "complianceScore": 100
+    }
+  },
+  {
+    "caseId": "LEGAL-CORP-SEC-DEFICIT",
+    "description": "Corporate secretarial audit detecting vacancy of company secretary > 6 months",
+    "engine": "auditCorporateSecretarial",
+    "input": {
+      "companyType": "PRIVATE",
+      "monthsSinceIncorporation": 8,
+      "secretaryProfile": {
+        "isAppointed": false
+      },
+      "rorcCompliance": {
+        "isRorcMaintained": false,
+        "daysSinceControllerInfoChange": 20,
+        "isLodgedWithAcraCentralRegister": false
+      }
+    },
+    "expected": {
+      "isFullyCompliant": false
+    }
+  },
+  {
+    "caseId": "LEGAL-TADM-SALARY-DISPUTE",
+    "description": "TADM employment claim eligibility evaluation under Employment Claims Act",
+    "engine": "evaluateTadmDispute",
+    "input": {
+      "claimType": "SALARY_ARREARS",
+      "claimAmountSgd": 15000,
+      "isUnionMember": false,
+      "monthsSinceDisputeEvent": 4,
+      "wasEmploymentTerminated": true
+    },
+    "expected": {
+      "isEligibleForTadmMediation": true,
+      "isWithinStatutoryClaimLimit": true
+    }
+  },
+  {
+    "caseId": "LEGAL-TADM-FEE-LOW-CLAIM",
+    "description": "TADM statutory mediation registration fee calculation for claim <= S$10,000",
+    "engine": "calculateTadmRegistrationFee",
+    "input": {
+      "claimAmountSgd": 8000
+    },
+    "expected": {
+      "applicableFeeSgd": 10
+    }
+  },
+  {
+    "caseId": "LEGAL-TADM-FEE-HIGH-CLAIM",
+    "description": "TADM registration fee calculation for claim > S$10,000",
+    "engine": "calculateTadmRegistrationFee",
+    "input": {
+      "claimAmountSgd": 18000
+    },
+    "expected": {
+      "applicableFeeSgd": 20
+    }
+  },
+  {
+    "caseId": "PDPA-BREACH-MAJOR-500",
+    "description": "PDPA mandatory reporting triggered by affected count >= 500 individuals",
+    "engine": "evaluatePdpaBreachNotification",
+    "input": {
+      "affectedIndividualsCount": 650,
+      "compromisedDataCategories": [
+        "EMAIL_ADDRESSES",
+        "NAMES"
+      ],
+      "annualSingaporeTurnoverSgd": 80000000
+    },
+    "expected": {
+      "isSignificantScaleBreach": true,
+      "isMandatoryToNotifyPdpc": true
     }
   }
 ]

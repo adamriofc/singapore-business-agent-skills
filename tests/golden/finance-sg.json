@@ -6,7 +6,7 @@
     "input": {
       "marketValueOfEquitySgd": 6000000,
       "marketValueOfDebtSgd": 4000000,
-      "riskFreeRate": 0.030,
+      "riskFreeRate": 0.03,
       "equityBeta": 1.2,
       "equityRiskPremium": 0.055,
       "soraBaseRate": 0.035,
@@ -17,7 +17,7 @@
       "equityWeightPercent": 60,
       "debtWeightPercent": 40,
       "costOfEquityKePercent": 9.6,
-      "preTaxCostOfDebtKdPercent": 5.0,
+      "preTaxCostOfDebtKdPercent": 5,
       "afterTaxCostOfDebtPercent": 4.15,
       "weightedAverageCostOfCapitalPercent": 7.42
     }
@@ -29,15 +29,15 @@
     "input": {
       "marketValueOfEquitySgd": 5000000,
       "marketValueOfDebtSgd": 0,
-      "riskFreeRate": 0.030,
-      "equityBeta": 1.0,
-      "equityRiskPremium": 0.050
+      "riskFreeRate": 0.03,
+      "equityBeta": 1,
+      "equityRiskPremium": 0.05
     },
     "expected": {
       "equityWeightPercent": 100,
       "debtWeightPercent": 0,
-      "costOfEquityKePercent": 8.0,
-      "weightedAverageCostOfCapitalPercent": 8.0
+      "costOfEquityKePercent": 8,
+      "weightedAverageCostOfCapitalPercent": 8
     }
   },
   {
@@ -56,7 +56,7 @@
     },
     "expected": {
       "netWorkingCapitalSgd": 1000000,
-      "currentRatio": 2.0,
+      "currentRatio": 2,
       "quickRatio": 1.2,
       "cashRatio": 0.5,
       "isSolventShortTerm": true,
@@ -68,6 +68,476 @@
       "workingCapitalRequiredForCccSgd": 750000,
       "workingCapitalSurplusOrDeficitSgd": 250000,
       "position": "WORKING_CAPITAL_SURPLUS"
+    }
+  },
+  {
+    "caseId": "FIN-WORKING-CAPITAL-DEFICIT",
+    "description": "Working capital liquidity strain with negative working capital position",
+    "engine": "calculateSingaporeWorkingCapital",
+    "input": {
+      "currentAssetsSgd": 800000,
+      "currentLiabilitiesSgd": 1200000,
+      "cashAndEquivalentsSgd": 50000,
+      "tradeReceivablesSgd": 450000,
+      "inventorySgd": 300000,
+      "tradePayablesSgd": 800000,
+      "annualRevenueSgd": 3650000,
+      "annualCogsSgd": 2500000
+    },
+    "expected": {
+      "netWorkingCapitalSgd": -400000,
+      "isSolventShortTerm": false,
+      "position": "WORKING_CAPITAL_DEFICIT"
+    }
+  },
+  {
+    "caseId": "FIN-SFRS-115-TRANSACTION-ALLOCATION",
+    "description": "SFRS 115 transaction price allocation based on standalone selling prices",
+    "engine": "allocateTransactionPriceSfrs115",
+    "input": {
+      "totalTransactionPriceSgd": 100000,
+      "performanceObligations": [
+        {
+          "id": "SOFTWARE_LICENSE",
+          "standaloneSellingPriceSgd": 80000
+        },
+        {
+          "id": "IMPLEMENTATION_SERVICE",
+          "standaloneSellingPriceSgd": 40000
+        }
+      ]
+    },
+    "expected": {
+      "totalTransactionPriceSgd": 100000,
+      "totalStandaloneSellingPriceSgd": 120000,
+      "bundleDiscountSgd": 20000
+    }
+  },
+  {
+    "caseId": "FIN-SFRS-INCOME-STATEMENT",
+    "description": "Compilation of SFRS compliant multi-step Income Statement",
+    "engine": "compileIncomeStatement",
+    "input": {
+      "revenueSgd": 1000000,
+      "costOfSalesSgd": 400000,
+      "operatingExpensesSgd": 250000,
+      "depreciationAndAmortisationSgd": 50000,
+      "financeCostsSgd": 20000,
+      "taxExpenseSgd": 47600
+    },
+    "expected": {
+      "grossProfitSgd": 600000,
+      "ebitdaSgd": 350000,
+      "operatingProfitEbitSgd": 300000,
+      "profitBeforeTaxSgd": 280000,
+      "netProfitSgd": 232400
+    }
+  },
+  {
+    "caseId": "FIN-SFRS-BALANCE-SHEET",
+    "description": "Compilation of SFRS compliant Balance Sheet verifying fundamental accounting equation",
+    "engine": "compileBalanceSheet",
+    "input": {
+      "currentAssets": {
+        "cashAndCashEquivalentsSgd": 200000,
+        "tradeAndOtherReceivablesSgd": 150000,
+        "inventoriesSgd": 150000
+      },
+      "nonCurrentAssets": {
+        "propertyPlantEquipmentSgd": 500000,
+        "rightOfUseAssetsSgd": 200000
+      },
+      "currentLiabilities": {
+        "tradeAndOtherPayablesSgd": 120000,
+        "shortTermBorrowingsSgd": 80000
+      },
+      "nonCurrentLiabilities": {
+        "longTermBorrowingsSgd": 250000,
+        "leaseLiabilitiesNonCurrentSgd": 150000
+      },
+      "equity": {
+        "shareCapitalSgd": 200000,
+        "retainedEarningsSgd": 400000
+      }
+    },
+    "expected": {
+      "totalAssetsSgd": 1200000,
+      "totalLiabilitiesSgd": 600000,
+      "isBalanced": true,
+      "differenceSgd": 0
+    }
+  },
+  {
+    "caseId": "FIN-NPV-CALCULATION",
+    "description": "Net Present Value calculation for enterprise capital project",
+    "engine": "calculateNpv",
+    "input": {
+      "initialOutlaySgd": 100000,
+      "annualCashFlowsSgd": [
+        35000,
+        45000,
+        50000
+      ],
+      "discountRate": 0.08
+    },
+    "expected": {
+      "value": 10679.27
+    }
+  },
+  {
+    "caseId": "FIN-IRR-CALCULATION",
+    "description": "Internal Rate of Return evaluation against corporate cost of capital hurdle",
+    "engine": "calculateIrr",
+    "input": {
+      "initialOutlaySgd": 100000,
+      "annualCashFlowsSgd": [
+        40000,
+        50000,
+        40000
+      ]
+    },
+    "expected": {
+      "value": 0.1433
+    }
+  },
+  {
+    "caseId": "FIN-PAYBACK-PERIOD",
+    "description": "Payback period evaluation determining time to recoup initial investment",
+    "engine": "calculatePaybackPeriod",
+    "input": {
+      "initialOutlaySgd": 200000,
+      "annualCashFlowsSgd": [
+        80000,
+        80000,
+        80000,
+        80000
+      ],
+      "discountRate": 0.08
+    },
+    "expected": {
+      "undiscountedPaybackYears": 2.5
+    }
+  },
+  {
+    "caseId": "FIN-CAPITAL-INVESTMENT-COMPREHENSIVE",
+    "description": "Multi-metric capital investment appraisal (NPV, IRR, Payback, PI)",
+    "engine": "evaluateCapitalInvestment",
+    "input": {
+      "projectName": "High-Tech Automated Line",
+      "initialInvestmentSgd": 100000,
+      "annualCashFlowsSgd": [
+        35000,
+        40000,
+        45000,
+        30000
+      ],
+      "discountRate": 0.08
+    },
+    "expected": {
+      "isAcceptable": true,
+      "verdict": "ACCEPT_PROJECT"
+    }
+  },
+  {
+    "caseId": "FIN-SFRS-109-ECL-MATRIX",
+    "description": "SFRS 109 Expected Credit Loss impairment matrix on trade receivables aging",
+    "engine": "calculateSfrs109Ecl",
+    "input": {
+      "currentReceivablesSgd": 300000,
+      "pastDue1To30DaysSgd": 80000,
+      "pastDue31To60DaysSgd": 40000,
+      "pastDue61To90DaysSgd": 20000,
+      "moreThan90DaysSgd": 10000,
+      "macroeconomicMultiplier": 1,
+      "specificImpairmentSgd": 5000
+    },
+    "expected": {
+      "grossTradeReceivablesSgd": 450000,
+      "totalGeneralEclAllowanceSgd": 13500,
+      "specificImpairmentAllowanceSgd": 5000,
+      "totalEclAllowanceSgd": 18500,
+      "netTradeReceivablesSgd": 431500,
+      "taxDeductibleSpecificProvisionSgd": 5000,
+      "nonDeductibleGeneralProvisionSgd": 13500
+    }
+  },
+  {
+    "caseId": "FIN-INVENTORY-FIFO",
+    "description": "SFRS 2 First-In First-Out inventory valuation and cost of goods sold",
+    "engine": "calculateFifoInventory",
+    "input": {
+      "purchases": [
+        {
+          "units": 100,
+          "unitCostSgd": 10
+        },
+        {
+          "units": 150,
+          "unitCostSgd": 15
+        }
+      ],
+      "unitsSold": 120
+    },
+    "expected": {
+      "unitsSold": 120,
+      "endingInventoryUnits": 130,
+      "costOfGoodsSoldSgd": 1300,
+      "endingInventoryValueSgd": 1950
+    }
+  },
+  {
+    "caseId": "FIN-INVENTORY-WAC",
+    "description": "SFRS 2 Weighted Average Cost inventory valuation method",
+    "engine": "calculateWeightedAverageInventory",
+    "input": {
+      "purchases": [
+        {
+          "units": 100,
+          "unitCostSgd": 10
+        },
+        {
+          "units": 150,
+          "unitCostSgd": 15
+        }
+      ],
+      "unitsSold": 120
+    },
+    "expected": {
+      "endingInventoryUnits": 130,
+      "averageUnitCostSgd": 13,
+      "costOfGoodsSoldSgd": 1560,
+      "endingInventoryValueSgd": 1690
+    }
+  },
+  {
+    "caseId": "FIN-INVENTORY-NRV-WRITEDOWN",
+    "description": "Lower of cost and Net Realisable Value (NRV) write-down under SFRS 2",
+    "engine": "evaluateLowerOfCostAndNrv",
+    "input": {
+      "inventoryCostSgd": 50000,
+      "estimatedSellingPriceSgd": 45000,
+      "estimatedCompletionCostSgd": 2000,
+      "estimatedSellingExpenseSgd": 1000
+    },
+    "expected": {
+      "costSgd": 50000,
+      "netRealisableValueSgd": 42000,
+      "finalCarryingValueBalanceSheetSgd": 42000,
+      "isWriteDownRequired": true,
+      "inventoryWriteDownExpenseSgd": 8000
+    }
+  },
+  {
+    "caseId": "FIN-RATIOS-14-STANDARD",
+    "description": "Comprehensive financial ratio analysis across liquidity, solvency and profitability",
+    "engine": "analyzeFinancialRatios",
+    "input": {
+      "currentAssetsSgd": 500000,
+      "currentLiabilitiesSgd": 250000,
+      "cashAndEquivalentsSgd": 100000,
+      "inventorySgd": 120000,
+      "tradeReceivablesSgd": 180000,
+      "totalAssetsSgd": 1000000,
+      "totalLiabilitiesSgd": 400000,
+      "totalDebtSgd": 200000,
+      "totalEquitySgd": 600000,
+      "revenueSgd": 1200000,
+      "costOfGoodsSoldSgd": 600000,
+      "ebitOperatingProfitSgd": 200000,
+      "netProfitSgd": 150000,
+      "interestExpenseSgd": 20000
+    },
+    "expected": {
+      "currentRatio": 2,
+      "quickRatio": 1.52,
+      "cashRatio": 0.4,
+      "debtToEquityRatio": 0.33,
+      "interestCoverageRatio": 10,
+      "grossProfitMarginPercent": 50,
+      "netProfitMarginPercent": 12.5,
+      "returnOnEquityPercent": 25,
+      "verdict": "HEALTHY_STRONG"
+    }
+  },
+  {
+    "caseId": "FIN-CASH-FLOW-RUNWAY",
+    "description": "Direct weekly cash flow forecasting and runway liquidity audit",
+    "engine": "forecastWeeklyCashFlow",
+    "input": {
+      "startingCashBalanceSgd": 50000,
+      "minimumCashReserveSgd": 10000,
+      "weeklyForecasts": [
+        {
+          "weekNumber": 1,
+          "operatingReceiptsSgd": 15000,
+          "payrollAndLeviesSgd": 8000,
+          "rentAndUtilitiesSgd": 4000
+        },
+        {
+          "weekNumber": 2,
+          "operatingReceiptsSgd": 12000,
+          "payrollAndLeviesSgd": 3000,
+          "rentAndUtilitiesSgd": 1000
+        },
+        {
+          "weekNumber": 3,
+          "operatingReceiptsSgd": 20000,
+          "payrollAndLeviesSgd": 5000,
+          "rentAndUtilitiesSgd": 2000
+        },
+        {
+          "weekNumber": 4,
+          "operatingReceiptsSgd": 8000,
+          "payrollAndLeviesSgd": 12000,
+          "rentAndUtilitiesSgd": 1000
+        }
+      ]
+    },
+    "expected": {
+      "startingCashBalanceSgd": 50000,
+      "isSolventThroughoutPeriod": true,
+      "hasBreachedMinimumReserve": false
+    }
+  },
+  {
+    "caseId": "FIN-BREAK-EVEN-CVP",
+    "description": "Cost-Volume-Profit and break-even unit and revenue analysis",
+    "engine": "calculateBreakEvenAnalysis",
+    "input": {
+      "fixedCostsSgd": 120000,
+      "unitSellingPriceSgd": 50,
+      "unitVariableCostSgd": 20,
+      "projectedSalesUnits": 5000,
+      "targetNetProfitSgd": 30000
+    },
+    "expected": {
+      "unitContributionMarginSgd": 30,
+      "contributionMarginRatioPercent": 60,
+      "breakEvenUnits": 4000,
+      "breakEvenRevenueSgd": 200000,
+      "requiredUnitsToSell": 5000,
+      "requiredRevenueSgd": 250000
+    }
+  },
+  {
+    "caseId": "FIN-SAAS-UNIT-ECONOMICS",
+    "description": "SaaS unit economics evaluating LTV:CAC ratio and payback period",
+    "engine": "evaluateUnitEconomics",
+    "input": {
+      "averageMonthlyRevenuePerUserSgd": 100,
+      "grossMarginPercent": 80,
+      "monthlyCustomerChurnRatePercent": 2.5,
+      "monthlySalesAndMarketingSpendSgd": 20000,
+      "newCustomersAcquiredMonthly": 25
+    },
+    "expected": {
+      "customerAcquisitionCostSgd": 800,
+      "customerLifetimeValueSgd": 3200,
+      "ltvToCacRatio": 4,
+      "cacPaybackPeriodMonths": 10,
+      "businessHealthRating": "IDEAL_OPTIMAL"
+    }
+  },
+  {
+    "caseId": "FIN-VCC-WATERFALL",
+    "description": "Variable Capital Company fund distribution waterfall (hurdle & carried interest)",
+    "engine": "calculateVccDistributionWaterfall",
+    "input": {
+      "totalProceedsToDistributeSgd": 15000000,
+      "lpInvestedCapitalSgd": 10000000,
+      "hurdleRateAnnualPercent": 8,
+      "investmentHoldingPeriodYears": 3,
+      "carriedInterestPercent": 20,
+      "hasGpCatchUp": true
+    },
+    "expected": {
+      "totalDistributedSgd": 15000000,
+      "totalDistributedToLpSgd": 14000000,
+      "capitalReturnedSgd": 10000000,
+      "netProfitToLpSgd": 4000000,
+      "netMoicMultiple": 1.4,
+      "totalCarriedInterestToGpSgd": 1000000,
+      "effectiveCarryPercentOfProfits": 20
+    }
+  },
+  {
+    "caseId": "FIN-SFRS-116-LEASE",
+    "description": "SFRS 116 Right-of-Use asset and lease liability amortization schedule",
+    "engine": "calculateSfrs116Lease",
+    "input": {
+      "annualLeasePaymentSgd": 60000,
+      "leaseTermYears": 3,
+      "incrementalBorrowingRatePercent": 5,
+      "initialDirectCostsSgd": 2000
+    },
+    "expected": {
+      "isExemptFromCapitalisation": false,
+      "initialLeaseLiabilitySgd": 163394.88,
+      "initialRightOfUseAssetSgd": 165394.88
+    }
+  },
+  {
+    "caseId": "FIN-FX-THEORETICAL-FORWARD",
+    "description": "Foreign exchange forward contract theoretical rate using interest rate parity",
+    "engine": "calculateTheoreticalForwardRate",
+    "input": {
+      "spotRate": 1.35,
+      "domesticRateAnnual": 0.035,
+      "foreignRateAnnual": 0.055,
+      "daysToMaturity": 360
+    },
+    "expected": {
+      "value": 1.3248
+    }
+  },
+  {
+    "caseId": "FIN-FX-FORWARD-HEDGE-GAIN",
+    "description": "Foreign exchange forward hedge evaluation with MTM gain",
+    "engine": "evaluateFxForwardHedge",
+    "input": {
+      "foreignCurrency": "USD",
+      "foreignExposureAmount": 100000,
+      "contractForwardRate": 1.34,
+      "currentSpotRate": 1.36,
+      "positionType": "BUY_FORWARD_IMPORTER"
+    },
+    "expected": {
+      "hedgedSettlementValueSgd": 134000,
+      "unhedgedMarketValueSgd": 136000,
+      "hedgingMarkToMarketSgd": 2000,
+      "hedgingResultStatus": "HEDGING_GAIN"
+    }
+  },
+  {
+    "caseId": "FIN-SFRS-FRAMEWORK-SMALL",
+    "description": "SFRS for Small Entities qualification evaluation",
+    "engine": "evaluateSfrsFramework",
+    "input": {
+      "annualRevenueSgd": 8000000,
+      "totalAssetsSgd": 7000000,
+      "employeeHeadcount": 40,
+      "isPubliclyAccountable": false
+    },
+    "expected": {
+      "recommendedFramework": "SFRS_FOR_SMALL_ENTITIES",
+      "isEligibleForSmallEntitySfrs": true,
+      "criteriaMetCount": 3
+    }
+  },
+  {
+    "caseId": "FIN-SFRS-FRAMEWORK-FULL",
+    "description": "Full SFRS mandatory application when threshold exceeded",
+    "engine": "evaluateSfrsFramework",
+    "input": {
+      "annualRevenueSgd": 15000000,
+      "totalAssetsSgd": 12000000,
+      "employeeHeadcount": 65,
+      "isPubliclyAccountable": false
+    },
+    "expected": {
+      "recommendedFramework": "FULL_SFRS",
+      "isEligibleForSmallEntitySfrs": false,
+      "criteriaMetCount": 1
     }
   }
 ]

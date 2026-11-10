@@ -11,8 +11,8 @@ function runCliTests() {
 
   // 1. Version Flag
   const versionOutput = execSync(`node "${binPath}" --version`, { encoding: 'utf8' }).trim();
-  assert.strictEqual(versionOutput, 'v1.0.0');
-  console.log("  ✅ CLI: --version outputs v1.0.0");
+  assert.strictEqual(versionOutput, 'v2.0.0');
+  console.log("  ✅ CLI: --version outputs v2.0.0");
 
   // 2. Help Flag
   const helpOutput = execSync(`node "${binPath}" --help`, { encoding: 'utf8' });

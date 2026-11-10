@@ -1,17 +1,27 @@
 {
-  "version": "1.0.0",
-  "generated_at": "2026-11-06T00:00:00.000Z",
+  "version": "2.0.0",
+  "generated_at": "2026-11-10T21:11:02.829Z",
   "repository": "https://github.com/adamriofc/singapore-business-agent-skills",
-  "total_domains": 5,
-  "total_plugins": 5,
-  "total_skills": 15,
-  "total_engines": 15,
+  "total_domains": 6,
+  "total_plugins": 6,
+  "total_skills": 71,
+  "total_engines": 64,
   "quality_tiers": {
     "tested": 0,
     "source-verified": 0,
-    "expert-reviewed": 15
+    "expert-reviewed": 71
   },
   "skills": [
+    {
+      "id": "capital-allowance-sg",
+      "name": "capital-allowance-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "capital_allowance",
+      "statutory_reference": "Calculate Singapore tax depreciation (Capital Allowances) for plant and machinery under Sections 19, 19A, and Low-Value Asset pooling up to S$30k per YA."
+    },
     {
       "id": "cit-tax-sg",
       "name": "cit-tax-sg",
@@ -19,8 +29,38 @@
       "domain": "tax",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "calculateSingaporeCit",
-      "statutory_reference": "Singapore Income Tax Act 1947 Section 43"
+      "engine": "cit_tax",
+      "statutory_reference": "Calculate Singapore Corporate Income Tax (CIT) 17%, Start-Up Tax Exemption (SUTE), Partial Tax Exemption (PTE), and CIT Rebate under the Income Tax Act 1947."
+    },
+    {
+      "id": "dtl-foreign-tax-credit-sg",
+      "name": "dtl-foreign-tax-credit-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "dtl_foreign_tax_credit",
+      "statutory_reference": "Calculate Singapore Foreign Tax Credit (FTC) claims, Double Taxation Relief (DTR), and FTC Pooling System under Sections 50, 50A, and 50B of the Income Tax Act 1947."
+    },
+    {
+      "id": "eis-tax-sg",
+      "name": "eis-tax-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "eis_tax",
+      "statutory_reference": "Calculate Enterprise Innovation Scheme (EIS) 400% tax deductions on qualifying R&D, IP, and training up to S$400k cap, including the 20% cash conversion option."
+    },
+    {
+      "id": "group-relief-sg",
+      "name": "group-relief-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "group_relief",
+      "statutory_reference": "Calculate Singapore Group Relief loss transfer between qualifying corporate group members under Section 37C of the Income Tax Act 1947 with 75% shareholding threshold."
     },
     {
       "id": "gst-sg",
@@ -29,8 +69,78 @@
       "domain": "tax",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "calculateGstFiling",
-      "statutory_reference": "Singapore Goods and Services Tax Act 1993"
+      "engine": "gst",
+      "statutory_reference": "Audit Singapore Goods and Services Tax (GST) compulsory registration liability S$1M threshold and compute net GST 9% filings under Goods and Services Tax Act 1993."
+    },
+    {
+      "id": "loss-carry-sg",
+      "name": "loss-carry-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "loss_carry",
+      "statutory_reference": "Evaluate Singapore loss carry-forward and carry-back relief under Sections 37 and 37E of the Income Tax Act 1947, enforcing the Shareholding Continuity Test."
+    },
+    {
+      "id": "pillar-two-dtt-sg",
+      "name": "pillar-two-dtt-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "pillar_two_dtt",
+      "statutory_reference": "Calculate Singapore BEPS 2.0 Pillar Two Domestic Top-up Tax (DTT) and GloBE Effective Tax Rate (ETR) 15% threshold for multinational enterprise groups."
+    },
+    {
+      "id": "s13o-s13u-family-office-sg",
+      "name": "s13o-s13u-family-office-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "s13o_s13u_family_office",
+      "statutory_reference": "Audit eligibility for Singapore Family Office and Fund Tax Exemption under Sections 13O and 13U of the Income Tax Act 1947 per Monetary Authority of Singapore (MAS) criteria."
+    },
+    {
+      "id": "stamp-duty-absd-sg",
+      "name": "stamp-duty-absd-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "stamp_duty_absd",
+      "statutory_reference": "Calculate Singapore Buyer's Stamp Duty (BSD) and Additional Buyer's Stamp Duty (ABSD) up to 65% on residential and commercial property acquisitions per IRAS regulations."
+    },
+    {
+      "id": "tax-audit-risk-sg",
+      "name": "tax-audit-risk-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "tax_audit_risk",
+      "statutory_reference": "Audit Singapore corporate tax compliance risk, detecting GST F5 vs CIT revenue variance, gross margin anomalies, director loan exposures, and withholding tax deficits."
+    },
+    {
+      "id": "tax-residency-sg",
+      "name": "tax-residency-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "tax_residency",
+      "statutory_reference": "Audit Singapore corporate tax residency, Central Management and Control (CM&C), Board meeting locus, and Certificate of Residence (CoR) eligibility under the Income Tax Act 1947."
+    },
+    {
+      "id": "transfer-pricing-sg",
+      "name": "transfer-pricing-sg",
+      "bundle": "tax-sg",
+      "domain": "tax",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "transfer_pricing",
+      "statutory_reference": "Audit Singapore Transfer Pricing Documentation (TPD) mandatory thresholds, Arm's Length Interquartile Range, and Section 34E 5% statutory surcharge exposures."
     },
     {
       "id": "wht-sg",
@@ -39,38 +149,18 @@
       "domain": "tax",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "calculateSingaporeWht",
-      "statutory_reference": "Singapore Income Tax Act 1947 Section 45"
+      "engine": "wht",
+      "statutory_reference": "Calculate Singapore Withholding Tax (WHT) on cross-border payments under Income Tax Act Sections 45, 45A, and 45D including gross-up absorption formulas."
     },
     {
-      "id": "dta-sg-id",
-      "name": "dta-sg-id",
-      "bundle": "tax-sg",
-      "domain": "tax",
-      "risk_level": "HIGH",
-      "rule_type": "statutory",
-      "engine": "evaluateDtaSgIdRelief",
-      "statutory_reference": "Singapore-Indonesia Double Tax Agreement (DTA) Articles 10, 11, 12, 14"
-    },
-    {
-      "id": "cpf-calculator",
-      "name": "cpf-calculator",
+      "id": "annual-leave-sg",
+      "name": "annual-leave-sg",
       "bundle": "hr-sg",
       "domain": "hr",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "calculateSingaporeCpf",
-      "statutory_reference": "Central Provident Fund Act 1953"
-    },
-    {
-      "id": "mom-overtime",
-      "name": "mom-overtime",
-      "bundle": "hr-sg",
-      "domain": "hr",
-      "risk_level": "HIGH",
-      "rule_type": "statutory",
-      "engine": "calculateMomOvertimeAndCompliance",
-      "statutory_reference": "Singapore Employment Act 1968 Part IV"
+      "engine": "annual_leave",
+      "statutory_reference": "Calculate Singapore statutory annual leave entitlements (7 to 14 days), MOM pro-rata formulas, and termination unused leave encashment under the Employment Act 1968."
     },
     {
       "id": "compass-scoring",
@@ -79,8 +169,28 @@
       "domain": "hr",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "evaluateCompassEpEligibility",
-      "statutory_reference": "MOM Complementarity Assessment Framework (COMPASS)"
+      "engine": "compass_scoring",
+      "statutory_reference": "Evaluate Singapore Ministry of Manpower (MOM) COMPASS point-based framework for Employment Pass (EP) applications across 4 foundational criteria and 2 bonus criteria."
+    },
+    {
+      "id": "cpf-calculator",
+      "name": "cpf-calculator",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "cpf_calculator",
+      "statutory_reference": "Calculate Central Provident Fund (CPF) monthly contributions, Ordinary/Additional Wage caps, Skills Development Levy (SDL), and Self-Help Group deductions under CPF Act 1953."
+    },
+    {
+      "id": "employment-contract-sg",
+      "name": "employment-contract-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "employment_contract",
+      "statutory_reference": "Audit Singapore employment contracts for notice period symmetry, Section 10 statutory defaults, and common law restraint of trade non-compete enforceability."
     },
     {
       "id": "foreign-workforce-quota",
@@ -89,8 +199,98 @@
       "domain": "hr",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "calculateForeignWorkforceQuota",
-      "statutory_reference": "Employment of Foreign Manpower Act (EFMA)"
+      "engine": "foreign_workforce_quota",
+      "statutory_reference": "Calculate Dependency Ratio Ceiling (DRC), S-Pass sub-DRC headroom, Local Qualifying Salary (LQS) weighting, and Foreign Worker Levy (FWL) under MOM statutory regulations."
+    },
+    {
+      "id": "itemised-payslip-sg",
+      "name": "itemised-payslip-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "itemised_payslip",
+      "statutory_reference": "Audit Singapore mandatory itemised payslip statutory fields, overtime disclosures, and 2-year record-keeping rules under Section 96A of the Employment Act 1968."
+    },
+    {
+      "id": "key-employment-terms-sg",
+      "name": "key-employment-terms-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "key_employment_terms",
+      "statutory_reference": "Audit compliance with Singapore Key Employment Terms (KETs) 14 mandatory statutory items under Section 95A of the Employment Act 1968 within 14-day issuance deadline."
+    },
+    {
+      "id": "maternity-paternity-leave-sg",
+      "name": "maternity-paternity-leave-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "maternity_paternity_leave",
+      "statutory_reference": "Calculate Singapore Government-Paid Maternity Leave (16 weeks) and Paternity Leave (4 weeks) with employer vs government reimbursement caps under the CDCA 2001."
+    },
+    {
+      "id": "mom-overtime",
+      "name": "mom-overtime",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "mom_overtime",
+      "statutory_reference": "Audit Part IV Employment Act coverage, overtime pay rates (1.5x hourly rate), monthly 72-hour overtime limit, and annual leave statutory schedules under Singapore Ministry of Manpower (MOM) regulations."
+    },
+    {
+      "id": "progressive-wage-model-sg",
+      "name": "progressive-wage-model-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "progressive_wage_model",
+      "statutory_reference": "Audit Singapore Progressive Wage Model (PWM) baseline wages across 8 sectors and evaluate Local Qualifying Salary (LQS) S$1,600 dependency ratio quota impacts."
+    },
+    {
+      "id": "public-holiday-pay-sg",
+      "name": "public-holiday-pay-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "public_holiday_pay",
+      "statutory_reference": "Calculate Singapore public holiday compensation (1 extra day's basic pay vs day off in-lieu) and rest day substitution rules under Section 88 Employment Act."
+    },
+    {
+      "id": "retrenchment-benefit-sg",
+      "name": "retrenchment-benefit-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "retrenchment_benefit",
+      "statutory_reference": "Calculate Singapore retrenchment compensation norms (2 weeks to 1 month per year) and evaluate mandatory MOM retrenchment notification rules under tripartite advisories."
+    },
+    {
+      "id": "sick-hospitalisation-leave-sg",
+      "name": "sick-hospitalisation-leave-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "sick_hospitalisation_leave",
+      "statutory_reference": "Calculate Singapore statutory outpatient sick leave (up to 14 days) and hospitalisation leave (up to 60 days) tiered by months of service under Section 89 Employment Act."
+    },
+    {
+      "id": "workplace-fairness-sg",
+      "name": "workplace-fairness-sg",
+      "bundle": "hr-sg",
+      "domain": "hr",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "workplace_fairness",
+      "statutory_reference": "Audit recruitment ads and HR policies against Singapore Workplace Fairness Legislation (WFA) and TAFEP Tripartite Guidelines across 5 protected characteristics."
     },
     {
       "id": "acra-statutory-deadlines",
@@ -99,18 +299,58 @@
       "domain": "legal",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "calculateAcraStatutoryDeadlines",
-      "statutory_reference": "Singapore Companies Act 1967 Sections 175 & 197"
+      "engine": "acra_statutory_deadlines",
+      "statutory_reference": "Audit ACRA statutory corporate compliance timelines, Annual General Meeting (AGM) and Annual Return (AR) deadlines, late filing penalty ladders, and corporate secretarial mandates under Companies Act 1967."
     },
     {
-      "id": "small-company-audit",
-      "name": "small-company-audit",
+      "id": "corporate-secretarial-sg",
+      "name": "corporate-secretarial-sg",
       "bundle": "legal-sg",
       "domain": "legal",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "evaluateSmallCompanyAuditExemption",
-      "statutory_reference": "Singapore Companies Act 1967 Thirteenth Schedule"
+      "engine": "corporate_secretarial",
+      "statutory_reference": "Audit Company Secretary appointment qualifications under S.171 Companies Act, RORC beneficial ownership register, and corporate governance."
+    },
+    {
+      "id": "corporate-structuring-sg",
+      "name": "corporate-structuring-sg",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "corporate_structuring",
+      "statutory_reference": "Audit corporate structuring, holding-subsidiary governance, capital injections, and statutory entity registrations under ACRA Companies Act 1967."
+    },
+    {
+      "id": "director-duties-sg",
+      "name": "director-duties-sg",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "director_duties",
+      "statutory_reference": "Audit director qualifications, ordinarily resident mandates, fiduciary duties, S.148/149 disqualifications, and S.156 conflict disclosures."
+    },
+    {
+      "id": "ipos-trademark-check",
+      "name": "ipos-trademark-check",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "ipos_trademark_check",
+      "statutory_reference": "Audit trademark registrability, Nice Classification (Classes 1-45), Absolute and Relative Grounds for refusal under IPOS Trade Marks Act."
+    },
+    {
+      "id": "nda-singapore",
+      "name": "nda-singapore",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "MEDIUM",
+      "rule_type": "advisory",
+      "engine": "nda_singapore",
+      "statutory_reference": "Draft and audit Non-Disclosure Agreements (Unilateral and Mutual NDAs), trade secret protections, and confidentiality terms under Singapore law."
     },
     {
       "id": "pdpa-breach-notification",
@@ -119,8 +359,198 @@
       "domain": "legal",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "evaluatePdpaBreachNotification",
-      "statutory_reference": "Personal Data Protection Act 2012 Part VIA"
+      "engine": "pdpa_breach_notification",
+      "statutory_reference": "Audit mandatory data breach notification thresholds (72-hour PDPC deadline), significant harm criteria, and statutory maximum financial penalties under Singapore PDPA 2012."
+    },
+    {
+      "id": "service-agreement-sg",
+      "name": "service-agreement-sg",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "MEDIUM",
+      "rule_type": "advisory",
+      "engine": "service_agreement",
+      "statutory_reference": "Draft and audit B2B Master Services Agreements (MSA), Statements of Work (SOW), warranties, IP assignment, and payment terms under Singapore law."
+    },
+    {
+      "id": "shareholder-agreement-sg",
+      "name": "shareholder-agreement-sg",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "advisory",
+      "engine": "shareholder_agreement",
+      "statutory_reference": "Audit Shareholder Agreements (SHA), minority protections, drag-along, tag-along, pre-emption, and deadlock clauses under Singapore Companies Act."
+    },
+    {
+      "id": "singapore-contract-reviewer",
+      "name": "singapore-contract-reviewer",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "singapore_contract_reviewer",
+      "statutory_reference": "Audit commercial B2B contracts, limitation of liability caps, governing law, indemnities, and SIAC arbitration under Singapore Common Law."
+    },
+    {
+      "id": "small-company-audit",
+      "name": "small-company-audit",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "small_company_audit",
+      "statutory_reference": "Evaluate Small Company Audit Exemption qualification criteria under the Thirteenth Schedule of the Singapore Companies Act 1967 across standalone and corporate group tiers."
+    },
+    {
+      "id": "striking-off-sg",
+      "name": "striking-off-sg",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "striking_off",
+      "statutory_reference": "Evaluate company striking-off readiness, zero-balance sheet criteria, IRAS tax clearance, and ACRA Gazette timelines under Section 344A."
+    },
+    {
+      "id": "tadm-dispute-resolution",
+      "name": "tadm-dispute-resolution",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "tadm_dispute_resolution",
+      "statutory_reference": "Evaluate employment dispute mediation and claim eligibility under TADM and Employment Claims Tribunals (ECT) limits (S$20k/S$30k)."
+    },
+    {
+      "id": "whistleblowing-policy-sg",
+      "name": "whistleblowing-policy-sg",
+      "bundle": "legal-sg",
+      "domain": "legal",
+      "risk_level": "MEDIUM",
+      "rule_type": "advisory",
+      "engine": "whistleblowing_policy",
+      "statutory_reference": "Audit corporate whistleblowing policies, anonymous reporting channels, independent investigation, and anti-retaliation protections under SGX/ACRA."
+    },
+    {
+      "id": "break-even-analysis-sg",
+      "name": "break-even-analysis-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "MEDIUM",
+      "rule_type": "computational",
+      "engine": "break_even_analysis",
+      "statutory_reference": "Compute Cost-Volume-Profit (CVP), Break-Even Point in units/revenue, Contribution Margin Ratio, and Margin of Safety."
+    },
+    {
+      "id": "capital-budgeting-sg",
+      "name": "capital-budgeting-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "computational",
+      "engine": "capital_budgeting",
+      "statutory_reference": "Evaluate corporate capital budgeting, Net Present Value (NPV), Internal Rate of Return (IRR), and Payback Period using SORA hurdle rates."
+    },
+    {
+      "id": "cash-flow-forecast-sg",
+      "name": "cash-flow-forecast-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "computational",
+      "engine": "cash_flow_forecast",
+      "statutory_reference": "Model rolling 13-week direct cash flow forecasts, monthly gross/net burn rates, cash runway, and insolvency warning gates."
+    },
+    {
+      "id": "ecl-sfrs109-allowance",
+      "name": "ecl-sfrs109-allowance",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "ecl_sfrs109_allowance",
+      "statutory_reference": "Calculate trade receivables impairment under SFRS 109 Expected Credit Loss (ECL) provision matrix and evaluate IRAS S.14(1)(a) fiscal tax deductibility."
+    },
+    {
+      "id": "financial-modeling-sg",
+      "name": "financial-modeling-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "computational",
+      "engine": "financial_modeling",
+      "statutory_reference": "Build integrated 3-statement financial models, dynamic sensitivity tables, scenario projections (Base/Bull/Bear), and corporate valuations."
+    },
+    {
+      "id": "financial-ratio-analysis-sg",
+      "name": "financial-ratio-analysis-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "MEDIUM",
+      "rule_type": "computational",
+      "engine": "financial_ratio_analysis",
+      "statutory_reference": "Compute and evaluate 14 corporate financial ratios across Liquidity, Solvency, Profitability, and Efficiency under SFRS standards."
+    },
+    {
+      "id": "financial-statements-sfrs",
+      "name": "financial-statements-sfrs",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "financial_statements_sfrs",
+      "statutory_reference": "Structure and audit SFRS 1 financial statements (Comprehensive Income, Financial Position, Cash Flows) with balance check verification."
+    },
+    {
+      "id": "fx-hedging-sg",
+      "name": "fx-hedging-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "MEDIUM",
+      "rule_type": "computational",
+      "engine": "fx_hedging",
+      "statutory_reference": "Model foreign exchange exposure, theoretical forward rates via Interest Rate Parity (IRP), and SFRS 109 / 121 Mark-to-Market (MTM) hedging gains/losses."
+    },
+    {
+      "id": "inventory-valuation-sfrs2",
+      "name": "inventory-valuation-sfrs2",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "inventory_valuation_sfrs2",
+      "statutory_reference": "Calculate inventory valuation under FIFO, Weighted Average Cost (WAC), and evaluate lower of cost and Net Realisable Value (NRV) per SFRS 2."
+    },
+    {
+      "id": "lease-sfrs116-accounting",
+      "name": "lease-sfrs116-accounting",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "lease_sfrs116_accounting",
+      "statutory_reference": "Model SFRS 116 lease capitalisation, Right-of-Use (ROU) assets, lease liability amortisation schedules, and short-term exemptions."
+    },
+    {
+      "id": "sfrs-accounting-standards",
+      "name": "sfrs-accounting-standards",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "sfrs_accounting_standards",
+      "statutory_reference": "Evaluate Singapore Financial Reporting Standards (SFRS for Small Entities vs Full SFRS) and SFRS 115 5-step revenue recognition."
+    },
+    {
+      "id": "sfrs-audit-trail",
+      "name": "sfrs-audit-trail",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "sfrs_audit_trail",
+      "statutory_reference": "Audit general ledger entries, double-entry bookkeeping reconciliations, and accrual accounting adjustments under SFRS."
     },
     {
       "id": "sora-wacc",
@@ -129,8 +559,28 @@
       "domain": "finance",
       "risk_level": "HIGH",
       "rule_type": "computational",
-      "engine": "calculateSingaporeWacc",
-      "statutory_reference": "MAS Singapore Overnight Rate Average (SORA)"
+      "engine": "sora_wacc",
+      "statutory_reference": "Calculate Weighted Average Cost of Capital (WACC) using the Singapore Overnight Rate Average (SORA) benchmark, CAPM cost of equity, and Singapore 17% CIT tax shield."
+    },
+    {
+      "id": "unit-economics-sg",
+      "name": "unit-economics-sg",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "MEDIUM",
+      "rule_type": "computational",
+      "engine": "unit_economics",
+      "statutory_reference": "Model customer-level unit economics, Customer Lifetime Value (LTV), Customer Acquisition Cost (CAC), LTV:CAC ratios, and CAC payback periods."
+    },
+    {
+      "id": "vcc-waterfall-distribution",
+      "name": "vcc-waterfall-distribution",
+      "bundle": "finance-sg",
+      "domain": "finance",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "vcc_waterfall_distribution",
+      "statutory_reference": "Model 4-tier capital distribution waterfall, hurdle rate preferred return, GP catch-up, and carried interest under Singapore VCC Act 2018."
     },
     {
       "id": "working-capital-sg",
@@ -139,8 +589,18 @@
       "domain": "finance",
       "risk_level": "HIGH",
       "rule_type": "computational",
-      "engine": "calculateSingaporeWorkingCapital",
-      "statutory_reference": "Singapore Financial Reporting Standards (SFRS)"
+      "engine": "working_capital",
+      "statutory_reference": "Calculate Net Working Capital (NWC), short-term solvency ratios (Current, Quick, Cash), and Cash Conversion Cycle (DSO, DIO, DPO) under Singapore Financial Reporting Standards (SFRS)."
+    },
+    {
+      "id": "competitive-moat-sg",
+      "name": "competitive-moat-sg",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "competitive_moat",
+      "statutory_reference": "Audit Singapore industry cluster competitive advantage using VRIO framework, Porter's Five Forces, and statutory regulatory barrier analysis (MAS, HSA, IMDA, MPA)."
     },
     {
       "id": "enterprise-grant-sg",
@@ -149,18 +609,118 @@
       "domain": "strategic",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "evaluateEnterpriseGrant",
-      "statutory_reference": "Enterprise Singapore (EnterpriseSG) Grant Guidelines"
+      "engine": "enterprise_grant",
+      "statutory_reference": "Evaluate Enterprise Singapore (EnterpriseSG) and IMDA government grant eligibility, 30% local equity condition, and co-funding caps across EDG, PSG, and MRA schemes."
     },
     {
-      "id": "cross-border-holding-sg-id",
-      "name": "cross-border-holding-sg-id",
+      "id": "holding-structuring-sg",
+      "name": "holding-structuring-sg",
       "bundle": "strategic-sg",
       "domain": "strategic",
       "risk_level": "HIGH",
       "rule_type": "statutory",
-      "engine": "evaluateCrossBorderHoldingStructure",
-      "statutory_reference": "SG-ID DTA Article 10, ITA Section 13(8) & Section 13W"
+      "engine": "holding_structuring",
+      "statutory_reference": "Model Singapore corporate holding efficiency, Section 13(8) Foreign-Sourced Income Exemption (FSIE), Section 13W share disposal safe harbour, and single-tier dividend economics."
+    },
+    {
+      "id": "market-entry-sg",
+      "name": "market-entry-sg",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "market_entry",
+      "statutory_reference": "Evaluate Singapore market entry vehicles (Subsidiary vs Branch vs Representative Office), Section 10L economic substance, and ASEAN regional FTA expansion routing."
+    },
+    {
+      "id": "scenario-planning-sg",
+      "name": "scenario-planning-sg",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "scenario_planning",
+      "statutory_reference": "Model macroeconomic and geopolitical stress scenarios on Singapore corporate financials, simulating MAS S$NEER shifts, core inflation, and supply chain friction."
+    },
+    {
+      "id": "strategic-risk-sg",
+      "name": "strategic-risk-sg",
+      "bundle": "strategic-sg",
+      "domain": "strategic",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "strategic_risk",
+      "statutory_reference": "Audit corporate strategic risks and generate an Enterprise Risk Management (ERM) heatmap aligned with the Singapore Code of Corporate Governance 2018 and SGX Listing Rules."
+    },
+    {
+      "id": "sg-ads-roi",
+      "name": "sg-ads-roi",
+      "bundle": "marketing-sg",
+      "domain": "marketing",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "sg_ads_roi",
+      "statutory_reference": "Calculate paid advertising CAC, LTV, ROAS, and the statutory 9% GST imported digital services taxation impact on ad spend in Singapore."
+    },
+    {
+      "id": "sg-b2b-outbound",
+      "name": "sg-b2b-outbound",
+      "bundle": "marketing-sg",
+      "domain": "marketing",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "sg_b2b_outbound",
+      "statutory_reference": "Audit Singapore B2B sales prospecting cadences for PDPA Section 4(4)(d) BCI exemption, DNC Registry compliance, and Spam Control Act 2007 requirements."
+    },
+    {
+      "id": "sg-brand-positioning",
+      "name": "sg-brand-positioning",
+      "bundle": "marketing-sg",
+      "domain": "marketing",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "sg_brand_positioning",
+      "statutory_reference": "Formulate Singapore brand positioning coordinates, Singapore Trust & Brand Equity Index, and defensibility against regional market competitors."
+    },
+    {
+      "id": "sg-content-localization",
+      "name": "sg-content-localization",
+      "bundle": "marketing-sg",
+      "domain": "marketing",
+      "risk_level": "HIGH",
+      "rule_type": "statutory",
+      "engine": "sg_content_localization",
+      "statutory_reference": "Audit Singapore B2B/B2C marketing copy against ASAS advertising standards, prohibited superlative claims, and colloquial Singlish brand appropriateness."
+    },
+    {
+      "id": "sg-lead-qualification",
+      "name": "sg-lead-qualification",
+      "bundle": "marketing-sg",
+      "domain": "marketing",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "sg_lead_qualification",
+      "statutory_reference": "Score Singapore B2B prospective accounts using ACRA paid-up capital, IRAS GST registration status, SSIC industry cluster priority, and BANT criteria."
+    },
+    {
+      "id": "sg-seo-geo",
+      "name": "sg-seo-geo",
+      "bundle": "marketing-sg",
+      "domain": "marketing",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "sg_seo_geo",
+      "statutory_reference": "Audit Singapore hyper-local SEO signals, ccTLD (.sg/.com.sg) priority, ACRA UEN Schema.org markup, 6-digit postal codes, and commercial hub geo-intent."
+    },
+    {
+      "id": "sg-social-campaign",
+      "name": "sg-social-campaign",
+      "bundle": "marketing-sg",
+      "domain": "marketing",
+      "risk_level": "MEDIUM",
+      "rule_type": "statutory",
+      "engine": "sg_social_campaign",
+      "statutory_reference": "Model multi-platform social media campaign budgets, influencer tiers, and optimal Singapore commuter peak timing (SGT) across LinkedIn, IG, and TikTok."
     }
   ]
 }

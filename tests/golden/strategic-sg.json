@@ -35,29 +35,233 @@
     }
   },
   {
-    "caseId": "CROSSBORDER-SG-ID-DIVIDEND",
-    "description": "SG-ID cross-border holding structure dividend repatriation waterfall with DTA and Section 13(8) FSIE",
-    "engine": "evaluateCrossBorderHoldingStructure",
+    "caseId": "CORP-STRUCTURING-FSIE-13W",
+    "description": "Singapore holding corporate structuring with Section 13(8) FSIE and Section 13W safe harbour",
+    "engine": "evaluateCorporateStructuring",
     "input": {
-      "dividendAmountIdrOrSgd": 1000000,
+      "dividendAmountSgd": 1000000,
       "equityShareholdingPercent": 100,
       "shareHoldingDurationMonths": 24,
-      "hasValidCorCertificate": true,
-      "operatingTaxRateInOrigin": 0.22,
-      "estimatedAnnualSgMaintenanceCostSgd": 8000
+      "sourceJurisdictionHeadlineCitRate": 0.22,
+      "subjectToTaxInSource": true,
+      "isBonaFideResident": true,
+      "annualMaintenanceCostSgd": 8000
     },
     "expected": {
-      "directWithholdingTaxRate": 0.20,
-      "directWithholdingTaxPayable": 200000,
-      "sgHoldCoWhtRate": 0.10,
-      "sgHoldCoWhtPayable": 100000,
-      "section13_8_FsieExemptionApplies": true,
-      "singaporeCitOnForeignDividend": 0,
-      "netCashDelivered": 900000,
-      "grossTaxSavingsBenefit": 100000,
-      "netFinancialEfficiencyDelta": 92000,
-      "isHoldingStructureEconomicallySuperior": true,
-      "section13W_CapitalGainsSafeHarbourQualified": true
+      "dividendGrossAmount": 1000000,
+      "equityShareholdingPercentage": 100,
+      "holdingPeriodMonths": 24,
+      "qualifiesForSection138Fsie": true,
+      "singaporeCorporateTaxRate": 0,
+      "singaporeCorporateTaxPayable": 0,
+      "singaporeOutboundDividendWhtRate": 0,
+      "netDividendRepatriated": 1000000,
+      "annualHoldingMaintenanceCost": 8000,
+      "netCashDeliverable": 992000,
+      "qualifiesForSection13WSafeHarbour": true,
+      "statutoryExemptionStatus": "CONFIRMED_SAFE_HARBOUR_EXEMPT"
+    }
+  },
+  {
+    "caseId": "STRAT-EDG-ENHANCED-SUSTAINABILITY",
+    "description": "Enhanced EDG 70% co-funding for sustainability and deep-tech innovation",
+    "engine": "evaluateEnterpriseGrant",
+    "input": {
+      "grantScheme": "EDG",
+      "qualifyingProjectCostSgd": 300000,
+      "localShareholdingPercentage": 60,
+      "isSustainabilityOrDeepTech": true
+    },
+    "expected": {
+      "isEligibleForGrant": true,
+      "statutorySupportRatePercent": 70,
+      "approvedGrantFundingSgd": 210000
+    }
+  },
+  {
+    "caseId": "STRAT-GRANT-DISQUALIFIED-EQUITY",
+    "description": "Enterprise Singapore grant disqualification for local equity < 30%",
+    "engine": "evaluateEnterpriseGrant",
+    "input": {
+      "grantScheme": "EDG",
+      "qualifyingProjectCostSgd": 100000,
+      "localShareholdingPercentage": 20
+    },
+    "expected": {
+      "isEligibleForGrant": false
+    }
+  },
+  {
+    "caseId": "STRAT-FSIE-LOW-TAX-DISQUALIFIED",
+    "description": "Section 13(8) FSIE exemption disqualified due to source headline tax < 15%",
+    "engine": "evaluateCorporateStructuring",
+    "input": {
+      "dividendAmountSgd": 500000,
+      "equityShareholdingPercent": 100,
+      "shareHoldingDurationMonths": 12,
+      "sourceJurisdictionHeadlineCitRate": 0.1,
+      "subjectToTaxInSource": true
+    },
+    "expected": {
+      "qualifiesForSection138Fsie": false
+    }
+  },
+  {
+    "caseId": "STRAT-SECTION-13W-DISQUALIFIED",
+    "description": "Section 13W capital gains safe harbour failure due to holding duration < 24m",
+    "engine": "evaluateCorporateStructuring",
+    "input": {
+      "dividendAmountSgd": 500000,
+      "equityShareholdingPercent": 25,
+      "shareHoldingDurationMonths": 12,
+      "sourceJurisdictionHeadlineCitRate": 0.2
+    },
+    "expected": {
+      "qualifiesForSection13WSafeHarbour": false
+    }
+  },
+  {
+    "caseId": "STRAT-MARKET-ENTRY-SUBSIDIARY",
+    "description": "Market entry vehicle evaluation: Private Limited Subsidiary with limited liability",
+    "engine": "evaluateMarketEntrySg",
+    "input": {
+      "targetStructure": "SUBSIDIARY",
+      "projectedAnnualRevenueSgd": 2500000,
+      "projectedLocalOperatingExpensesSgd": 400000,
+      "projectedLocalHeadcount": 5,
+      "hasForeignHoldingCompany": true
+    },
+    "expected": {
+      "targetStructure": "SUBSIDIARY",
+      "limitedLiabilityProtection": true,
+      "isApprovedForMarketEntry": true
+    }
+  },
+  {
+    "caseId": "STRAT-MARKET-ENTRY-BRANCH",
+    "description": "Market entry foreign branch office with parent legal liability",
+    "engine": "evaluateMarketEntrySg",
+    "input": {
+      "targetStructure": "BRANCH",
+      "projectedAnnualRevenueSgd": 1000000,
+      "projectedLocalOperatingExpensesSgd": 150000,
+      "projectedLocalHeadcount": 2
+    },
+    "expected": {
+      "targetStructure": "BRANCH",
+      "limitedLiabilityProtection": false,
+      "qualifiesForStartupTaxExemption": false
+    }
+  },
+  {
+    "caseId": "STRAT-MARKET-ENTRY-REP-OFFICE",
+    "description": "Representative Office vehicle restricted to non-commercial liaison activities",
+    "engine": "evaluateMarketEntrySg",
+    "input": {
+      "targetStructure": "REPRESENTATIVE_OFFICE",
+      "projectedAnnualRevenueSgd": 500000,
+      "projectedLocalOperatingExpensesSgd": 80000,
+      "projectedLocalHeadcount": 1
+    },
+    "expected": {
+      "targetStructure": "REPRESENTATIVE_OFFICE",
+      "isLegallyPermittedForCommercialRevenue": false,
+      "isApprovedForMarketEntry": false
+    }
+  },
+  {
+    "caseId": "STRAT-COMPETITIVE-MOAT-FINTECH",
+    "description": "VRIO competitive moat audit in Singapore FinTech cluster with MAS regulatory barrier",
+    "engine": "evaluateCompetitiveMoatSg",
+    "input": {
+      "industryCluster": "FINTECH",
+      "hasValuableAsset": true,
+      "hasRareCapability": true,
+      "isCostlyToImitate": true,
+      "isOrganizedToCaptureValue": true,
+      "holdsStatutoryLicense": true,
+      "holdsRegisteredIpInIpos": true
+    },
+    "expected": {
+      "competitiveImplication": "SUSTAINED_COMPETITIVE_ADVANTAGE",
+      "strategicMoatVerdict": "ROBUST_SINGAPORE_MOAT"
+    }
+  },
+  {
+    "caseId": "STRAT-COMPETITIVE-MOAT-COMMODITY",
+    "description": "Competitive parity classification for undifferentiated retail trader",
+    "engine": "evaluateCompetitiveMoatSg",
+    "input": {
+      "industryCluster": "GENERAL_COMMERCIAL",
+      "hasValuableAsset": true,
+      "hasRareCapability": false,
+      "isCostlyToImitate": false,
+      "isOrganizedToCaptureValue": true
+    },
+    "expected": {
+      "competitiveImplication": "COMPETITIVE_PARITY",
+      "strategicMoatVerdict": "VULNERABLE_TO_REGIONAL_COMPETITION"
+    }
+  },
+  {
+    "caseId": "STRAT-SCENARIO-SNEER-APPRECIATION",
+    "description": "Macro stress test simulating aggressive MAS S$NEER monetary policy tightening",
+    "engine": "simulateMacroScenarioSg",
+    "input": {
+      "baselineRevenueSgd": 10000000,
+      "baselineOpexSgd": 7000000,
+      "scenarioType": "MAS_TIGHTENING_SGD_APPRECIATION",
+      "foreignRevenueSharePercent": 60,
+      "importedGoodsSharePercent": 40
+    },
+    "expected": {
+      "scenarioType": "MAS_TIGHTENING_SGD_APPRECIATION"
+    }
+  },
+  {
+    "caseId": "STRAT-SCENARIO-INTEREST-RATE-HIKE",
+    "description": "Macroeconomic scenario evaluating interest rate spike on debt-leveraged SME",
+    "engine": "simulateMacroScenarioSg",
+    "input": {
+      "baselineRevenueSgd": 5000000,
+      "baselineOpexSgd": 4000000,
+      "scenarioType": "STAGFLATION_SHOCK"
+    },
+    "expected": {
+      "scenarioType": "STAGFLATION_SHOCK"
+    }
+  },
+  {
+    "caseId": "STRAT-RISK-MATRIX-CYBER",
+    "description": "Strategic risk assessment for cyber attack on financial services firm",
+    "engine": "evaluateStrategicRiskSg",
+    "input": {
+      "risks": [
+        {
+          "id": "R1",
+          "title": "PDPA Data Breach Risk",
+          "category": "REPUTATIONAL_CYBER",
+          "likelihood": 4,
+          "impact": 5,
+          "velocity": 3
+        },
+        {
+          "id": "R2",
+          "title": "MAS Regulatory Non-Compliance",
+          "category": "REGULATORY_COMPLIANCE",
+          "likelihood": 3,
+          "impact": 4,
+          "velocity": 2
+        }
+      ],
+      "hasBoardRiskCommittee": true,
+      "hasDocumentedErmPolicy": true
+    },
+    "expected": {
+      "totalRisksEvaluated": 2,
+      "criticalExtremeCount": 1,
+      "hasBoardRiskCommittee": true,
+      "sgxCodeOfCorporateGovernanceCompliant": true
     }
   }
 ]

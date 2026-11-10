@@ -2,39 +2,39 @@
   "bundle_id": "compliance",
   "name": "Singapore Compliance Pack",
   "profile": "compliance",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Singapore regulatory compliance covering ACRA statutory AGM/AR deadlines, IRAS CIT & GST filings, MOM Part IV overtime & DRC quota, CPF contributions, and PDPA 72-hour mandatory breach notification.",
   "plugins": [
     {
       "id": "legal-sg",
       "name": "Singapore Legal Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "legal",
-      "skills": 3
+      "skills": 14
     },
     {
       "id": "tax-sg",
       "name": "Singapore Tax Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "tax",
-      "skills": 4
+      "skills": 14
     },
     {
       "id": "hr-sg",
       "name": "Singapore HR Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "hr",
-      "skills": 4
+      "skills": 14
     }
   ],
   "shared": {
-    "engines": 15,
+    "engines": 64,
     "capabilityCatalog": "registry/capabilities.json"
   },
   "totals": {
     "plugins": 3,
-    "skills": 11,
-    "engines": 15
+    "skills": 42,
+    "engines": 64
   },
   "use_cases": [
     "ACRA AGM and Annual Return statutory deadline tracking",

@@ -2,59 +2,67 @@
   "bundle_id": "singapore-business-agent-suite",
   "name": "Singapore Business Agent Suite",
   "profile": "full-business",
-  "version": "1.0.0",
-  "description": "Comprehensive Singapore business reasoning and statutory execution bundle for AI agents — covering Tax (IRAS), HR & Employment (MOM/CPF), Legal & Secretarial (ACRA/PDPA), Finance (MAS SORA WACC), and Strategy (EnterpriseSG & SG-ID DTA).",
-  "tagline": "One unified ecosystem. Five Singapore business domains. 15 statutory agent capabilities.",
+  "version": "2.0.0",
+  "description": "Comprehensive Singapore business reasoning and statutory execution bundle for AI agents — covering Tax (IRAS), HR & Employment (MOM/CPF), Legal & Secretarial (ACRA/PDPA), Finance (MAS SORA WACC & SFRS), Strategy (EnterpriseSG & Regional Expansion), and Marketing (ASAS, PDPA Outbound & Local SEO).",
+  "tagline": "One unified ecosystem. Six Singapore business domains. 71 statutory agent capabilities.",
   "repository": "https://github.com/adamriofc/singapore-business-agent-skills",
   "plugins": [
     {
       "id": "tax-sg",
       "name": "Singapore Tax Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "tax",
-      "skills": 4,
-      "description": "IRAS Corporate Income Tax 17% (SUTE/PTE), GST 9%, Withholding Tax Sec 45/45A, and SG-ID Bilateral DTA relief."
+      "skills": 14,
+      "description": "IRAS Corporate Income Tax 17% (SUTE/PTE), GST 9%, Withholding Tax Sec 45/45A, Stamp Duty/ABSD, Pillar Two DTT, Section 13O/13U Family Office, and EIS R&D Tax Schemes."
     },
     {
       "id": "hr-sg",
       "name": "Singapore HR & Manpower Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "hr",
-      "skills": 4,
-      "description": "CPF statutory wage ceilings ($6.8k-$8k), Employment Act Part IV overtime, MOM COMPASS scoring, and Foreign Workforce Quota DRC."
+      "skills": 14,
+      "description": "CPF statutory wage ceilings ($6.8k-$8k), Employment Act Part IV overtime, MOM COMPASS scoring, Foreign Workforce Quota DRC, and Progressive Wage Model (PWM)."
     },
     {
       "id": "legal-sg",
       "name": "Singapore Legal & Secretarial Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "legal",
-      "skills": 3,
-      "description": "ACRA statutory AGM/AR filing deadlines, Small Company Audit Exemption test, and PDPA 72-hour mandatory breach notification."
+      "skills": 14,
+      "description": "ACRA statutory AGM/AR filing deadlines, Small Company Audit Exemption test, PDPA 72-hour mandatory breach notification, IPOS trademark verification, and Director Duties."
     },
     {
       "id": "finance-sg",
       "name": "Singapore Corporate Finance Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "finance",
-      "skills": 2,
-      "description": "MAS SORA benchmark rates, WACC debt tax shield calculations, and SFRS working capital & cash conversion cycle analytics."
+      "skills": 16,
+      "description": "MAS SORA benchmark rates, WACC debt tax shield calculations, SFRS 115 revenue allocation, SFRS 116 leases, SFRS 109 ECL allowances, VCC waterfall, and FX hedging."
     },
     {
       "id": "strategic-sg",
       "name": "Singapore Strategic Planning Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "strategic",
-      "skills": 2,
-      "description": "Enterprise Singapore (EDG/MRA) grant eligibility, and SG-ID cross-border holding corporate structure tax optimization."
+      "skills": 6,
+      "description": "Enterprise Singapore (EDG/MRA/PSG) grant eligibility, market entry feasibility, competitive cluster moat analysis, macro scenario simulation, and SGX strategic risk matrix."
+    },
+    {
+      "id": "marketing-sg",
+      "name": "Singapore Marketing & Growth Intelligence",
+      "version": "2.0.0",
+      "domain": "marketing",
+      "skills": 7,
+      "description": "Singapore hyper-local SEO signals (.sg ccTLD/postal code), ASAS advertising compliance, PDPA Section 4(4)(d) B2B BCI outbound cadence, B2B lead scoring, paid ads ROI, and brand equity."
     }
   ],
   "shared": {
-    "engines": 15,
+    "engines": 64,
     "capabilityCatalog": "registry/capabilities.json"
   },
   "totals": {
-    "plugins": 5,
-    "skills": 15,
-    "engines": 15
+    "plugins": 6,
+    "skills": 71,
+    "engines": 64
   }
 }

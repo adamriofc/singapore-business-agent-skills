@@ -5,7 +5,7 @@ const path = require('path');
 const assert = require('assert');
 
 function discoverAllSkillPaths(rootDir) {
-  const bundles = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg'];
+  const bundles = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg', 'marketing-sg'];
   const skillPaths = [];
 
   bundles.forEach(bundle => {
@@ -30,9 +30,9 @@ function runSecurityTests() {
   let failures = 0;
   const allSkills = discoverAllSkillPaths(rootDir);
 
-  console.log(`  Scanning all ${allSkills.length} skills across 5 domains for closed delimiter boundaries...`);
+  console.log(`  Scanning all ${allSkills.length} skills across 6 domains for closed delimiter boundaries...`);
 
-  assert.strictEqual(allSkills.length, 15, `Expected 15 skills, found ${allSkills.length}`);
+  assert.strictEqual(allSkills.length, 71, `Expected 71 skills, found ${allSkills.length}`);
 
   allSkills.forEach(skillRelPath => {
     const filePath = path.join(rootDir, skillRelPath);

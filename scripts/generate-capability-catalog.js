@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const bundles = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg'];
+const bundles = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg', 'marketing-sg'];
 
 function parseYamlFrontmatter(yamlStr) {
   const lines = yamlStr.split('\n');
@@ -150,6 +150,43 @@ function generateCapabilityCatalog() {
   fs.writeFileSync(outputPath, JSON.stringify(outputPayload, null, 2) + '\n', 'utf8');
 
   console.log(`\n✅ Successfully generated ${catalog.length} capability contracts into: ${outputPath}`);
+
+  // Generate synchronized registry/index.json
+  const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+  const metadata = fs.existsSync(path.join(ROOT, 'canonical-metadata.json'))
+    ? JSON.parse(fs.readFileSync(path.join(ROOT, 'canonical-metadata.json'), 'utf8'))
+    : { engines: 64 };
+
+  const registryIndex = {
+    version: pkg.version,
+    generated_at: new Date().toISOString(),
+    repository: "https://github.com/adamriofc/singapore-business-agent-skills",
+    total_domains: bundles.length,
+    total_plugins: bundles.length,
+    total_skills: catalog.length,
+    total_engines: metadata.engines || 64,
+    quality_tiers: {
+      tested: 0,
+      "source-verified": 0,
+      "expert-reviewed": catalog.length
+    },
+    skills: catalog.map(c => {
+      return {
+        id: c.id,
+        name: c.skillName,
+        bundle: c.bundle,
+        domain: c.domain,
+        risk_level: c.risk_level,
+        rule_type: c.rule_type,
+        engine: c.id.replace(/-sg$/, '').replace(/-/g, '_'),
+        statutory_reference: c.description
+      };
+    })
+  };
+
+  const registryIndexPath = path.join(ROOT, 'registry/index.json');
+  fs.writeFileSync(registryIndexPath, JSON.stringify(registryIndex, null, 2) + '\n', 'utf8');
+  console.log(`✅ Successfully generated registry index into: ${registryIndexPath}`);
 }
 
 generateCapabilityCatalog();

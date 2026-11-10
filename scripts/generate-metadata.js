@@ -24,7 +24,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
 function discoverPlugins() {
-  const bundleNames = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg'];
+  const bundleNames = ['tax-sg', 'hr-sg', 'legal-sg', 'finance-sg', 'strategic-sg', 'marketing-sg'];
   return bundleNames.filter(b => fs.existsSync(path.join(ROOT, b)));
 }
 
@@ -52,15 +52,20 @@ function countEngines() {
 
 function measureGoldenCorpus() {
   const goldenDir = path.join(ROOT, 'tests/golden');
-  if (!fs.existsSync(goldenDir)) return { benchmarkDomains: 0, goldenCases: 0 };
+  if (!fs.existsSync(goldenDir)) return { benchmarkDomains: 0, goldenCases: 0, benchmarkAssertions: 0 };
   const files = fs.readdirSync(goldenDir).filter(f => f.endsWith('.json'));
   let totalCases = 0;
+  let totalAssertions = 0;
   files.forEach(f => {
     const data = JSON.parse(fs.readFileSync(path.join(goldenDir, f), 'utf8'));
     const cases = Array.isArray(data) ? data : (data.goldenCases || []);
     totalCases += cases.length;
+    cases.forEach(c => {
+      const keys = c.expected ? Object.keys(c.expected).length : 0;
+      totalAssertions += keys + 2; // Accuracy assertions + 2 determinism runs
+    });
   });
-  return { benchmarkDomains: files.length, goldenCases: totalCases };
+  return { benchmarkDomains: files.length, goldenCases: totalCases, benchmarkAssertions: totalAssertions };
 }
 
 function countAssertionsInDir(dirPath) {
@@ -87,7 +92,7 @@ function generateMetadata() {
   const plugins = discoverPlugins();
   const skillsCount = countSkills(plugins);
   const enginesCount = countEngines();
-  const { benchmarkDomains, goldenCases } = measureGoldenCorpus();
+  const { benchmarkDomains, goldenCases, benchmarkAssertions } = measureGoldenCorpus();
   const totalAssertions = countAssertionsInDir(path.join(ROOT, 'tests'));
 
   const metadata = {
@@ -99,7 +104,7 @@ function generateMetadata() {
     engines: enginesCount,
     goldenCases,
     benchmarkDomains,
-    benchmarkAssertions: 60,
+    benchmarkAssertions,
     totalTestAssertions: totalAssertions,
     nodeSupport: {
       minimumSupported: "20",
@@ -118,7 +123,7 @@ function generateMetadata() {
       process.exit(1);
     }
     const current = JSON.parse(fs.readFileSync(canonicalPath, 'utf8'));
-    const keysToCompare = ['version', 'plugins', 'skills', 'engines', 'goldenCases', 'benchmarkDomains'];
+    const keysToCompare = ['version', 'plugins', 'skills', 'engines', 'goldenCases', 'benchmarkDomains', 'benchmarkAssertions'];
     let drift = false;
     keysToCompare.forEach(k => {
       if (current[k] !== metadata[k]) {
@@ -144,7 +149,8 @@ function generateMetadata() {
       existing.skills === metadata.skills &&
       existing.engines === metadata.engines &&
       existing.goldenCases === metadata.goldenCases &&
-      existing.benchmarkDomains === metadata.benchmarkDomains
+      existing.benchmarkDomains === metadata.benchmarkDomains &&
+      existing.benchmarkAssertions === metadata.benchmarkAssertions
     ) {
       metadata.generatedAt = existing.generatedAt;
     }

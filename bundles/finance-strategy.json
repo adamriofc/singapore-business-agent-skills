@@ -2,45 +2,45 @@
   "bundle_id": "finance-strategy",
   "name": "Singapore Finance & Strategy Pack",
   "profile": "finance-strategy",
-  "version": "1.0.0",
-  "description": "Singapore corporate treasury, liquidity, grant funding, and cross-border holding strategy covering MAS SORA-linked WACC, SFRS working capital, EnterpriseSG grants, and SG-ID bilateral DTA holding optimization.",
+  "version": "2.0.0",
+  "description": "Singapore corporate treasury, liquidity, grant funding, and cross-border holding strategy covering MAS SORA-linked WACC, SFRS working capital, EnterpriseSG grants, and regional holding optimization.",
   "plugins": [
     {
       "id": "finance-sg",
       "name": "Singapore Corporate Finance Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "finance",
-      "skills": 2
+      "skills": 16
     },
     {
       "id": "strategic-sg",
       "name": "Singapore Strategic Planning Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "strategic",
-      "skills": 2
+      "skills": 6
     },
     {
       "id": "tax-sg",
       "name": "Singapore Tax Intelligence",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "domain": "tax",
-      "skills": 4
+      "skills": 14
     }
   ],
   "shared": {
-    "engines": 15,
+    "engines": 64,
     "capabilityCatalog": "registry/capabilities.json"
   },
   "totals": {
     "plugins": 3,
-    "skills": 8,
-    "engines": 15
+    "skills": 36,
+    "engines": 64
   },
   "use_cases": [
     "MAS SORA benchmark corporate WACC with CIT tax shield",
     "SFRS working capital cycle & Cash Conversion Cycle (CCC)",
     "EnterpriseSG grant application & co-funding eligibility",
-    "Cross-border SG-ID holding structure tax efficiency modeling",
+    "Regional holding structure tax efficiency modeling",
     "IRAS Withholding tax and treaty relief optimization"
   ]
 }

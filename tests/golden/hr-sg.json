@@ -77,8 +77,8 @@
     }
   },
   {
-    "caseId": "MOM-OT-WORKMAN-PART4",
-    "description": "MOM Part IV Workman S$3,000 basic salary with 20 OT hours compliant",
+    "caseId": "MOM-OVERTIME-WORKMAN",
+    "description": "Workman Part IV overtime 1.5x calculation and monthly cap audit",
     "engine": "calculateMomOvertimeAndCompliance",
     "input": {
       "employeeCategory": "WORKMAN",
@@ -91,14 +91,67 @@
       "isCoveredUnderPartIV": true,
       "coverageStatusReason": "WORKMAN_SALARY_WITHIN_CAP",
       "overtimeHoursWorked": 20,
-      "totalOvertimePayPayableSgd": 472,
-      "statutoryAnnualLeaveDays": 9,
-      "isFullyCompliant": true
+      "exceedsMonthlyOtCap": false,
+      "exceedsDailyWorkCap": false,
+      "isFullyCompliant": true,
+      "statutoryAnnualLeaveDays": 9
     }
   },
   {
-    "caseId": "MOM-OT-CAP-VIOLATION",
-    "description": "MOM Part IV Overtime breach: 80 OT hours (> 72h) and 14h daily (> 12h)",
+    "caseId": "MOM-COMPASS-STANDARD-PASS",
+    "description": "COMPASS EP scoring framework evaluating standard candidate scoring 60 points",
+    "engine": "evaluateCompassEpEligibility",
+    "input": {
+      "monthlySalarySgd": 9000,
+      "candidateAge": 30,
+      "sector": "NON_FINANCIAL_SERVICES",
+      "salaryPercentileRank": "P90_AND_ABOVE",
+      "qualificationLevel": "TOP_TIER",
+      "firmPmetCount": 20
+    },
+    "expected": {
+      "meetsMinimumQualifyingSalary": true,
+      "c1SalaryPoints": 20,
+      "c2QualificationPoints": 20,
+      "c3DiversityPoints": 10,
+      "c4LocalSupportPoints": 10,
+      "totalCompassScore": 60,
+      "isPassMarkMet": true,
+      "eligibilityVerdict": "ELIGIBLE_FOR_EP_COMPASS_PASSED"
+    }
+  },
+  {
+    "caseId": "MOM-COMPASS-HIGH-SALARY-EXEMPT",
+    "description": "COMPASS exemption for high-earning candidate earning S$25,000/month",
+    "engine": "evaluateCompassEpEligibility",
+    "input": {
+      "monthlySalarySgd": 25000,
+      "candidateAge": 35
+    },
+    "expected": {
+      "isExemptFromCompass": true,
+      "exemptionReason": "HIGH_SALARY_EXEMPTION_ABOVE_22500_SGD",
+      "isPassMarkMet": true
+    }
+  },
+  {
+    "caseId": "MOM-OT-NON-WORKMAN-EXCLUDED",
+    "description": "Non-workman earning > S$2,600 excluded from Part IV overtime entitlement",
+    "engine": "calculateMomOvertimeAndCompliance",
+    "input": {
+      "employeeCategory": "NON_WORKMAN",
+      "monthlyBasicSalarySgd": 3500,
+      "overtimeHours": 10
+    },
+    "expected": {
+      "isCoveredUnderPartIV": false,
+      "coverageStatusReason": "NON_WORKMAN_SALARY_EXCEEDS_CAP",
+      "totalOvertimePayPayableSgd": 0
+    }
+  },
+  {
+    "caseId": "MOM-OT-BREACH-HOURS",
+    "description": "MOM Part IV violation for monthly overtime exceeding statutory 72h cap",
     "engine": "calculateMomOvertimeAndCompliance",
     "input": {
       "employeeCategory": "WORKMAN",
@@ -110,6 +163,282 @@
       "exceedsMonthlyOtCap": true,
       "exceedsDailyWorkCap": true,
       "isFullyCompliant": false
+    }
+  },
+  {
+    "caseId": "MOM-DRC-SERVICES-QUOTA",
+    "description": "Foreign workforce quota and levy computation for Services sector",
+    "engine": "calculateForeignWorkforceQuota",
+    "input": {
+      "sector": "SERVICES",
+      "localHeadcount": 65,
+      "currentSPassCount": 5,
+      "currentWorkPermitCount": 20
+    },
+    "expected": {
+      "maxTotalForeignWorkers": 35,
+      "maxSPassHolders": 7,
+      "totalForeignHeadroom": 10,
+      "sPassHeadroom": 2,
+      "isFullyCompliant": true,
+      "totalForeignWorkerLevySgd": 10650
+    }
+  },
+  {
+    "caseId": "MOM-ANNUAL-LEAVE-PRORATED",
+    "description": "Statutory annual leave entitlement and pro-ration calculation",
+    "engine": "calculateAnnualLeaveEntitlement",
+    "input": {
+      "completedYearsOfService": 2,
+      "completedMonthsInCurrentYear": 8,
+      "leaveTakenDays": 3,
+      "grossMonthlySalarySgd": 3500
+    },
+    "expected": {
+      "statutoryMinimumDays": 9,
+      "roundedStatutoryProratedDays": 6,
+      "balanceRemainingDays": 3
+    }
+  },
+  {
+    "caseId": "MOM-SICK-LEAVE-QUALIFYING",
+    "description": "Paid sick and hospitalisation leave entitlement after 6 months of service",
+    "engine": "calculateSickLeaveEntitlement",
+    "input": {
+      "monthsOfService": 6,
+      "outpatientSickLeaveTakenDays": 4,
+      "hospitalisationLeaveTakenDays": 10,
+      "hasValidMcFromRegisteredDoctor": true
+    },
+    "expected": {
+      "isEligibleForPaidSickLeave": true,
+      "outpatientSickLeaveTotalDays": 14,
+      "hospitalisationLeaveTotalDays": 60,
+      "remainingOutpatientSickLeaveDays": 10,
+      "remainingHospitalisationLeaveDays": 46
+    }
+  },
+  {
+    "caseId": "MOM-RETRENCHMENT-MANDATORY",
+    "description": "Retrenchment benefit calculation and mandatory notification to MOM",
+    "engine": "calculateRetrenchmentBenefit",
+    "input": {
+      "monthlySalarySgd": 4000,
+      "yearsOfService": 3,
+      "benefitWeeksPerYear": 4.33,
+      "companyContext": {
+        "totalCompanyHeadcount": 20,
+        "retrenchedIn6Months": 6
+      }
+    },
+    "expected": {
+      "isStatutorilyEligible": true,
+      "isMandatory": true,
+      "reportingDeadlineWorkingDays": 5
+    }
+  },
+  {
+    "caseId": "MOM-PARENTAL-GPML-CHILD1",
+    "description": "Government-Paid Maternity Leave (GPML) 16-week benefit calculation for 1st child",
+    "engine": "calculateParentalLeave",
+    "input": {
+      "leaveType": "MATERNITY",
+      "monthlyGrossSalarySgd": 8000,
+      "childOrderNumber": 1,
+      "monthsOfService": 6,
+      "isChildSingaporeCitizen": true,
+      "isLawfullyMarried": true
+    },
+    "expected": {
+      "isCdcaQualifying": true,
+      "totalLeaveWeeks": 16,
+      "employerFundedWeeks": 8,
+      "governmentFundedWeeks": 8,
+      "governmentReimbursementClaimSgd": 14769.2
+    }
+  },
+  {
+    "caseId": "MOM-PARENTAL-GPPL-FATHER",
+    "description": "Government-Paid Paternity Leave (GPPL) 4-week fully government funded benefit",
+    "engine": "calculateParentalLeave",
+    "input": {
+      "leaveType": "PATERNITY",
+      "monthlyGrossSalarySgd": 6000,
+      "childOrderNumber": 1,
+      "monthsOfService": 6,
+      "isChildSingaporeCitizen": true,
+      "isLawfullyMarried": true
+    },
+    "expected": {
+      "isCdcaQualifying": true,
+      "totalLeaveWeeks": 4,
+      "employerFundedWeeks": 0,
+      "governmentFundedWeeks": 4
+    }
+  },
+  {
+    "caseId": "MOM-WFA-DISCRIMINATORY-AD",
+    "description": "Workplace Fairness Act audit detecting discriminatory recruitment copy",
+    "engine": "auditWorkplaceFairness",
+    "input": {
+      "textToAudit": "Looking for young and energetic female preferred staff, mandarin speaking preferred.",
+      "hasInternalGrievanceMechanism": false
+    },
+    "expected": {
+      "riskTier": "CRITICAL_RISK"
+    }
+  },
+  {
+    "caseId": "MOM-PWM-RETAIL-DEFICIT",
+    "description": "Progressive Wage Model wage compliance evaluation in Retail sector",
+    "engine": "evaluateProgressiveWageCompliance",
+    "input": {
+      "monthlyGrossSalarySgd": 1600,
+      "pwmSectorKey": "RETAIL",
+      "isLocalEmployee": true
+    },
+    "expected": {
+      "headcountContribution": 1,
+      "status": "FULL_LQS_HEADCOUNT",
+      "isPwmCompliant": false,
+      "wageDeficitSgd": 575
+    }
+  },
+  {
+    "caseId": "MOM-KETS-COMPLIANT",
+    "description": "Key Employment Terms compliance audit for written employment contract",
+    "engine": "auditKeyEmploymentTerms",
+    "input": {
+      "includedItemFlags": {
+        "EMPLOYER_EMPLOYEE_NAMES": true,
+        "JOB_TITLE_DUTIES": true,
+        "START_DATE": true,
+        "EMPLOYMENT_DURATION": true,
+        "HOURS_DAYS_REST": true,
+        "SALARY_PERIOD": true,
+        "BASIC_PAY": true,
+        "FIXED_ALLOWANCES": true,
+        "FIXED_DEDUCTIONS": true,
+        "OVERTIME_RATE": true,
+        "OTHER_BONUS_INCENTIVE": true,
+        "STATUTORY_LEAVES": true,
+        "MEDICAL_BENEFITS": true,
+        "NOTICE_PERIOD": true
+      },
+      "daysSinceStartOfEmployment": 10,
+      "isWrittenDocumentProvided": true
+    },
+    "expected": {
+      "isFullyCompliant": true,
+      "complianceScore": 100
+    }
+  },
+  {
+    "caseId": "MOM-PAYSLIP-ITEMISED-AUDIT",
+    "description": "Itemised payslip statutory compliance audit under Employment Act Section 95A",
+    "engine": "auditItemisedPayslip",
+    "input": {
+      "includedFields": {
+        "NAMES": true,
+        "PAYMENT_DATE": true,
+        "SALARY_PERIOD": true,
+        "BASIC_SALARY": true,
+        "ALLOWANCES": true,
+        "DEDUCTIONS": true,
+        "NET_SALARY": true,
+        "OVERTIME_DETAILS": true
+      },
+      "employeeWorkedOvertime": true,
+      "daysAfterPaymentIssued": 2,
+      "keepsHistoricalRecords2Years": true
+    },
+    "expected": {
+      "isFullyCompliant": true,
+      "complianceScore": 100
+    }
+  },
+  {
+    "caseId": "MOM-PUBLIC-HOLIDAY-PAY",
+    "description": "Public Holiday work compensation calculation (extra 1 day salary or day-off in lieu)",
+    "engine": "calculatePublicHolidayCompensation",
+    "input": {
+      "monthlyBasicSalarySgd": 3000,
+      "normalWorkingDaysPerWeek": 5,
+      "holidaysWorkedCount": 1,
+      "compensationMode": "EXTRA_PAY"
+    },
+    "expected": {
+      "compensationMode": "EXTRA_PAY",
+      "statutoryDailyRateOfPaySgd": 138.46,
+      "extraSalaryPayableSgd": 138.46
+    }
+  },
+  {
+    "caseId": "MOM-CONTRACT-NON-COMPETE",
+    "description": "Employment contract audit evaluating geographic scope and restrictive covenants",
+    "engine": "auditEmploymentContract",
+    "input": {
+      "contractualEmployerNoticeWeeks": 2,
+      "contractualEmployeeNoticeWeeks": 8,
+      "yearsOfService": 1,
+      "probationDurationMonths": 3,
+      "nonCompeteClause": {
+        "hasNonCompete": true,
+        "durationMonths": 24,
+        "geographicalScope": "GLOBAL",
+        "protectsTradeSecrets": false
+      }
+    },
+    "expected": {
+      "isNoticeAsymmetrical": true,
+      "assessment": "LIKELY_UNENFORCEABLE_VOID"
+    }
+  },
+  {
+    "caseId": "CPF-NON-CITIZEN-PR1",
+    "description": "CPF calculation for Permanent Resident in 1st year of approval",
+    "engine": "calculateSingaporeCpf",
+    "input": {
+      "ordinaryWage": 5000,
+      "age": 28,
+      "residentialStatus": "SPR_YEAR_1",
+      "calendarYear": 2024
+    },
+    "expected": {
+      "employeeCpfSgd": 250,
+      "employerCpfSgd": 200,
+      "totalCpfSgd": 450
+    }
+  },
+  {
+    "caseId": "CPF-SENIOR-CITIZEN-65",
+    "description": "CPF contribution schedule for senior citizen employee aged 65 in 2024",
+    "engine": "calculateSingaporeCpf",
+    "input": {
+      "ordinaryWage": 4000,
+      "age": 65,
+      "residentialStatus": "CITIZEN",
+      "calendarYear": 2024
+    },
+    "expected": {
+      "employeeCpfSgd": 420,
+      "employerCpfSgd": 460,
+      "totalCpfSgd": 880
+    }
+  },
+  {
+    "caseId": "MOM-DRC-MANUFACTURING",
+    "description": "Foreign workforce quota calculation for Manufacturing sector (60% DRC)",
+    "engine": "calculateForeignWorkforceQuota",
+    "input": {
+      "sector": "MANUFACTURING",
+      "localHeadcount": 40,
+      "currentSPassCount": 4,
+      "currentWorkPermitCount": 20
+    },
+    "expected": {
+      "maxTotalForeignWorkers": 60,
+      "isFullyCompliant": true
     }
   }
 ]

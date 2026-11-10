@@ -3,18 +3,22 @@
 const assert = require('assert');
 const {
   evaluateEnterpriseGrant,
-  evaluateCrossBorderHoldingStructure
+  evaluateCorporateStructuring,
+  evaluateMarketEntrySg,
+  evaluateCompetitiveMoatSg,
+  simulateMacroScenarioSg,
+  evaluateStrategicRiskSg
 } = require('../../index.js');
 
 function runStrategicEnginesTests() {
-  console.log("🇸🇬 Running Singapore Strategic Planning & Cross-Border Domain Computational Engine Tests...\n");
+  console.log("🇸🇬 Running Singapore Strategic Planning & Governance Domain Computational Engine Tests...\n");
 
   // ===============================================================
   // 1. Enterprise Singapore (EnterpriseSG) Grant Engine
   // ===============================================================
-  console.log("  [1/2] Testing Enterprise Government Grant Engine (EDG/PSG/MRA)...");
+  console.log("  [1/6] Testing Enterprise Government Grant Engine (EDG/PSG/MRA)...");
 
-  // 1a. Standard EDG Grant (50% co-funding, Project S$200,000, 30% local equity)
+  // 1a. Standard EDG Grant (50% co-funding, Project S$200,000, 35% local equity)
   const edgStd = evaluateEnterpriseGrant({
     grantScheme: 'EDG',
     qualifyingProjectCostSgd: 200000,
@@ -42,7 +46,6 @@ function runStrategicEnginesTests() {
   console.log("  ✅ Grant: Enhanced EDG 70% sustainability/deep-tech rate verified.");
 
   // 1c. MRA Grant with Statutory Cap (S$100,000 per market, prior claim S$80,000)
-  // Project S$60,000 -> 50% = S$30,000. Available headroom = S$20,000. Capped at S$20,000.
   const mraCapped = evaluateEnterpriseGrant({
     grantScheme: 'MRA',
     qualifyingProjectCostSgd: 60000,
@@ -58,48 +61,192 @@ function runStrategicEnginesTests() {
   const grantDisqualified = evaluateEnterpriseGrant({
     grantScheme: 'EDG',
     qualifyingProjectCostSgd: 100000,
-    localShareholdingPercentage: 20 // Below 30% statutory minimum
+    localShareholdingPercentage: 20
   });
   assert.strictEqual(grantDisqualified.isEligibleForGrant, false);
   assert.strictEqual(grantDisqualified.disqualificationReasons.includes('LOCAL_SHAREHOLDING_BELOW_STATUTORY_30_PERCENT_THRESHOLD'), true);
   console.log("  ✅ Grant: Disqualification for local equity < 30% audited.");
 
   // ===============================================================
-  // 2. SG-ID Cross-Border Holding Structure Engine
+  // 2. Singapore Corporate Structuring & Holding Governance Engine
   // ===============================================================
-  console.log("  [2/2] Testing Cross-Border Holding Structure Engine (SG-ID DTA & Sec 13W)...");
+  console.log("  [2/6] Testing Corporate Structuring & Holding Governance Engine (FSIE Sec 13(8), Sec 13W, Single-Tier)...");
 
-  // 2a. S$1,000,000 Dividend Repatriation (ID PT -> SG HoldCo 100% -> Ultimate Beneficiary)
-  // Direct: 20% Indonesian PPh 26 = S$200,000. Net = S$800,000.
-  // SG HoldCo: 10% DTA WHT = S$100,000.
-  // Singapore Section 13(8) FSIE: 0% tax (Indonesian CIT 22% >= 15%).
-  // Singapore Outbound WHT: 0% (Single-Tier).
-  // Net cash = S$900,000. Gross tax savings = S$100,000.
-  // Maintenance cost S$8,000 -> Net economic benefit delta = S$92,000.
-  // Section 13W: 100% holding for 24 months -> Qualified safe harbour.
-  const holdingEval = evaluateCrossBorderHoldingStructure({
-    dividendAmountIdrOrSgd: 1000000,
+  // 2a. S$1,000,000 Foreign Dividend (Source CIT 22% >= 15%, 100% equity, 24 mo holding)
+  const holdingEval = evaluateCorporateStructuring({
+    dividendAmountSgd: 1000000,
     equityShareholdingPercent: 100,
     shareHoldingDurationMonths: 24,
-    hasValidCorCertificate: true,
-    operatingTaxRateInOrigin: 0.22,
-    estimatedAnnualSgMaintenanceCostSgd: 8000
+    sourceJurisdictionHeadlineCitRate: 0.22,
+    subjectToTaxInSource: true,
+    isBonaFideResident: true,
+    annualMaintenanceCostSgd: 8000
   });
 
-  assert.strictEqual(holdingEval.directHoldingScenario.withholdingTaxRate, 0.20);
-  assert.strictEqual(holdingEval.directHoldingScenario.withholdingTaxPayable, 200000);
-  assert.strictEqual(holdingEval.singaporeHoldingScenario.indonesiaOutboundWhtRate, 0.10);
-  assert.strictEqual(holdingEval.singaporeHoldingScenario.indonesiaWhtTaxPayable, 100000);
-  assert.strictEqual(holdingEval.singaporeHoldingScenario.section13_8_FsieExemptionApplies, true);
-  assert.strictEqual(holdingEval.singaporeHoldingScenario.singaporeCitOnForeignDividend, 0);
-  assert.strictEqual(holdingEval.singaporeHoldingScenario.netCashDelivered, 900000);
-  assert.strictEqual(holdingEval.comparativeAnalysis.grossTaxSavingsBenefit, 100000);
-  assert.strictEqual(holdingEval.comparativeAnalysis.netFinancialEfficiencyDelta, 92000);
-  assert.strictEqual(holdingEval.comparativeAnalysis.isHoldingStructureEconomicallySuperior, true);
-  assert.strictEqual(holdingEval.statutorySafeHarbours.section13W_CapitalGainsSafeHarbourQualified, true);
-  console.log("  ✅ Holding: SG-ID DTA dividend waterfall, Sec 13(8) FSIE, and Sec 13W safe harbour verified.");
+  assert.strictEqual(holdingEval.singaporeHoldingAssessment.qualifiesForSection138Fsie, true);
+  assert.strictEqual(holdingEval.singaporeHoldingAssessment.singaporeCorporateTaxRate, 0);
+  assert.strictEqual(holdingEval.singaporeHoldingAssessment.singaporeCorporateTaxPayable, 0);
+  assert.strictEqual(holdingEval.singaporeHoldingAssessment.singaporeOutboundDividendWhtRate, 0);
+  assert.strictEqual(holdingEval.singaporeHoldingAssessment.singaporeOutboundDividendWhtPayable, 0);
+  assert.strictEqual(holdingEval.singaporeHoldingAssessment.netDividendRepatriated, 1000000);
+  assert.strictEqual(holdingEval.singaporeHoldingAssessment.netCashDeliverable, 992000);
+  assert.strictEqual(holdingEval.capitalGainsSection13W.qualifiesForSection13WSafeHarbour, true);
+  assert.strictEqual(holdingEval.capitalGainsSection13W.statutoryExemptionStatus, 'CONFIRMED_SAFE_HARBOUR_EXEMPT');
+  console.log("  ✅ Structuring: Section 13(8) FSIE exemption & Section 13W safe harbour verified.");
 
-  console.log("\n✅ All Singapore Strategic Planning & Cross-Border Domain Engine Tests Passed 100%!");
+  // 2b. Disqualified FSIE (Source headline CIT rate 10% < 15% threshold)
+  const disqualifiedFsie = evaluateCorporateStructuring({
+    dividendAmountSgd: 500000,
+    sourceJurisdictionHeadlineCitRate: 0.10,
+    subjectToTaxInSource: true,
+    isBonaFideResident: true
+  });
+  assert.strictEqual(disqualifiedFsie.singaporeHoldingAssessment.qualifiesForSection138Fsie, false);
+  assert.strictEqual(disqualifiedFsie.singaporeHoldingAssessment.singaporeCorporateTaxRate, 0.17);
+  assert.strictEqual(disqualifiedFsie.singaporeHoldingAssessment.singaporeCorporateTaxPayable, 85000);
+  console.log("  ✅ Structuring: Section 13(8) headline rate < 15% disqualification verified.");
+
+  // 2c. Section 13W Non-Qualification (< 24 months holding duration)
+  const shortHolding = evaluateCorporateStructuring({
+    dividendAmountSgd: 200000,
+    equityShareholdingPercent: 50,
+    shareHoldingDurationMonths: 12
+  });
+  assert.strictEqual(shortHolding.capitalGainsSection13W.qualifiesForSection13WSafeHarbour, false);
+  assert.strictEqual(shortHolding.capitalGainsSection13W.statutoryExemptionStatus, 'SUBJECT_TO_BADGES_OF_TRADE_REVIEW');
+  console.log("  ✅ Structuring: Section 13W holding period constraint verified.");
+
+  // ===============================================================
+  // 3. Singapore Market Entry & Regional Expansion Engine
+  // ===============================================================
+  console.log("  [3/6] Testing Market Entry & Regional Expansion Engine (Subsidiary vs Branch vs Rep Office)...");
+
+  // 3a. Subsidiary (Pte Ltd) Setup with ASEAN expansion
+  const subEntry = evaluateMarketEntrySg({
+    targetStructure: 'SUBSIDIARY',
+    projectedAnnualRevenueSgd: 2500000,
+    projectedLocalOperatingExpensesSgd: 400000,
+    projectedLocalHeadcount: 5,
+    plansRegionalExpansion: true,
+    targetAseanMarkets: ['ID', 'MY', 'VN'],
+    holdsForeignIntellectualPropertyOrShares: true
+  });
+  assert.strictEqual(subEntry.targetStructure, 'SUBSIDIARY');
+  assert.strictEqual(subEntry.statutoryProfile.limitedLiabilityProtection, true);
+  assert.strictEqual(subEntry.statutoryProfile.qualifiesForStartupTaxExemption, true);
+  assert.strictEqual(subEntry.economicSubstanceEvaluation.passesEconomicSubstance, true);
+  assert.strictEqual(subEntry.regionalHubRouting.targetAseanMarketsCount, 3);
+  assert.strictEqual(subEntry.isApprovedForMarketEntry, true);
+  console.log("  ✅ Market Entry: Subsidiary entity with Section 10L substance verified.");
+
+  // 3b. Branch Office Setup
+  const branchEntry = evaluateMarketEntrySg({
+    targetStructure: 'BRANCH',
+    projectedAnnualRevenueSgd: 1000000,
+    projectedLocalOperatingExpensesSgd: 150000,
+    projectedLocalHeadcount: 2
+  });
+  assert.strictEqual(branchEntry.targetStructure, 'BRANCH');
+  assert.strictEqual(branchEntry.statutoryProfile.limitedLiabilityProtection, false);
+  assert.strictEqual(branchEntry.statutoryProfile.qualifiesForStartupTaxExemption, false);
+  console.log("  ✅ Market Entry: Foreign branch office characteristics audited.");
+
+  // 3c. Representative Office (Disallowed Commercial Revenue)
+  const roEntry = evaluateMarketEntrySg({
+    targetStructure: 'REPRESENTATIVE_OFFICE',
+    projectedAnnualRevenueSgd: 500000,
+    projectedLocalOperatingExpensesSgd: 80000,
+    projectedLocalHeadcount: 1
+  });
+  assert.strictEqual(roEntry.statutoryProfile.isLegallyPermittedForCommercialRevenue, false);
+  assert.strictEqual(roEntry.isApprovedForMarketEntry, false);
+  assert.strictEqual(roEntry.totalComplianceBlockers >= 1, true);
+  console.log("  ✅ Market Entry: Representative Office commercial revenue restriction verified.");
+
+  // ===============================================================
+  // 4. Industry Cluster & Competitive Moat Engine
+  // ===============================================================
+  console.log("  [4/6] Testing Competitive Moat & VRIO Framework Engine...");
+
+  // 4a. FinTech Cluster with Sustainable Moat (VRIO = All true, MAS license, IPOS patent)
+  const fintechMoat = evaluateCompetitiveMoatSg({
+    industryCluster: 'FINTECH',
+    hasValuableAsset: true,
+    hasRareCapability: true,
+    isCostlyToImitate: true,
+    isOrganizedToCaptureValue: true,
+    holdsStatutoryLicense: true,
+    holdsRegisteredIpInIpos: true
+  });
+  assert.strictEqual(fintechMoat.vrioAudit.competitiveImplication, 'SUSTAINED_COMPETITIVE_ADVANTAGE');
+  assert.strictEqual(fintechMoat.vrioAudit.vrioMoatScore >= 80, true);
+  assert.strictEqual(fintechMoat.strategicMoatVerdict, 'ROBUST_SINGAPORE_MOAT');
+  assert.strictEqual(fintechMoat.clusterRegulatoryContext.holdsStatutoryLicense, true);
+  console.log("  ✅ Moat: FinTech Wide Moat with MAS regulatory barrier verified.");
+
+  // 4b. General Commercial with Competitive Parity
+  const parityMoat = evaluateCompetitiveMoatSg({
+    industryCluster: 'GENERAL_COMMERCIAL',
+    hasValuableAsset: true,
+    hasRareCapability: false,
+    isCostlyToImitate: false,
+    isOrganizedToCaptureValue: true
+  });
+  assert.strictEqual(parityMoat.vrioAudit.competitiveImplication, 'COMPETITIVE_PARITY');
+  assert.strictEqual(parityMoat.strategicMoatVerdict, 'VULNERABLE_TO_REGIONAL_COMPETITION');
+  console.log("  ✅ Moat: Competitive Parity and No Moat classification verified.");
+
+  // ===============================================================
+  // 5. Macroeconomic Stress Testing Engine
+  // ===============================================================
+  console.log("  [5/6] Testing Macroeconomic Stress Testing Engine (MAS S$NEER, Inflation, Disruptions)...");
+
+  // 5a. MAS S$NEER Tightening & Appreciation (Revenue S$10M, OpEx S$7M)
+  const masTightening = simulateMacroScenarioSg({
+    baselineRevenueSgd: 10000000,
+    baselineOpexSgd: 7000000,
+    scenarioType: 'MAS_TIGHTENING_SGD_APPRECIATION',
+    foreignRevenueSharePercent: 60,
+    importedGoodsSharePercent: 40
+  });
+  assert.strictEqual(masTightening.scenarioType, 'MAS_TIGHTENING_SGD_APPRECIATION');
+  assert.strictEqual(masTightening.stressedFinancialsSgd.adjustedAnnualRevenue < 10000000, true);
+  assert.strictEqual(masTightening.stressedFinancialsSgd.adjustedAnnualOpEx < 7000000, true);
+  assert.strictEqual(typeof masTightening.stressResilienceTier, 'string');
+  console.log("  ✅ Macro: MAS S$NEER tightening currency shock simulation verified.");
+
+  // 5b. Stagflation Shock Scenario
+  const stagflation = simulateMacroScenarioSg({
+    baselineRevenueSgd: 5000000,
+    baselineOpexSgd: 4000000,
+    scenarioType: 'STAGFLATION_SHOCK'
+  });
+  assert.strictEqual(stagflation.stressedFinancialsSgd.profitChangeSgd < 0, true);
+  console.log("  ✅ Macro: Stagflation margin compression verified.");
+
+  // ===============================================================
+  // 6. Strategic Risk Matrix & ERM Heatmap Engine
+  // ===============================================================
+  console.log("  [6/6] Testing Corporate Strategic Risk Matrix & ERM Heatmap Engine (SGX Rule 1207(10))...");
+
+  const riskAssessment = evaluateStrategicRiskSg({
+    risks: [
+      { id: 'R1', title: 'PDPA Data Breach Risk', category: 'REPUTATIONAL_CYBER', likelihood: 4, impact: 5, velocity: 3 },
+      { id: 'R2', title: 'MAS Regulatory Non-Compliance', category: 'REGULATORY_COMPLIANCE', likelihood: 3, impact: 4, velocity: 2 },
+      { id: 'R3', title: 'Foreign FX Volatility', category: 'FINANCIAL_MARKET', likelihood: 3, impact: 3, velocity: 2 },
+      { id: 'R4', title: 'Key Supplier Disruption', category: 'OPERATIONAL_SUPPLY', likelihood: 2, impact: 3, velocity: 1 }
+    ],
+    hasBoardRiskCommittee: true,
+    hasDocumentedErmPolicy: true
+  });
+  assert.strictEqual(riskAssessment.totalRisksEvaluated, 4);
+  assert.strictEqual(riskAssessment.severityBreakdown.criticalExtremeCount, 1);
+  assert.strictEqual(riskAssessment.severityBreakdown.highCount, 1);
+  assert.strictEqual(riskAssessment.boardOversightAudit.hasBoardRiskCommittee, true);
+  assert.strictEqual(riskAssessment.boardOversightAudit.sgxCodeOfCorporateGovernanceCompliant, true);
+  console.log("  ✅ Strategic Risk: Enterprise ERM heatmap and SGX Board compliance verified.");
+
+  console.log("\n✅ All 6 Singapore Strategic Planning & Governance Domain Engine Tests Passed 100%!");
 }
 
 runStrategicEnginesTests();
