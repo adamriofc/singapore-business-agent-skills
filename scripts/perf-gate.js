@@ -3,7 +3,7 @@
  * Lightweight Performance Regression Gate (`scripts/perf-gate.js`)
  *
  * Compares latest benchmark execution throughput (ops/sec) against baseline.json.
- * Triggers a warning if throughput degrades by >30%. (Never fails hard, keeping CI stable).
+ * Triggers a hard failure (process.exit(1)) if throughput degrades by >30%.
  *
  * Usage:
  *   node scripts/perf-gate.js
@@ -49,7 +49,8 @@ function checkPerfGate() {
   if (warnings === 0) {
     console.log("  ✅ All engine domains operating within performance throughput baseline bounds (0 regressions > 30%).");
   } else {
-    console.log(`  ⚠️ Performance Gate completed with ${warnings} throughput warning(s).`);
+    console.error(`  ❌ Performance Gate Failed: ${warnings} domain(s) exhibited throughput degradation > ${maxDegradation}%.`);
+    process.exit(1);
   }
 }
 

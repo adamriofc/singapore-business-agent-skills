@@ -2,7 +2,7 @@
 /**
  * Single Source of Truth (SSOT) Capability Catalog Generator (`scripts/generate-capability-catalog.js`)
  *
- * Scans all 15 SKILL.md files across the 5 canonical Singapore plugins and extracts
+ * Scans all 71 SKILL.md files across the 6 canonical Singapore plugins and extracts
  * machine-readable Agent Capability Contracts into `registry/capabilities.json`.
  *
  * Usage:

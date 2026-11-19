@@ -14,6 +14,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { execSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
@@ -178,12 +179,13 @@ function validateRelease() {
     } else { checksPassed++; console.log(`    ✅ Benchmark semantic alignment verified (${metadata.benchmarkDomains} domains)`); }
   } catch (e) { console.error(`❌ Benchmark Artifact Semantic Check Failed: ${e.message}`); errors++; }
 
-  // 16. Release manifest ↔ tag provenance
-  console.log("  [16/18] Verifying Release Manifest ↔ Authoritative Tag Provenance...");
+  // 16. Release manifest ↔ tag provenance & integrity hashes
+  console.log("  [16/18] Verifying Release Manifest ↔ Authoritative Tag Provenance & Integrity Hashes...");
   try {
     const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'release-manifest.json'), 'utf8'));
     const expectedTag = process.env.RELEASE_TAG || `v${metadata.version}`;
 
+    // 1. Version alignment
     if (manifest.releaseVersion !== `v${metadata.version}`) {
       throw new Error(`manifest.releaseVersion=${manifest.releaseVersion} != v${metadata.version}`);
     }
@@ -191,22 +193,61 @@ function validateRelease() {
       throw new Error(`manifest.releaseTag=${manifest.releaseTag} != ${expectedTag}`);
     }
 
+    // 2. Metrics alignment
     if (manifest.metrics.plugins !== metadata.plugins || manifest.metrics.skills !== metadata.skills ||
         manifest.metrics.engines !== metadata.engines || manifest.metrics.goldenCases !== metadata.goldenCases ||
         manifest.metrics.benchmarkDomains !== metadata.benchmarkDomains || manifest.metrics.benchmarkAssertions !== metadata.benchmarkAssertions) {
       throw new Error('manifest.metrics do not match canonical-metadata.json');
     }
 
-    checksPassed++;
-    console.log(`    ✅ Release manifest v${manifest.manifestVersion}: tag=${expectedTag}, metrics aligned.`);
-  } catch (e) {
-    if (process.env.REQUIRE_RELEASE_TAG === 'true') {
-      console.error(`❌ Release Manifest Provenance Failed: ${e.message}`);
-      errors++;
-    } else {
-      console.log(`    ⚠️ Release tag provenance check skipped in local development mode: ${e.message}`);
-      checksPassed++;
+    // 3. Integrity Hashes Verification
+    if (manifest.integrityHashes) {
+      const sha256sumsActual = crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, 'SHA256SUMS.txt'))).digest('hex');
+      if (manifest.integrityHashes.sha256sumsFileHash && manifest.integrityHashes.sha256sumsFileHash !== sha256sumsActual) {
+        throw new Error(`manifest.integrityHashes.sha256sumsFileHash mismatch: expected ${manifest.integrityHashes.sha256sumsFileHash}, actual ${sha256sumsActual}`);
+      }
+
+      const benchmarkActual = crypto.createHash('sha256').update(fs.readFileSync(artifactPath)).digest('hex');
+      if (manifest.integrityHashes.benchmarkArtifactHash && manifest.integrityHashes.benchmarkArtifactHash !== benchmarkActual) {
+        throw new Error(`manifest.integrityHashes.benchmarkArtifactHash mismatch: expected ${manifest.integrityHashes.benchmarkArtifactHash}, actual ${benchmarkActual}`);
+      }
     }
+
+    // 4. Git Tag Provenance
+    let tagTargetCommit = null;
+    try {
+      tagTargetCommit = execSync(`git rev-list -n 1 ${expectedTag}`, { cwd: ROOT, encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }).trim();
+    } catch {
+      tagTargetCommit = null;
+    }
+
+    if (tagTargetCommit) {
+      const sourceHash = manifest.releaseSourceCommitHash || manifest.releaseCommitHash;
+      if (!sourceHash) throw new Error('manifest missing releaseSourceCommitHash');
+
+      const commitType = execSync(`git cat-file -t ${sourceHash} 2>/dev/null || echo missing`, { cwd: ROOT, encoding: 'utf8' }).trim();
+      if (commitType !== 'commit') throw new Error(`manifest.releaseSourceCommitHash=${sourceHash} is not a reachable commit (got: ${commitType})`);
+
+      let isAncestor = false;
+      try {
+        execSync(`git merge-base --is-ancestor ${sourceHash} ${tagTargetCommit}`, { cwd: ROOT, stdio: 'ignore' });
+        isAncestor = true;
+      } catch { isAncestor = false; }
+      if (!isAncestor) {
+        throw new Error(`manifest.releaseSourceCommitHash=${sourceHash} is NOT an ancestor of release tag ${expectedTag} (${tagTargetCommit}) — lineage breach`);
+      }
+      console.log(`    ✅ Release manifest v${manifest.manifestVersion}: tag=${expectedTag} (exists→${tagTargetCommit.slice(0,7)}), source=${sourceHash.slice(0,7)}, hashes verified, metrics aligned.`);
+    } else {
+      if (process.env.REQUIRE_RELEASE_TAG === 'true') {
+        throw new Error(`tag ${expectedTag} not found in git history and REQUIRE_RELEASE_TAG=true`);
+      }
+      console.log(`    ⚠️ Release tag ${expectedTag} provenance check skipped in local development mode (tag not yet created); hashes & metrics aligned.`);
+    }
+
+    checksPassed++;
+  } catch (e) {
+    console.error(`❌ Release Manifest Provenance Failed: ${e.message}`);
+    errors++;
   }
 
   // 17. Agent capability contract validation

@@ -2,7 +2,7 @@
 /**
  * Singapore Agent Capability Contract Validator (`scripts/validate-capabilities.js`)
  *
- * Verifies that all 15 SKILL.md files and registry/capabilities.json
+ * Verifies that all 71 SKILL.md files and registry/capabilities.json across 6 canonical plugins
  * strictly implement the Agent Capability Contract schema.
  *
  * Usage:

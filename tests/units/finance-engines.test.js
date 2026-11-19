@@ -186,8 +186,35 @@ function runFinanceEnginesTests() {
   const npvVal = calculateNpv(100000, [35000, 45000, 50000], 0.08);
   assert.ok(npvVal > 0);
 
+  // Edge case: Rate <= -1 harus melempar RangeError
+  assert.throws(() => {
+    calculateNpv(-1.0, [1000, 2000]);
+  }, /^RangeError: Tingkat diskonto/);
+  assert.throws(() => {
+    calculateNpv(-1.5, [1000, 2000]);
+  }, /^RangeError: Tingkat diskonto/);
+
   const irrVal = calculateIrr(100000, [40000, 50000, 40000]);
   assert.ok(irrVal > 0.10 && irrVal < 0.20);
+
+  // Edge cases IRR: Semua positif atau semua negatif (tanpa pergantian tanda) -> null
+  assert.strictEqual(calculateIrr([10000, 20000, 30000]), null);
+  assert.strictEqual(calculateIrr([-10000, -20000, -30000]), null);
+
+  // Edge case Payback Period: Initial outlay = 0 -> 0 tahun
+  const zeroPayback = calculatePaybackPeriod(0.08, [0, 5000, 5000]);
+  assert.strictEqual(zeroPayback.undiscountedPaybackYears, 0);
+  assert.strictEqual(zeroPayback.discountedPaybackYears, 0);
+
+  // Edge case Payback Period: Discount rate <= -1 -> RangeError
+  assert.throws(() => {
+    calculatePaybackPeriod(-1.0, [-10000, 5000, 5000]);
+  }, /^RangeError: Tingkat diskonto/);
+
+  // Edge case Payback Period: Arus kas tidak pernah menutup investasi -> null
+  const unrecoveredPayback = calculatePaybackPeriod(0.08, [-100000, 1000, 2000]);
+  assert.strictEqual(unrecoveredPayback.undiscountedPaybackYears, null);
+  assert.strictEqual(unrecoveredPayback.discountedPaybackYears, null);
 
   const capInvest = evaluateCapitalInvestment({
     projectName: 'High-Tech Automated Line',
@@ -199,7 +226,7 @@ function runFinanceEnginesTests() {
   assert.strictEqual(capInvest.investmentDecision.verdict, 'ACCEPT_PROJECT');
   assert.ok(capInvest.evaluationMetrics.netPresentValueSgd > 0);
   assert.ok(capInvest.evaluationMetrics.profitabilityIndex > 1.0);
-  console.log("  ✅ Capital Budgeting: NPV, IRR, Profitability Index, and discounted payback verified.");
+  console.log("  ✅ Capital Budgeting: NPV, IRR, Profitability Index, and discounted payback verified (including boundary edge cases).");
 
   // ===============================================================
   // 6. SFRS 109 Expected Credit Loss (ECL) & IRAS Tax Engine

@@ -9,7 +9,7 @@
  *  - Unique plugin IDs within each bundle
  *  - Unique capability IDs across full suite (no collision)
  *  - Canonical IDs in registry/capabilities.json use domain-namespaced format
- *  - Full-business-suite bundle covers all 5 plugins with exact skill/engine counts
+ *  - Full-business-suite bundle covers all 6 plugins with exact skill/engine counts
  *
  * Usage:
  *   node scripts/validate-suite.js
@@ -131,7 +131,7 @@ function validateSuite() {
     errors += dupErrors;
   }
 
-  // Check 6: full-business-suite covers all 5 canonical plugins
+  // Check 6: full-business-suite covers all 6 canonical plugins
   checks++;
   const fullSuite = bundleData[EXPECTED_FULL_SUITE_BUNDLE];
   if (fullSuite && Array.isArray(fullSuite.plugins)) {

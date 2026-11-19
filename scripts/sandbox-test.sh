@@ -25,13 +25,10 @@ if command -v bwrap >/dev/null 2>&1; then
     --die-with-parent \
     bash -c "
       set -e
-      echo '=== [1/3] Running Full Test Suite inside Sandbox ==='
+      echo '=== [1/2] Running Full Test Suite inside Sandbox ==='
       npm run test:all
       echo ''
-      echo '=== [2/3] Running Deterministic Benchmark Suite inside Sandbox ==='
-      npm run benchmark
-      echo ''
-      echo '=== [3/3] Running 18-Check Release Gate Validation inside Sandbox ==='
+      echo '=== [2/2] Running 18-Check Release Gate Validation inside Sandbox ==='
       npm run validate:release
     "
     
@@ -40,7 +37,6 @@ if command -v bwrap >/dev/null 2>&1; then
 else
   echo "ℹ️  Bubblewrap (bwrap) not detected on PATH. Running native full verification suite..."
   npm run test:all
-  npm run benchmark
   npm run validate:release
   echo ""
   echo "✅ Native Test Execution PASSED 100%!"

@@ -1,7 +1,7 @@
 /**
  * Dynamic Singapore Plugin & Skill Schema Validator (`tests/schema/validator.test.js`)
  *
- * Verifies that all 5 plugins and 15 SKILL.md frontmatters adhere strictly to the
+ * Verifies that all 6 plugins and 71 SKILL.md frontmatters adhere strictly to the
  * Agent Skills Specification schema and Agent Capability Contracts.
  */
 

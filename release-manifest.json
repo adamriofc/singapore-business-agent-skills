@@ -19,7 +19,7 @@
   },
   "integrityHashes": {
     "sha256sumsFileHash": "6869558b23dda1cca90f64dc0eb168e02299639c708b12803dba0419d8390317",
-    "benchmarkArtifactHash": "fd0322be84b70d91c98f2713f1a692450388a9b3d3f3b0e57e01e9450c407740"
+    "benchmarkArtifactHash": "4b93fbb39f2e48503bc4e9977e56f2afc9dd95abadf8e53bde6fb3e61f046303"
   },
   "nodeMatrix": {
     "minimumSupported": "20",

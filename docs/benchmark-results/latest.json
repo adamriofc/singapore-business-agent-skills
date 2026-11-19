@@ -1,37 +1,37 @@
 {
-  "date": "2026-11-10T21:11:30.334Z",
+  "date": "2026-11-19T01:20:50.580Z",
   "version": "2.0.0",
-  "nodeVersion": "v26.12.0",
+  "nodeVersion": "v26.13.1",
   "domains": {
     "tax-sg": {
-      "opsPerSec": 131594,
-      "avgLatencyMs": 0.0076,
-      "p99LatencyMs": 0.059
+      "opsPerSec": 165636,
+      "avgLatencyMs": 0.006,
+      "p99LatencyMs": 0.0487
     },
     "hr-sg": {
-      "opsPerSec": 119251,
-      "avgLatencyMs": 0.0084,
-      "p99LatencyMs": 0.0425
+      "opsPerSec": 142446,
+      "avgLatencyMs": 0.007,
+      "p99LatencyMs": 0.0338
     },
     "legal-sg": {
-      "opsPerSec": 254756,
-      "avgLatencyMs": 0.0039,
-      "p99LatencyMs": 0.0136
+      "opsPerSec": 306323,
+      "avgLatencyMs": 0.0033,
+      "p99LatencyMs": 0.0088
     },
     "finance-sg": {
-      "opsPerSec": 120800,
-      "avgLatencyMs": 0.0083,
-      "p99LatencyMs": 0.0547
+      "opsPerSec": 140533,
+      "avgLatencyMs": 0.0071,
+      "p99LatencyMs": 0.0468
     },
     "strategic-sg": {
-      "opsPerSec": 248629,
-      "avgLatencyMs": 0.004,
-      "p99LatencyMs": 0.0099
+      "opsPerSec": 290706,
+      "avgLatencyMs": 0.0034,
+      "p99LatencyMs": 0.0078
     },
     "marketing-sg": {
-      "opsPerSec": 270752,
-      "avgLatencyMs": 0.0037,
-      "p99LatencyMs": 0.0105
+      "opsPerSec": 327037,
+      "avgLatencyMs": 0.0031,
+      "p99LatencyMs": 0.006
     }
   }
 }

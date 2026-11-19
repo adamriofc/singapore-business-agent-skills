@@ -31,18 +31,22 @@ function calculateNpv(arg1, cashFlows, arg3) {
   if (arg1 && typeof arg1 === 'object' && !Array.isArray(arg1)) {
     // Format Object: { initialOutlaySgd, annualCashFlowsSgd, discountRate }
     const initial = -Math.abs(Number(arg1.initialOutlaySgd || arg1.initialInvestmentSgd) || 0);
-    discountRate = Number(arg1.discountRate || (arg1.discountRatePercent ? arg1.discountRatePercent / 100 : 0) || (arg1.hurdleDiscountRatePercent ? arg1.hurdleDiscountRatePercent / 100 : 0)) || 0;
+    discountRate = Number(arg1.discountRate !== undefined ? arg1.discountRate : (arg1.discountRatePercent ? arg1.discountRatePercent / 100 : (arg1.hurdleDiscountRatePercent ? arg1.hurdleDiscountRatePercent / 100 : 0)));
     const cfs = Array.isArray(arg1.annualCashFlowsSgd || arg1.cashFlows) ? (arg1.annualCashFlowsSgd || arg1.cashFlows) : [];
     fullCfs = [initial, ...cfs];
   } else if (typeof arg3 === 'number') {
     // Format 2: (initialOutflow, annualCashFlows, discountRate)
     const initial = -Math.abs(Number(arg1) || 0);
-    discountRate = Number(arg3) || 0;
+    discountRate = Number(arg3);
     fullCfs = [initial, ...(Array.isArray(cashFlows) ? cashFlows : [])];
   } else {
     // Format 1: (discountRate, cashFlows)
     discountRate = Number(arg1) || 0;
     fullCfs = Array.isArray(cashFlows) ? cashFlows : [];
+  }
+
+  if (discountRate <= -1) {
+    throw new RangeError("Tingkat diskonto (discountRate) harus bernilai lebih besar dari -1 (-100%).");
   }
 
   if (fullCfs.length === 0) return 0;
@@ -95,24 +99,39 @@ function calculateIrr(arg1, arg2, maxIterations = 100) {
   if (!hasNegative || !hasPositive) return null;
 
   let lowRate = -0.9999;
-  let highRate = 5.0; // 500%
+  let highRate = 10.0; // 1000%
+  let fLow = calculateNpv(lowRate, fullCfs);
+  let fHigh = calculateNpv(highRate, fullCfs);
 
+  // Jika kedua ujung memiliki tanda yang sama, tidak terjamin ada akar tunggal di rentang [-0.9999, 10.0]
+  if (fLow * fHigh > 0) {
+    return null;
+  }
+
+  let midRate = (lowRate + highRate) / 2;
   for (let i = 0; i < maxIterations; i++) {
-    const midRate = (lowRate + highRate) / 2;
+    midRate = (lowRate + highRate) / 2;
     const npv = calculateNpv(midRate, fullCfs);
 
     if (Math.abs(npv) < tolerance) {
       return Math.round(midRate * 10000) / 10000;
     }
 
-    if (npv > 0) {
-      lowRate = midRate;
-    } else {
+    if (fLow * npv <= 0) {
       highRate = midRate;
+      fHigh = npv;
+    } else {
+      lowRate = midRate;
+      fLow = npv;
     }
   }
 
-  return Math.round(((lowRate + highRate) / 2) * 10000) / 10000;
+  const finalNpv = calculateNpv(midRate, fullCfs);
+  if (Math.abs(finalNpv) > tolerance * 100) {
+    return null;
+  }
+
+  return Math.round(midRate * 10000) / 10000;
 }
 
 /**
@@ -128,7 +147,7 @@ function calculatePaybackPeriod(discountRate, cashFlows) {
     const initial = -Math.abs(Number(p.initialOutlaySgd || p.initialInvestmentSgd) || 0);
     const cfs = Array.isArray(p.annualCashFlowsSgd || p.cashFlows) ? (p.annualCashFlowsSgd || p.cashFlows) : [];
     cashFlows = [initial, ...cfs];
-    discountRate = Number(p.discountRate || (p.discountRatePercent ? p.discountRatePercent / 100 : 0)) || 0;
+    discountRate = Number(p.discountRate !== undefined ? p.discountRate : (p.discountRatePercent ? p.discountRatePercent / 100 : (p.hurdleDiscountRatePercent ? p.hurdleDiscountRatePercent / 100 : 0)));
   }
 
   if (!Array.isArray(cashFlows) || cashFlows.length < 2) {
@@ -136,13 +155,20 @@ function calculatePaybackPeriod(discountRate, cashFlows) {
   }
 
   const initialOutlay = Math.abs(Number(cashFlows[0]) || 0);
+  if (initialOutlay === 0) {
+    return { undiscountedPaybackYears: 0, discountedPaybackYears: 0 };
+  }
+
+  if (discountRate <= -1) {
+    throw new RangeError("Tingkat diskonto (discountRate) harus bernilai lebih besar dari -1 (-100%).");
+  }
 
   // 1. Undiscounted
   let cumulative = 0;
   let undiscountedPayback = null;
   for (let t = 1; t < cashFlows.length; t++) {
     const cf = Number(cashFlows[t]) || 0;
-    if (cumulative + cf >= initialOutlay) {
+    if (cf > 0 && cumulative + cf >= initialOutlay) {
       const remainingNeeded = initialOutlay - cumulative;
       undiscountedPayback = Math.round(((t - 1) + (remainingNeeded / cf)) * 100) / 100;
       break;
@@ -154,8 +180,9 @@ function calculatePaybackPeriod(discountRate, cashFlows) {
   let discountedCumulative = 0;
   let discountedPayback = null;
   for (let t = 1; t < cashFlows.length; t++) {
-    const pvCf = (Number(cashFlows[t]) || 0) / Math.pow(1 + discountRate, t);
-    if (discountedCumulative + pvCf >= initialOutlay) {
+    const cf = Number(cashFlows[t]) || 0;
+    const pvCf = cf / Math.pow(1 + discountRate, t);
+    if (pvCf > 0 && discountedCumulative + pvCf >= initialOutlay) {
       const remainingNeeded = initialOutlay - discountedCumulative;
       discountedPayback = Math.round(((t - 1) + (remainingNeeded / pvCf)) * 100) / 100;
       break;
@@ -185,7 +212,13 @@ function evaluateCapitalInvestment(params) {
   }
 
   const name = String(params.projectName || 'Capital Project').trim();
-  const rate = Math.max(0, Number(params.discountRate) || 0.08);
+  const rawRate = params.discountRate !== undefined
+    ? Number(params.discountRate)
+    : (params.discountRatePercent ? Number(params.discountRatePercent) / 100 : (params.hurdleDiscountRatePercent ? Number(params.hurdleDiscountRatePercent) / 100 : 0.08));
+  if (rawRate <= -1) {
+    throw new RangeError("Tingkat diskonto (discountRate) harus bernilai lebih besar dari -1 (-100%).");
+  }
+  const rate = rawRate;
   const initial = Math.abs(Number(params.initialInvestmentSgd) || 0);
   const flows = Array.isArray(params.annualCashFlowsSgd) ? params.annualCashFlowsSgd : [];
 
